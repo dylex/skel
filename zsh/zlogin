@@ -1,0 +1,104 @@
+#eval `dircolors -b ~/.dircolors` 
+export LS_COLORS='no=00:fi=00:di=07:ln=04:or=04;05:pi=07;34:so=07;35:bd=07;31:cd=07;33:ex=01;36:*.cgi=36:*.c=01;34:*.cc=01;34:*.cpp=01;34:*.h=01;34:*.hh=01;34:*.i=01;34:*.ml=01;34:*.mli=01;34:*.hs=01;34:*.hsc=01;34:*.o=34:*.a=34:*.so=34:*.cmi=34:*.cmo=34:*.cmx=34:*.hi=34:*Makefile=04;34:*.pl=35:*.sh=35:*.php=01;35:*.pm=01;35:*.tar=01:*.tgz=01:*.gz=01:*.bz2=01:*.jpg=01;32:*.jpeg=01;32:*.gif=01;32:*.bmp=01;32:*.ppm=01;32:*.tga=01;32:*.xbm=01;32:*.xpm=01;32:*.fig=32:*.wav=01;33:*.au=01;33:*.mp3=01;33:*.midi=33:*.tex=33:*.html=33:*.ps=01;33:*.pdf=01;33:*.dvi=01;33:*.diff=04;33:*.txt=31:*.log=31:*INSTALL=31:*README=31:*,v=04;32:'
+
+alias c='cd; clear;'
+alias f='fg'
+alias b='bg'
+alias j='jobs'
+case $OSTYPE in
+	(linux*)
+		alias ls='ls --color=auto'
+		alias l='ls -li'
+		alias p='ps -AH So pid,user,stat,pcpu,bsdtime,start_time,vsz,command'
+		alias pw='ps -AH o pid,user,group,tty8,stat,pcpu,cputime,etime,pmem,rsz,vsz,command'
+		alias pl='ps -A o comm,pid,uid,gid,sz,rssize,vsize,nice,s,alarm,flags,wchan --sort session,pgrp,pid'
+		;;
+	(freebsd*)
+		alias ls='gls --color=auto'
+		alias l='\ls -li'
+		alias p='ps -auxf'
+		alias make='gmake'
+		;;
+	(*)
+		alias l='ls -li'
+		alias p='ps -auxf'
+		;;
+esac
+alias ll='l -a'
+alias ltr='ls -ltr'
+alias lld='ll -d'
+alias vi='vim'
+alias v='vim -c "normal '"'"'0"'
+#'"'"'"'"'# fix for vim syntax highlighting
+
+alias ht=$BROWSER
+alias rm='rm -i'
+alias grep='grep -n'
+alias gerp='grep'
+alias spell='aspell -a'
+alias sup='cvs up'
+alias sr='screen -r main || screen -r'
+alias up='uptime'
+alias mplay='mplayer'
+case $HOST in
+	(datura.dylex.net)
+		alias mplaya='mplayer -quiet -nortc -ao alsa:device=live'
+		alias w='w -f'
+		;;
+	(druid.pasadena.rainfinity.com)
+		alias cvsmerge='cvs -d :pserver:merge@cvshome.rainfinity.com:2401/home/cvs'
+		alias sz='su zoot'
+		;;
+esac
+
+zmodload -i zsh/stat
+
+for f in $fpath[1]/[^_]* ; do
+	autoload ${f:t} ;
+done
+
+zstyle ':completion:*' completions 0
+zstyle ':completion:*' glob 1
+zstyle ':completion:*' substitute 1
+zstyle ':completion:*' file-sort name
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-packed true
+zstyle ':completion:*' add-space true
+zstyle ':completion:*' original true
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+zstyle ':completion:*' word true
+zstyle ':completion:*' domains dylex.net
+zstyle ':completion:*' hosts dylex druid ugcs
+zstyle ':completion:*' urls ~/.elinks/gotohist
+#zstyle ':completion:*:processes' command ps -Hu dylan o pid,s,start_time,tty8,command
+zstyle ':completion:complete:(all-|)files' ignored-patterns '(|*/)CVS'
+zstyle :compinstall filename '/home/dylan/.zsh/.zlogin'
+autoload -U compinit
+compinit
+#compdef _urls ht
+
+#cdpath=($HOME)
+WATCH=all
+WATCHFMT="%D %T %S%n%s %l %a %M"
+HISTSIZE=256
+case $HOST in
+	(datura.dylex.net)
+		MAIL=$HOME/mail/spool
+		MAILPATH=$MAIL'?>> New mail':$HOME/mail/fm'?>> Mmm... freshmeat':$HOME/mail/gale.messages'?>> New gale messages':$HOME/mail/gale.donut'?>> New donut gale':$HOME/mail/gale.ugcs'?>> New ugcs gale':$HOME/mail/mb'?>> Musicbrainz updates':$HOME/mail/rainddts'?>> Oh, great, more bugs':$HOME/mail/netflix'?>> Netflix activity':$HOME/.pork/dylexs/logs'?>> New pork messages in $_'
+		hash -d src=/usr/src
+		;;
+	(druid.pasadena.rainfinity.com)
+		hash -d cur=~/cvs/current
+		;;
+esac
+
+export LESS='-iRJ'
+export MANSECT=2:3:1:8:6:4:5:7:9:x:n:l
+#export PYTHONSTARTUP=~/.pythonrc
+
+mesg y
+uname -a
+w

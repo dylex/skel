@@ -1,0 +1,88 @@
+deflogin off
+defflow off
+defscrollback 1024
+shell -zsh
+shelltitle -
+startup_message off
+caption always ' %-Lw%{Wk}%n%f %t%{-}%+Lw %=%?%{.r}%u%{-} %?%?%{=u kw}%h%{-} %?%{b}%l %{-kc}%c '
+bell_msg '^GBell in window %n'
+activity '^GActivity in window %n'
+vbell_msg '-*-*-'
+vbellwait 1
+vbell off
+zombie cr
+altscreen on
+#nethack off
+
+bind / displays
+bind ; lockscreen
+bind h prev
+bind l next
+bind j focus down
+bind k focus up
+bind ` select 0
+bind 0 select 10
+
+bind \^ screen -t ht  6 elinks
+bind & screen -t pork 7 pork
+bind * screen -t gale 8 ginsu
+bind ( screen -t moo  9 tf
+bind ) screen -t logs 10 watchlogs
+
+bindkey "^[J"    focus down
+bindkey "\312"   focus down
+bindkey "^[K"    focus up
+bindkey "\313"   focus up
+bindkey "^[L"    next
+bindkey "\314"   next
+bindkey "^[H"    prev
+bindkey "\310"   prev
+#bindkey "^[^M"   select 0
+bindkey "\215"   select 0
+bindkey "^[_"    other
+bindkey "\337"   other
+bindkey "^[B"    copy
+bindkey "\302"   copy
+bindkey "^[S"    split
+bindkey "\323"   split
+bindkey "^[:"	 colon
+bindkey "\272"	 colon
+bindkey "^[[11~" select 0
+bindkey "^[OP"   select 0
+bindkey "^[[12~" select 1
+bindkey "^[OQ"   select 1
+bindkey "^[[13~" select 2
+bindkey "^[OR"   select 2
+bindkey "^[[14~" select 3
+bindkey "^[OS"   select 3
+bindkey "^[[15~" select 4
+bindkey "^[[17~" select 5
+bindkey "^[[18~" select 6
+bindkey "^[[19~" select 7
+bindkey "^[[20~" select 8
+bindkey "^[[21~" select 9
+bindkey "^[[23~" select 10
+bindkey "^[~"    select 0
+bindkey "\376"   select 0
+bindkey "^[!"    select 1
+bindkey "\241"   select 1
+bindkey "^[@"    select 2
+bindkey "\300"   select 2
+bindkey "^[#"    select 3
+bindkey "\243"   select 3
+bindkey "^[$"    select 4
+bindkey "\244"   select 4
+bindkey "^[%"    select 5
+bindkey "\245"   select 5
+bindkey "^[\^"    select 6
+bindkey "\336"   select 6
+bindkey "^[&"    select 7
+bindkey "\246"   select 7
+bindkey "^[*"    select 8
+bindkey "\252"   select 8
+bindkey "^[("    select 9
+bindkey "\250"   select 9
+bindkey "^[)"    select 10
+bindkey "\251"   select 10
+
+markkeys "^U=(:^D=):^B=K:^F=J"

@@ -1,0 +1,21 @@
+local ip
+local stream
+
+local rand=$RANDOM
+if [[ $rand -ge 24576 ]] ; then
+        ip=64.236.34.196
+elif [[ $rand -ge 16384 ]] ; then
+        ip=64.236.34.97
+elif [[ $rand -ge 8192 ]] ; then
+        ip=64.236.34.67
+else
+        ip=64.236.34.4
+fi
+
+case $1 in
+	(m*) stream=1045 ;;
+	(n*) stream=1047 ;;
+	(*) stream=1046 ;;
+esac
+
+mplayer -quiet -nortc -ao alsa:device=live "http://$ip:80/stream/$stream"

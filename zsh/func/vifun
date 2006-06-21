@@ -1,0 +1,13 @@
+local fundir=$fpath[1]
+pushd $fundir
+touch .vifun.stamp
+$VISUAL $*
+local f
+for f in `find . -type f -newer .vifun.stamp ! -name _\*` ; do
+	local func=`basename $f`
+	unfunction $func
+	zcompile -U $func
+	autoload $func
+done
+rm -f .vifun.stamp
+popd

@@ -1,0 +1,25 @@
+umask 022
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+[[ -d /usr/X11R6/bin ]] && PATH=$PATH:/usr/X11R6/bin
+[[ -d /usr/local/bin ]] && PATH=$PATH:/usr/local/bin:/usr/local/sbin
+PATH=$PATH:$HOME/bin
+
+[[ -d ~/.zsh/func ]] && FPATH=~/.zsh/func:$FPATH
+
+export MANPATH=/usr/share/man:/usr/X11R6/man
+[[ -d /usr/local/man ]] && MANPATH=$MANPATH:/usr/local/man
+export PAGER==less
+export VISUAL==vim
+#export EDITOR=$VISUAL
+export CVS_RSH=ssh
+export BROWSER==elinks
+export PERLLIB=$HOME/bin/perllib
+#export CC=gcc
+#export CXX=g++
+
+[[ "$DISPLAY" = "unix:0.0" ]] && export DISPLAY=":0.0"
+case $HOST in 
+	(*.rainfinity.*|*.emc.com)
+		export CVSROOT=:pserver:dsimon@cvshome.rainfinity.com:/home/cvs ;;
+esac

@@ -1,0 +1,56 @@
+bindkey -v
+bindkey -r '^A' # I am not a screen
+#stty erase2 
+
+setopt noalwayslastprompt
+setopt   autocd
+setopt   autocontinue
+setopt   autolist
+setopt   automenu
+setopt   autoparamkeys
+setopt   autoparamslash
+setopt noautopushd
+setopt noautoresume
+setopt nobeep
+setopt nobgnice
+setopt noclobber
+setopt   complete_in_word
+setopt nocorrect
+#setopt   csh_junkie_history
+setopt nocsh_junkie_quotes
+setopt nocsh_nullglob
+setopt   dvorak
+setopt   equals
+setopt   extended_glob
+setopt noglobcomplete
+setopt   hashcmds
+setopt   hashdirs
+setopt nohash_list_all
+setopt   hist_ignore_dups
+setopt   interactive_comments
+setopt nolistbeep
+setopt   listpacked
+setopt nolisttypes
+setopt   longlistjobs
+setopt   magic_equal_subst
+setopt   multios
+setopt   notify
+setopt   print_exit_value
+setopt   pushd_to_home
+setopt   rcquotes
+setopt   rmstarsilent
+
+DIRSTACKSIZE=8
+KEYTIMEOUT=10
+case $HOST in
+	(datura.dylex.net) hostcolor=35 ;;
+	(dylex.dylex.net) hostcolor=31 ;;
+	(druid.pasadena.rainfinity.com) hostcolor=34 ;;
+	(dylan-g4|dylan-sm) hostcolor=33 ;;
+esac
+PROMPT=${hostcolor:+%{[${hostcolor}m%}}'%m%{[30;1m%}:%{[0;32m%}%~%1(j. %{[33m%}[%j].)%{[%(?..31)m%}%(!,#,>)%{[m%}'
+RPROMPT='%(?..%{[31m%}%? )%{[36m%}%U%D %T%u%{[m%}'
+PROMPT2=${hostcolor:+%{[${hostcolor}m%}}'%m%{[30;1m%}:%{[0;32m%}%~%{[m%} %B%_%b%(!,#,>)'
+REPORTTIME=1
+TIMEFMT="%*E: %U %S (%P)	%J"
+SPROMPT="'%R' -> '%r'? "

@@ -1,0 +1,28 @@
+if [[ $# -lt 1 || $# -gt 2 ]] ; then
+	echo "Usage: $0 [SOURCE] TARGET"
+	return 1
+fi
+local src
+if [[ $# -eq 2 ]] ; then
+	src=$1 ; shift
+else
+	src=${${${1:t}%(.tar(|.gz|.bz2)|.tgz|.zip)}#[^/]##:}
+fi
+local tgt=$1
+local tarflags=
+local -a cmd
+case $tgt in
+	(*.tar.gz|*.tgz)
+		tarflags=${tarflags}z ;&
+	(*.tar.bz2)
+		tarflags=${tarflags/z/j} ;&
+	(*.tar)
+		tar c${tarflags}f $tgt -C ${src:h} ${src:t} ;;
+	([^/]##:*)
+		[[ $tgt == *[:/]${src:t} ]] && tgt=${tgt%${src:t}}
+		#scp -rp $src $tgt ;;
+		rsync -va $src $tgt ;;
+	(*)
+		echo "Unknown target type: $tgt"
+		false ;;
+esac

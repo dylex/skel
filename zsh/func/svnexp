@@ -1,0 +1,18 @@
+if [[ $# -lt 2 ]] ; then
+	echo "Usage $0 EXPORT-ARGS... TARGET"
+	return 1
+fi
+local r=0
+local -a args
+args=("${@[1,$(($# - 1))]}")
+local tgt=${@[$#]}
+local name=${${${tgt:t}%(.tar(|.gz|.bz2)|.tgz|.zip)}#[^/]##:}
+local tmpdir=`mktemp -d`
+svn export "${args[@]}" $tmpdir/$name
+r=$?
+if [[ $r -eq 0 ]] ; then
+	put $tmpdir/$name $tgt
+	r=$?
+fi
+rm -rf $tmpdir
+return $r

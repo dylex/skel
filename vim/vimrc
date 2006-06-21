@@ -1,0 +1,163 @@
+set   autoindent
+set   backspace=2
+set nobackup
+set   backupskip=/tmp/*,/var/tmp/*
+"set   cindent
+set   cinkeys-=0#
+set   cpoptions-=s
+set noequalalways
+"set equalprg=indent
+set   fileformats=unix,dos,mac
+set   foldmethod=indent
+set   foldlevelstart=63
+set   formatoptions=rq
+set nohlsearch
+set   ignorecase
+set   incsearch
+set   laststatus=2
+if $OSTYPE =~? 'freebsd'
+set   makeprg=gmake
+endif
+set   matchpairs+=<:>
+set   mouse=a
+set   number
+set   ruler
+set   scrolloff=5
+set   selection=exclusive
+set   shiftwidth=8
+set   showcmd
+set   showmatch
+set   sidescroll=1
+set   smartcase
+"set   smartindent
+if has('spell')
+set   spelllang=en_us
+endif
+set   splitright
+set nostartofline
+set   statusline=%2n\ %f%=%<\ %(%Y%W%H%R%M%)\ \ %P\ %10(%c%V%),%-6l\ %7o=%02B
+set   suffixes-=.h
+set   suffixes+=.cmi,.cmo,.cmx,.hi
+set   switchbuf=useopen,split
+set   tabstop=8
+set   textwidth=0
+set   viminfo='12,h,%,n~/.vim/viminfo
+set   whichwrap=b,s,<,>,[,]
+set   wrap
+
+let mapleader = ""
+map!  <BS>
+map!  <BS>
+map Y y$
+map ZW :update<CR>
+nmap <Leader>p :set paste<CR>
+nmap <Leader>u :set nopaste<CR>
+if has('spell')
+	nmap <Leader>/ :set spell<CR>
+	nmap <Leader>c :set nospell<CR>
+	"nmap <Leader>n normal ]s
+	"nmap <Leader>r normal [s
+	"nmap <Leader>- normal z=
+	"nmap <Leader>, normal zg
+else
+	let spell_language_list = "en_US"
+	let spell_executable = "aspell"
+	let spell_options = "-W 2"
+	let spell_auto_type = ""
+	nmap <silent> <unique>          <Leader>/ <Plug>SpellCheck
+	nmap <silent> <unique>          <Leader>- <Plug>SpellProposeAlternatives
+	let spell_exit_map =            "\<Leader>c"
+	let spell_next_error_map =      "\<Leader>n"
+	let spell_previous_error_map =  "\<Leader>r"
+	let spell_ignore_map =          "\<Leader>."
+	let spell_accept_map =          "\<Leader>,"
+	let spell_case_accept_map =     "\<Leader>'"
+endif
+
+nmap \l :call LineUpPrevWord()<CR>
+nmap \r :call LineUpNextWord()<CR>
+
+if hostname() =~ '^druid\.'
+	fun SyncSourcesSetup ()
+		let d = getcwd()
+		let c = resolve($HOME . '/cvs/')
+		if strpart(d, 0, strlen(c)) != c
+			let $SYNCDIR = ''
+			return
+		endif
+		let d = strpart(d, strlen(c))
+		let i = stridx(d, '/')
+		if i != -1
+			let d = strpart(d, 0, i)
+		endif
+		let $SYNCDIR = c . d
+	endfun
+	fun SyncSources ()
+		update
+		if !exists($SYNCDIR)
+			call SyncSourcesSetup ()
+		endif
+		if $SYNCDIR != ''
+			!$SYNCDIR/sync
+		endif
+	endfun
+	nmap <Leader>y :call SyncSources()<CR>
+endif
+
+fun OCamlSetup ()
+	setl sw=2
+	setl sts=2
+	setl errorformat=%-Gocaml%m,%AFile\ \"%f\"\\,\ line\ %l\\,\ characters\ %c-%*\\d:,%-Zmake:\ ***\ [%f]\ Error\ %n\,%C%m
+endfun
+
+fun HaskellSetup ()
+	setl sw=2
+	setl sts=2
+	setl errorformat=%-Gghc%m\,%-GCompiling\ %m\,%-G\,%f:%l:%m\,%A%f:%l:\,%-Zmake:\ ***\ [%f]\ Error\ %n\,%C%m
+	setl ft=haskell
+endfun
+
+fun TextSetup ()
+	setl fo+=t
+	setl nocindent
+	setl nosmartindent
+	setl textwidth=78
+	setl et
+	if has('spell')
+		setl spell
+	endif
+endfun
+
+fun TexSetup ()
+	setl nocindent
+	setl matchpairs+=`:'
+	if has('spell')
+		setl spell
+	endif
+endfun
+
+fun CodeSetup ()
+	setl cindent
+	setl smartindent
+	if hostname() =~ '\.\(rainfinity\|emc\)\.com$'
+		setl sts=2
+		setl sw=2
+	endif
+endfun
+
+fun M4Setup ()
+	setl matchpairs+=`:'
+endfun
+
+autocmd BufRead *.ml* call OCamlSetup()
+autocmd BufRead *.hs* call HaskellSetup()
+autocmd BufRead DOC call TextSetup()
+autocmd FileType mail call TextSetup()
+autocmd FileType tex call TexSetup()
+autocmd FileType c,cpp call CodeSetup()
+autocmd FileType *m4 call M4Setup()
+autocmd BufReadPost * exe "normal `\""
+
+filetype on
+syntax on
+colorscheme my

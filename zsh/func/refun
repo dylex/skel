@@ -1,0 +1,20 @@
+local fundir=$fpath[1]
+local funs
+
+if [ $# -gt 0 ] ; then
+	funs=($@)
+else
+	local f
+	for f in $fundir/[^_]* ; do
+		funs=($funs `basename $f`)
+	done ;
+fi
+
+for f in $funs ; do
+	if [ -f $fundir/$f ] ; then
+		unfunction $f
+		autoload $f
+	else
+		echo "$0: $f: no such function"
+	fi
+done
