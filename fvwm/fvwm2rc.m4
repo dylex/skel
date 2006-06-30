@@ -171,6 +171,16 @@ AddToFunc WindowListFunc
 *FvwmWinList: UseIconNames
 *FvwmWinList: LeftJustify
 
+*FvwmFormDefault: Font -adobe-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*
+*FvwmFormDefault: InputFont fixed
+*FvwmFormDefault: ButtonFont -adobe-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*
+*FvwmFormDefault: Fore #000000
+*FvwmFormDefault: Back #A0A0B0
+*FvwmFormDefault: Colorset -1
+*FvwmFormDefault: ItemFore #000000
+*FvwmFormDefault: ItemBack #C0C0B0
+*FvwmFormDefault: ItemColorset -1
+
 DestroyFunc MoveGoToPage
 AddToFunc MoveGoToPage
 +	I MoveToPage $*
@@ -226,7 +236,20 @@ AddToMenu CDMenu "%HOME/media/pix/cd/loop.xpm%refresh" Function MakeCDMenu
 
 DestroyFunc LoginTo
 AddToFunc LoginTo
-+	I Exec xterm -title $0 -e ssh $0
++	I Exec xterm -title $0 -e ssh $*
+
+DestroyModuleConfig FvwmForm-Login: *
+*FvwmForm-Login: WarpPointer
+*FvwmForm-Login: Line         left
+*FvwmForm-Login: Input        User 8 ""
+*FvwmForm-Login: Text         "@"
+*FvwmForm-Login: Input        Host 20 ""
+*FvwmForm-Login: Button       quit "Connect" ^M
+*FvwmForm-Login: Command      LoginTo $(Host) $(User?-l $(User)) $(Command)
+*FvwmForm-Login: Line         expand
+*FvwmForm-Login: Input        Command 40 ""
+*FvwmForm-Login: Button       quit "Cancel" ^[
+*FvwmForm-Login: Command      Nop
 
 DestroyMenu LoginMenu
 AddToMenu LoginMenu
@@ -240,7 +263,16 @@ ifdef(`WORKHOST',
 
 DestroyFunc OpenBrowser
 AddToFunc OpenBrowser
-+	I Exec firefox $0
++	I Exec firefox $*
+
+DestroyModuleConfig FvwmForm-Browser: *
+*FvwmForm-Browser: WarpPointer
+*FvwmForm-Browser: Line         expand
+*FvwmForm-Browser: Input        Url 80 "http://"
+*FvwmForm-Browser: Button       quit "Go" ^M
+*FvwmForm-Browser: Command      OpenBrowser $(Url)
+*FvwmForm-Browser: Button       quit "No" ^[
+*FvwmForm-Browser: Command      Nop
 
 DestroyMenu AppsMenu
 AddToMenu AppsMenu	"Applications" Title
@@ -284,6 +316,13 @@ AddToMenu ModulesMenu
 +	"TaskBar"	Module FvwmTaskBar
 +	"WinList"	Module FvwmWinList
 +	"Wharf"		Module FvwmWharf
+
+DestroyModuleConfig FvwmForm-Run: *
+*FvwmForm-Run: WarpPointer
+*FvwmForm-Run: Line         expand
+*FvwmForm-Run: Input        Prog 40 ""
+*FvwmForm-Run: Button       quit "Run" ^M
+*FvwmForm-Run: Command      Exec exec $(Prog)
 
 DestroyMenu ConfMenu
 AddToMenu ConfMenu
@@ -382,7 +421,7 @@ Key Right A	4	Direction East FlipFocus
 Key b A		4	Exec xbg && [ -p HOME/.xtail ] && touch HOME/.xtail
 Key semicolon A 4	ifdef(`HOMEHOST', `Exec sleep 2 && xset dpms force off', `Exec xscreensaver-command -lock')
 Key apostrophe A 4	ifdef(`HOMEHOST', `Exec sleep 2 && xset s activate', `Exec xscreensaver-command -activate')
-Key q A 	4	Exec xscreensaver-command -lock
+Key q A 	4	Exec IFEXEC(xtrlock, `xtrlock', `xscreensaver-command -lock')
 Key XF86Standby	A N	Exec exec xscreensaver-command -lock
 Key t A		4	Exec rxvt
 IFEXEC(jpilot, `Key p A		4	Exec jpilot', `dnl')
