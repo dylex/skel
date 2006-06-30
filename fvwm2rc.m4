@@ -51,7 +51,7 @@ define(STARTLIST, `
 		`ifelse(SCREENS.SCREEN, `2.0',, ``
 			`"xload",	Exec nice -8 xload -bg "#3050A0" -fg "#F0E000" -nolabel -update 30 -geometry ''TOPGEOM(120, 0, 0)``','')')
 	ifelse(SCREENS.SCREEN, `2.1',, `IFEXEC(xdaliclock, ``
-		`"clock",	Exec nice -5 xdaliclock -geometry ''ADDTO(`TOPSTARTX', -50)TOPGEOM(200, 0, 0)`` -transparent -hex -noseconds -fg "#FFFFCC" -fn "-*-luxi sans-medium-r-*-*-*-400-*-*-*-*-iso8859-1"','')')`
+		`"clock",	Exec nice -5 xdaliclock -geometry ''ADDTO(`TOPSTARTX', -50)TOPGEOM(220, 0, 0)`` -transparent -hex -noseconds -fg "#FFFFCC" -fn "-*-luxi sans-medium-r-*-*-*-400-*-*-*-*-iso8859-1"','')')`
 	`"stuck term",	Exec xterm -title "stuck term" -fn 6x10 -fb 6x10 -geometry 80x24-0+TOPHEIGHT','
 	ifelse(SCREEN, 0, `
 		ifdef(`HOMEHOST',, ``
@@ -97,7 +97,7 @@ Style "FvwmPager"	BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, Cir
 Style "FvwmWinList"	BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff
 Style "panel"		BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, Layer 3
 Style "xeyes"		BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff, Layer 2
-Style "stripchart"	BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff, Layer 2
+Style "Stripchart"	BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff, Layer 2
 Style "xload"		BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff, Layer 2
 Style "xdaliclock"	BorderWidth 0, HandleWidth 0, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff, Layer 2
 Style "xbiff"		BorderWidth 0, HandleWidth 0, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff, Layer 2

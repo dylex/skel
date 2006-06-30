@@ -52,6 +52,7 @@ map Y y$
 map ZW :update<CR>
 nmap <Leader>p :set paste<CR>
 nmap <Leader>u :set nopaste<CR>
+let c_gnu=1
 if has('spell')
 	nmap <Leader>/ :set spell<CR>
 	nmap <Leader>c :set nospell<CR>
