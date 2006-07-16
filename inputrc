@@ -1,0 +1,6 @@
+set editing-mode vi
+$if python
+TAB: tab-insert
+"\e[2~": complete
+$endif
+# "\C-\M-I": tab-insert

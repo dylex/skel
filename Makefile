@@ -37,6 +37,12 @@ $(HOME)/.vim/%: vim/%
 home_install+=vimrc $(vimfiles)
 
 home_install+=screenrc
+home_install+=elinks/elinks.conf
+home_install+=inputrc
+home_install+=mailrc
+home_install+=ghci
+home_install+=orpierc
+home_install+=nethackrc
 
 $(HOME)/.%: %
 	$(place)

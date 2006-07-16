@@ -1,0 +1,7 @@
+local box
+if [[ $# -eq 1 && -f ~/mail/$1 ]] ; then
+	box=$1
+	[[ -L ~/mail/$box ]] && box=`readlink ~/mail/$box`
+	set -- -f "=$box"
+fi
+mutt "$@"

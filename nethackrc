@@ -1,0 +1,6 @@
+OPTIONS=autopickup,autoquiver
+OPTIONS=!cmdassist
+OPTIONS=!color,eight_bit_tty,extmenu,fixinv,hilite_pet,!legacy,lit_corridor,!mail,!news,!number_pad,!rest_on_space,!silent,standout,time,toptenwin,showexp,showscore
+OPTIONS=disclose:+i +a +v +g +c,fruit:mango,catname:Elmo,dogname:Rover,horsename:Silver,scores:3 top/3 around,menu:partial,msghistory:100,packorder:$)[%+?/="!(*,pickup_types:$+?/="!,pickup_burden:n,suppress_alert:3.3.1
+OPTIONS=windowtype:Gtk2
+#OPTIONS=windowtype:tty
