@@ -21,5 +21,5 @@ export PERLLIB=$HOME/bin/perllib
 [[ "$DISPLAY" = "unix:0.0" ]] && export DISPLAY=":0.0"
 case $HOST in 
 	(*.rainfinity.*|*.emc.com)
-		export CVSROOT=:pserver:dsimon@cvshome.rainfinity.com:/home/cvs ;;
+		export CVSROOT=:ext:simond@aleve.lss.emc.com:/cvs/rain/cvs_root ;;
 esac

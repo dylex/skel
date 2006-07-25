@@ -49,6 +49,9 @@ case $HOST in
 		alias cvsmerge='cvs -d :pserver:merge@cvshome.rainfinity.com:2401/home/cvs'
 		alias sz='su zoot'
 		;;
+	(*)
+		alias mplaya='mplayer -quiet'
+		;;
 esac
 
 zmodload -i zsh/stat

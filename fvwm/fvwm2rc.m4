@@ -45,11 +45,11 @@ define(STARTLIST, `
 	`"event",	Module FvwmEvent',
 	`"home",	GotoHome',
 	`"eyes",	Exec nice xeyes -geometry ''TOPGEOM(eval(TOPHEIGHT-2), 2, 1)``','
+	ifelse(SCREENS.SCREEN, `2.0',, `IFEXEC(stripchart, ``
+		`"stripchart",	Exec nice -8 stripchart --geometry ''TOPGEOM(360, 0, 0)``','', ``
+		`"xload",	Exec nice -8 xload -bg "#3050A0" -fg "#F0E000" -nolabel -update 30 -geometry ''TOPGEOM(120, 0, 0)``','')')
 	ifdef(`HOMEHOST', ``
-		`"stripchart",	Exec nice -8 stripchart --geometry ''TOPGEOM(360, 0, 0)``',
-		`"xrw",		Exec nice -5 xrtail -geom 80x7''ADDTO(`TOPSTARTX', 2)TOPPUSHX(80*5)``+0 -fn 5x8 -fg "#FFFFBB" HOME/.xrw','',
-		`ifelse(SCREENS.SCREEN, `2.0',, ``
-			`"xload",	Exec nice -8 xload -bg "#3050A0" -fg "#F0E000" -nolabel -update 30 -geometry ''TOPGEOM(120, 0, 0)``','')')
+		`"xrw",		Exec nice -5 xrtail -geom 80x7''ADDTO(`TOPSTARTX', 2)TOPPUSHX(80*5)``+0 -fn 5x8 -fg "#FFFFBB" HOME/.xrw','')
 	ifelse(SCREENS.SCREEN, `2.1',, `IFEXEC(xdaliclock, ``
 		`"clock",	Exec nice -5 xdaliclock -geometry ''ADDTO(`TOPSTARTX', -50)TOPGEOM(220, 0, 0)`` -transparent -hex -noseconds -fg "#FFFFCC" -fn "-*-luxi sans-medium-r-*-*-*-400-*-*-*-*-iso8859-1"','')')`
 	`"stuck term",	Exec xterm -title "stuck term" -fn 6x10 -fb 6x10 -geometry 80x24-0+TOPHEIGHT','
@@ -428,7 +428,8 @@ IFEXEC(jpilot, `Key p A		4	Exec jpilot', `dnl')
 Key f A		4	OpenBrowser
 Key d A		4S	LoginTo "dylex"
 
-define(MIXERSET, `Exec ifelse(OSTYPE, Linux, `amixer -q ifdef(`HOMEHOST', -c1) set Master $1$2', OSTYPE, FreeBSD, `/usr/sbin/mixer ogain $2$1 > /dev/null')')dnl
+define(MIXERSEL, ifelse(OSTYPE, Linux, `Master', HOSTNAME, `druid.pasadena.rainfinity.com', `ogain', OSTYPE, FreeBSD, `vol'))dnl
+define(MIXERSET, `Exec ifelse(OSTYPE, Linux, `amixer -q ifdef(`HOMEHOST', -c1) set MIXERSEL $1$2', OSTYPE, FreeBSD, `/usr/sbin/mixer MIXERSEL $2$1 > /dev/null')')dnl
 Key KP_Add A	4S	MIXERSET(1,-)
 Key KP_Subtract A 4S	MIXERSET(1,+)
 Key KP_Enter A	4	Exec MIXERSET(8)
@@ -455,5 +456,5 @@ Key XF86WWW A N         Exec gomp --display=:0.1 --geometry=180x0+0+0 http://dyl
 Key XF86WWW A S         Exec gomp --display=:0.1 --geometry=180x0+0+0 http://dylex.net:2401/music/play-q2.ogg
 ')dnl
 
-#Key backslash A 4	Exec xmodmap HOME/.modmap.qwerty
+#Key backslash A 4	Exec xmodmap HOME/.Xmodmap.default
 #Key grave A	4	Exec xmodmap HOME/.Xmodmap

@@ -18,4 +18,4 @@ case $1 in
 	(*) stream=1046 ;;
 esac
 
-mplayer -quiet -nortc -ao alsa:device=live "http://$ip:80/stream/$stream"
+mplaya "http://$ip:80/stream/$stream"
