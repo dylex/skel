@@ -18,6 +18,7 @@ case $OSTYPE in
 		alias l='\ls -li'
 		alias p='ps -auxf'
 		alias make='gmake'
+		alias seq='gseq'
 		;;
 	(*)
 		alias l='ls -li'
@@ -39,6 +40,7 @@ alias spell='aspell -a'
 alias sup='cvs up'
 alias sr='screen -r main || screen -r'
 alias up='uptime'
+alias sz='su zoot'
 alias mplay='mplayer'
 case $HOST in
 	(datura.dylex.net)
@@ -47,7 +49,6 @@ case $HOST in
 		;;
 	(druid.pasadena.rainfinity.com)
 		alias cvsmerge='cvs -d :pserver:merge@cvshome.rainfinity.com:2401/home/cvs'
-		alias sz='su zoot'
 		;;
 	(*)
 		alias mplaya='mplayer -quiet'

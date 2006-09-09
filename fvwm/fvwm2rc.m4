@@ -27,6 +27,10 @@ EdgeResistance 0 0
 SnapAttraction 2 Screen
 #Emulate Mwm
 
+DestroyFunc Execp
+AddToFunc Execp
++	I Exec ifelse(OSTYPE, `Linux', `', `exec ')$*
+
 DestroyFunc GotoHome
 AddToFunc GotoHome
 +	I GotoDeskAndPage 0 ifelse(SCREEN, 0, 0, eval(DESKTOPS-1)) 0
@@ -44,21 +48,21 @@ define(STARTLIST, `
 	`"commandS",	Module FvwmCommandS',
 	`"event",	Module FvwmEvent',
 	`"home",	GotoHome',
-	`"eyes",	Exec nice xeyes -geometry ''TOPGEOM(eval(TOPHEIGHT-2), 2, 1)``','
+	`"eyes",	Execp nice xeyes -geometry ''TOPGEOM(eval(TOPHEIGHT-2), 2, 1)``','
 	ifelse(SCREENS.SCREEN, `2.0',, `IFEXEC(stripchart, ``
-		`"stripchart",	Exec nice -8 stripchart --geometry ''TOPGEOM(360, 0, 0)``','', ``
-		`"xload",	Exec nice -8 xload -bg "#3050A0" -fg "#F0E000" -nolabel -update 30 -geometry ''TOPGEOM(120, 0, 0)``','')')
+		`"stripchart",	Execp nice -8 stripchart --geometry ''TOPGEOM(360, 0, 0)``','', ``
+		`"xload",	Execp nice -8 xload -bg "#3050A0" -fg "#F0E000" -nolabel -update 30 -geometry ''TOPGEOM(120, 0, 0)``','')')
 	ifdef(`HOMEHOST', ``
-		`"xrw",		Exec nice -5 xrtail -geom 80x7''ADDTO(`TOPSTARTX', 2)TOPPUSHX(80*5)``+0 -fn 5x8 -fg "#FFFFBB" HOME/.xrw','')
+		`"xrw",		Execp nice -5 xrtail -geom 80x7''ADDTO(`TOPSTARTX', 2)TOPPUSHX(80*5)``+0 -fn 5x8 -fg "#FFFFBB" HOME/.xrw','')
 	ifelse(SCREENS.SCREEN, `2.1',, `IFEXEC(xdaliclock, ``
-		`"clock",	Exec nice -5 xdaliclock -geometry ''ADDTO(`TOPSTARTX', -50)TOPGEOM(220, 0, 0)`` -transparent -hex -noseconds -fg "#FFFFCC" -fn "-*-luxi sans-medium-r-*-*-*-400-*-*-*-*-iso8859-1"','')')`
-	`"stuck term",	Exec xterm -title "stuck term" -fn 6x10 -fb 6x10 -geometry 80x24-0+TOPHEIGHT','
+		`"clock",	Execp nice -5 xdaliclock -geometry ''ADDTO(`TOPSTARTX', -50)TOPGEOM(220, 0, 0)`` -transparent -hex -noseconds -fg "#FFFFCC" -fn "-*-luxi sans-medium-r-*-*-*-400-*-*-*-*-iso8859-1"','')')`
+	`"stuck term",	Execp xterm -title "stuck term" -fn 6x10 -fb 6x10 -geometry 80x24-0+TOPHEIGHT','
 	ifelse(SCREEN, 0, `
 		ifdef(`HOMEHOST',, ``
-			`"screensaver",	Exec xscreensaver','')
+			`"screensaver",	Execp xscreensaver','')
 		IFEXEC(xbg, ``
-		`"xbg",		Exec xbg','')')`
-	`"xset",	Exec xset b 100 3520 ''ifdef(HOMEHOST, 20, 35)`` m 3 5 +dpms dpms 1200 0 2400 r rate 250 30'')dnl
+		`"xbg",		Execp xbg','')')`
+	`"xset",	Execp xset b 100 3520 ''ifdef(HOMEHOST, 20, 35)`` m 3 5 +dpms dpms 1200 0 2400 r rate 250 30'')dnl
 dnl
 *FvwmWinList: Geometry TOPGEOM(500, 0, 0)
 
@@ -224,7 +228,7 @@ AddToMenu WindowMenu
 +	"destroy"	Destroy
 
 ### Main menus
-define(`IFEXECMENU', `IFEXEC($1, `+	"$1"	Exec $1 $2', `dnl')')
+define(`IFEXECMENU', `IFEXEC($1, `+	"$1"	Execp $*', `dnl')')
 
 DestroyFunc MakeCDMenu
 AddToFunc MakeCDMenu
@@ -236,7 +240,7 @@ AddToMenu CDMenu "%HOME/media/pix/cd/loop.xpm%refresh" Function MakeCDMenu
 
 DestroyFunc LoginTo
 AddToFunc LoginTo
-+	I Exec xterm -title $0 -e ssh $*
++	I Execp xterm -title $0 -e ssh $*
 
 DestroyModuleConfig FvwmForm-Login: *
 *FvwmForm-Login: WarpPointer
@@ -257,13 +261,13 @@ AddToMenu LoginMenu
 FORLIST(`+	"$1"	LoginTo "$1"
 ', localhost`'esyscmd(awk 'BEGIN { ORS="" } /^Host ([a-z0-9_-]*)$/ { print "`,'"$2 }' HOME/.ssh/config))dnl
 ifdef(`WORKHOST',
-+       "gotracker"   	Exec exec rdesktop -u qaguest -p rain -d rainbay -K -g 1274x948 128.222.168.207
-+	"xombie"	Exec exec rdesktop -g 1274x948 -r sound:local -a 24 xombie
++       "gotracker"   	Execp exec rdesktop -u qaguest -p rain -d rainbay -K -g 1274x948 128.222.168.207
++	"xombie"	Execp exec rdesktop -g 1274x948 -r sound:local -a 24 xombie
 )dnl
 
 DestroyFunc OpenBrowser
 AddToFunc OpenBrowser
-+	I Exec firefox $*
++	I Execp firefox $*
 
 DestroyModuleConfig FvwmForm-Browser: *
 *FvwmForm-Browser: WarpPointer
@@ -282,20 +286,20 @@ IFEXECMENU(gimp)
 IFEXECMENU(xfig)
 IFEXECMENU(xv)
 +	""		Nop
-+	"editres"	Exec editres
-+	"xmag"		Exec xmag
-+	"xcutsel"	Exec xcutsel
-+	"xfontsel"	Exec xfontsel
++	"editres"	Execp editres
++	"xmag"		Execp xmag
++	"xcutsel"	Execp xcutsel
++	"xfontsel"	Execp xfontsel
 
 DestroyMenu MainMenu
 AddToMenu MainMenu
-+	"xterm"		Exec xterm
-+	"xterm-login"	Exec xterm +ut
-+	"rxvt"		Exec rxvt
-+	"srxvt"		Exec rxvt -fn 6x10 -fb 6x10 -geometry 166x69
++	"xterm"		Execp xterm
++	"xterm-login"	Execp xterm +ut
++	"rxvt"		Execp rxvt
++	"srxvt"		Execp rxvt -fn 6x10 -fb 6x10 -geometry 166x69
 +	""		Nop
 +	"firefox"	OpenBrowser
-IFEXEC(w4m, `+	"w3m"		Exec rxvt -e w3m -v', `dnl')
+IFEXEC(w4m, `+	"w3m"		Execp rxvt -e w3m -v', `dnl')
 IFEXECMENU(nethack, --geometry=553x128)
 IFEXECMENU(zsnes)
 +	"Login"		Popup LoginMenu
@@ -322,14 +326,14 @@ DestroyModuleConfig FvwmForm-Run: *
 *FvwmForm-Run: Line         expand
 *FvwmForm-Run: Input        Prog 40 ""
 *FvwmForm-Run: Button       quit "Run" ^M
-*FvwmForm-Run: Command      Exec exec $(Prog)
+*FvwmForm-Run: Command      Execp exec $(Prog)
 
 DestroyMenu ConfMenu
 AddToMenu ConfMenu
 +	"CD"		Popup CDMenu
 +	""		Nop
-+	"screensaver"	Exec xscreensaver-command -activate
-+	"Screensaver"	Exec xscreensaver-command -prefs
++	"screensaver"	Execp xscreensaver-command -activate
++	"Screensaver"	Execp xscreensaver-command -prefs
 +	""		Nop
 +	"Startup"	Popup StartupMenu
 +	"Modules"	Popup ModulesMenu
@@ -337,8 +341,8 @@ AddToMenu ConfMenu
 +	"ident"		Module FvwmIdent
 +	""		Nop
 +	"run"		FvwmForm FvwmForm-Run
-+	"kill"		Exec xkill
-+	"refresh"	Exec xrefresh
++	"kill"		Execp xkill
++	"refresh"	Execp xrefresh
 +	"restart"	Restart
 +	"exit"		Quit
 
@@ -412,6 +416,7 @@ Key minus A	4	GotoPage prev
 Key z A		4	MyIconify
 Key Return A	4	GotoHome
 Key space W	4	RefreshWindow
+Key Escape W	4	Delete
 
 Key Left A	4	Direction West FlipFocus
 Key Up A	4	Direction North FlipFocus
@@ -419,42 +424,49 @@ Key Down A	4	Direction South FlipFocus
 Key Right A	4	Direction East FlipFocus
 
 Key b A		4	Exec xbg && [ -p HOME/.xtail ] && touch HOME/.xtail
-Key semicolon A 4	ifdef(`HOMEHOST', `Exec sleep 2 && xset dpms force off', `Exec xscreensaver-command -lock')
-Key apostrophe A 4	ifdef(`HOMEHOST', `Exec sleep 2 && xset s activate', `Exec xscreensaver-command -activate')
-Key q A 	4	Exec IFEXEC(xtrlock, `xtrlock', `xscreensaver-command -lock')
-Key XF86Standby	A N	Exec exec xscreensaver-command -lock
-Key t A		4	Exec rxvt
-IFEXEC(jpilot, `Key p A		4	Exec jpilot', `dnl')
+Key semicolon A 4	ifdef(`HOMEHOST', `Exec sleep 2 && xset dpms force off', `Execp xscreensaver-command -lock')
+Key apostrophe A 4	ifdef(`HOMEHOST', `Exec sleep 2 && xset s activate', `Execp xscreensaver-command -activate')
+Key q A 	4	Execp IFEXEC(xtrlock, `xtrlock', `xscreensaver-command -lock')
+Key XF86Standby	A N	Execp xscreensaver-command -lock
+Key t A		4	Execp rxvt
+IFEXEC(jpilot, `Key p A		4	Execp jpilot', `dnl')
 Key f A		4	OpenBrowser
 Key d A		4S	LoginTo "dylex"
+Key d A		4CS	LoginTo "edylex"
+Key r A		4S	LoginTo "druid"
+Key r A		4CS	LoginTo "edruid"
+Key g A		4	Execp rxvt -e elinks
 
 define(MIXERSEL, ifelse(OSTYPE, Linux, `Master', HOSTNAME, `druid.pasadena.rainfinity.com', `ogain', OSTYPE, FreeBSD, `vol'))dnl
-define(MIXERSET, `Exec ifelse(OSTYPE, Linux, `amixer -q ifdef(`HOMEHOST', -c1) set MIXERSEL $1$2', OSTYPE, FreeBSD, `/usr/sbin/mixer MIXERSEL $2$1 > /dev/null')')dnl
+define(MIXERSET, `Execp ifelse(OSTYPE, Linux, `amixer -q ifdef(`HOMEHOST', -c1) set MIXERSEL $1$2', OSTYPE, FreeBSD, `/usr/sbin/mixer MIXERSEL $2$1 > /dev/null')')dnl
 Key KP_Add A	4S	MIXERSET(1,-)
 Key KP_Subtract A 4S	MIXERSET(1,+)
-Key KP_Enter A	4	Exec MIXERSET(8)
-Key KP_Enter A	4S	Exec MIXERSET(48)
+Key KP_Enter A	4	MIXERSET(8)
+Key KP_Enter A	4S	MIXERSET(48)
 Key XF86AudioLowerVolume A N MIXERSET(1,-)
 Key XF86AudioRaiseVolume A N MIXERSET(1,+)
-Key XF86AudioMute A N 	Exec MIXERSET(8)
-Key XF86AudioMute A S 	Exec MIXERSET(48)
+Key XF86AudioMute A N 	MIXERSET(8)
+Key XF86AudioMute A S 	MIXERSET(48)
 ifelse(BUTTONS, 3, `dnl
 Mouse 5 R 	N 	MIXERSET(-1)
 Mouse 4 R 	N	MIXERSET(+1)', `dnl')
+ifelse(HOSTNAME, `pancake.dylex.net', `dnl
+Key Prior A 	4S 	Execp /usr/sbin/setcx C1
+Key Next A 	4S 	Execp /usr/sbin/setcx C3', `dnl')
 
 ifdef(`HOMEHOST', `dnl
-Key KP_Divide A 4S	Exec mpc -p
-Key KP_Multiply A 4S	Exec mpc -r
-Key KP_Up A 	4S	Exec mpcpush -p
-Key KP_Left A 	4S	Exec mpc -s -1
-Key KP_Right A 	4S	Exec mpc -s +1
-Key KP_End A 	4S	Exec mpc -s -0:30
-Key KP_Down A 	4S	Exec mpcpop -s -0:15
-Key KP_Next A 	4S	Exec mpc -s +0:30
+Key KP_Divide A 4S	Execp mpc -p
+Key KP_Multiply A 4S	Execp mpc -r
+Key KP_Up A 	4S	Execp mpcpush -p
+Key KP_Left A 	4S	Execp mpc -s -1
+Key KP_Right A 	4S	Execp mpc -s +1
+Key KP_End A 	4S	Execp mpc -s -0:30
+Key KP_Down A 	4S	Execp mpcpop -s -0:15
+Key KP_Next A 	4S	Execp mpc -s +0:30
 ', `dnl
-Key XF86WWW A N         Exec gomp --display=:0.1 --geometry=180x0+0+0 http://dylex.net:2401/music/play-q5.ogg
-Key XF86WWW A S         Exec gomp --display=:0.1 --geometry=180x0+0+0 http://dylex.net:2401/music/play-q2.ogg
+Key XF86WWW A N         Execp gomp --display=:0.1 --geometry=180x0+0+0 http://dylex.net:2401/music/play-q5.ogg
+Key XF86WWW A S         Execp gomp --display=:0.1 --geometry=180x0+0+0 http://dylex.net:2401/music/play-q2.ogg
 ')dnl
 
-#Key backslash A 4	Exec xmodmap HOME/.Xmodmap.default
-#Key grave A	4	Exec xmodmap HOME/.Xmodmap
+#Key backslash A 4	Execp xmodmap HOME/.Xmodmap.default
+#Key grave A	4	Execp xmodmap HOME/.Xmodmap
