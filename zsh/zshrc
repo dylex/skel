@@ -44,7 +44,7 @@ DIRSTACKSIZE=8
 KEYTIMEOUT=10
 case $HOST in
 	(datura.dylex.net) hostcolor=35 ;;
-	(pancake.dylex.net) hostcolor=35 ;;
+	(pancake.dylex.net) hostcolor=36 ;;
 	(dylex.dylex.net) hostcolor=31 ;;
 	(druid.pasadena.rainfinity.com) hostcolor=34 ;;
 	(dylan-g4|dylan-sm) hostcolor=33 ;;

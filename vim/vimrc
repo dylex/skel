@@ -146,6 +146,13 @@ fun CodeSetup ()
 	endif
 endfun
 
+fun MatlabSetup ()
+	call CodeSetup ()
+	setl sts=4
+	setl sw=4
+	setl et
+endfun
+
 fun M4Setup ()
 	setl matchpairs+=`:'
 endfun
@@ -157,6 +164,7 @@ autocmd FileType mail call TextSetup()
 autocmd FileType tex call TexSetup()
 autocmd FileType c,cpp call CodeSetup()
 autocmd FileType *m4 call M4Setup()
+autocmd FileType matlab call MatlabSetup()
 autocmd BufReadPost * exe "normal `\""
 
 filetype on

@@ -1,17 +1,9 @@
 local ip
 local stream
+local -a servers
 
-local rand=$RANDOM
-if [[ $rand -ge 24576 ]] ; then
-        ip=64.236.34.196
-elif [[ $rand -ge 16384 ]] ; then
-        ip=64.236.34.97
-elif [[ $rand -ge 8192 ]] ; then
-        ip=64.236.34.67
-else
-        ip=64.236.34.4
-fi
-
+servers=(64.236.34.196 scfire-ntc0l-2.stream.aol.com scfire-chi0l-1.stream.aol.com scfire-ntc0l-1.stream.aol.com 64.236.34.97 scfire-chi0l-2.stream.aol.com)
+ip=${servers[$RANDOM % $#servers]}
 case $1 in
 	(m*) stream=1045 ;;
 	(n*) stream=1047 ;;

@@ -228,7 +228,7 @@ AddToMenu WindowMenu
 +	"destroy"	Destroy
 
 ### Main menus
-define(`IFEXECMENU', `IFEXEC($1, `+	"$1"	Execp $*', `dnl')')
+define(`IFEXECMENU', `IFEXEC($1, `+	"$1"	Execp $1 $2', `dnl')')
 
 DestroyFunc MakeCDMenu
 AddToFunc MakeCDMenu
@@ -440,9 +440,13 @@ Key g A		4	Execp rxvt -e elinks
 define(MIXERSEL, ifelse(OSTYPE, Linux, `Master', HOSTNAME, `druid.pasadena.rainfinity.com', `ogain', OSTYPE, FreeBSD, `vol'))dnl
 define(MIXERSET, `Execp ifelse(OSTYPE, Linux, `amixer -q ifdef(`HOMEHOST', -c1) set MIXERSEL $1$2', OSTYPE, FreeBSD, `/usr/sbin/mixer MIXERSEL $2$1 > /dev/null')')dnl
 Key KP_Add A	4S	MIXERSET(1,-)
+Key Down A	5	MIXERSET(1,-)
 Key KP_Subtract A 4S	MIXERSET(1,+)
+Key Up A 	5	MIXERSET(1,+)
 Key KP_Enter A	4	MIXERSET(8)
+Key Left A	5	MIXERSET(8)
 Key KP_Enter A	4S	MIXERSET(48)
+Key Right A	5	MIXERSET(48)
 Key XF86AudioLowerVolume A N MIXERSET(1,-)
 Key XF86AudioRaiseVolume A N MIXERSET(1,+)
 Key XF86AudioMute A N 	MIXERSET(8)
@@ -455,8 +459,10 @@ Key Prior A 	4S 	Execp /usr/sbin/setcx C1
 Key Next A 	4S 	Execp /usr/sbin/setcx C3', `dnl')
 
 ifdef(`HOMEHOST', `dnl
-Key KP_Divide A 4S	Execp mpc -p
-Key KP_Multiply A 4S	Execp mpc -r
+Key KP_Insert A 4S	Execp mpc -p
+Key KP_Insert A 5	Execp mpc -p
+Key KP_Delete A 4S	Execp mpc -r
+Key KP_Delete A 5	Execp mpc -r
 Key KP_Up A 	4S	Execp mpcpush -p
 Key KP_Left A 	4S	Execp mpc -s -1
 Key KP_Right A 	4S	Execp mpc -s +1
