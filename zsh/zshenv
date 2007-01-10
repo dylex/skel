@@ -15,6 +15,7 @@ export VISUAL==vim
 export CVS_RSH=ssh
 export BROWSER==elinks
 export PERLLIB=$HOME/bin/perllib
+#export PYTHONSTARTUP=~/.pythonrc
 #export CC=gcc
 #export CXX=g++
 export TZ=America/New_York
@@ -24,3 +25,4 @@ case $HOST in
 	(*.rainfinity.*|*.emc.com)
 		export CVSROOT=:ext:simond@aleve.lss.emc.com:/cvs/rain/cvs_root ;;
 esac
+
