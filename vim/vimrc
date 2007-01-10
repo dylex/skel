@@ -37,7 +37,6 @@ set   splitright
 set nostartofline
 set   statusline=%2n\ %f%=%<\ %(%Y%W%H%R%M%)\ \ %P\ %10(%c%V%),%-6l\ %7o=%02B
 set   suffixes-=.h
-set   suffixes+=.cmi,.cmo,.cmx,.hi
 set   switchbuf=useopen,split
 set   tabstop=8
 set   textwidth=0
@@ -109,6 +108,7 @@ fun OCamlSetup ()
 	setl sw=2
 	setl sts=2
 	setl errorformat=%-Gocaml%m,%AFile\ \"%f\"\\,\ line\ %l\\,\ characters\ %c-%*\\d:,%-Zmake:\ ***\ [%f]\ Error\ %n\,%C%m
+	set   suffixes+=.cmi,.cmo,.cmx
 endfun
 
 fun HaskellSetup ()
@@ -116,6 +116,7 @@ fun HaskellSetup ()
 	setl sts=2
 	setl errorformat=%-Gghc%m\,%-GCompiling\ %m\,%-G\,%f:%l:%m\,%A%f:%l:\,%-Zmake:\ ***\ [%f]\ Error\ %n\,%C%m
 	setl ft=haskell
+	set   suffixes+=.hi
 endfun
 
 fun TextSetup ()
@@ -135,6 +136,7 @@ fun TexSetup ()
 	if has('spell')
 		setl spell
 	endif
+	set   suffixes+=.aux,.log,.dvi,.ps,.pdf
 endfun
 
 fun CodeSetup ()

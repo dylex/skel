@@ -15,7 +15,7 @@ case $tgt in
 	(*.tar.gz|*.tgz)
 		tarflags=${tarflags}z ;&
 	(*.tar.bz2)
-		tarflags=${tarflags/z/j} ;&
+		[[ $tarflags = *z* ]] || tarflags=${tarflags}j ;&
 	(*.tar)
 		tar c${tarflags}f $tgt -C ${src:h} ${src:t} ;;
 	([^/]##:*)

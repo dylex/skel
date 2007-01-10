@@ -411,7 +411,7 @@ Key v A		4	Lower
 Key h A		4	GotoPage -1p 0p
 Key l A		4	GotoPage +1p 0p
 Key j A		4	GotoDesk +1
-Key k A		4	GotoDesk -1p
+Key k A		4	GotoDesk -1
 Key minus A	4	GotoPage prev
 Key z A		4	MyIconify
 Key Return A	4	GotoHome
@@ -431,6 +431,7 @@ Key XF86Standby	A N	Execp xscreensaver-command -lock
 Key t A		4	Execp rxvt
 IFEXEC(jpilot, `Key p A		4	Execp jpilot', `dnl')
 Key f A		4	OpenBrowser
+Mouse 2 A	4S	OpenBrowser "$(xclip -o)"
 Key d A		4S	LoginTo "dylex"
 Key d A		4CS	LoginTo "edylex"
 Key r A		4S	LoginTo "druid"
@@ -470,6 +471,8 @@ Key KP_End A 	4S	Execp mpc -s -0:30
 Key KP_Down A 	4S	Execp mpcpop -s -0:15
 Key KP_Next A 	4S	Execp mpc -s +0:30
 ', `dnl
+Key 8 A 4C         	Execp gomp --geometry=70x6-0+0 http://dylex.net:2352/music/play-q5.ogg
+Key 8 A 4CS         	Execp gomp --geometry=70x6-0+0 http://dylex.net:2352/music/play-q2.ogg
 Key XF86WWW A N         Execp gomp --display=:0.1 --geometry=180x0+0+0 http://dylex.net:2401/music/play-q5.ogg
 Key XF86WWW A S         Execp gomp --display=:0.1 --geometry=180x0+0+0 http://dylex.net:2401/music/play-q2.ogg
 ')dnl
