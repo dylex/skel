@@ -33,7 +33,7 @@ xterm.backarrowKeyIsErase:	true
 !xterm.termName:		xterm-xfree86
 
 rxvt.font:			fixed
-rxvt.loginShell:		true
+rxvt.loginShell:		false
 rxvt.utmpInhibit:               true
 rxvt.termName:			rxvt
 rxvt.saveLines:			1024
@@ -58,3 +58,5 @@ rxvt.color13:                   #FF00FF
 rxvt.color14:                   #00FFFF
 rxvt.color15:                   #FFFFFF
 !rxvt.geometry:			231x86+2+50
+
+xfig*customization:		-color

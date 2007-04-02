@@ -43,10 +43,10 @@ DIRSTACKSIZE=8
 KEYTIMEOUT=10
 case $HOST in
 	(datura.dylex.net) hostcolor=35 ;;
-	(pancake.dylex.net) hostcolor=36 ;;
+	(pancake.dylex.net) hostcolor=33 ;;
 	(dylex.dylex.net) hostcolor=31 ;;
 	(druid.pasadena.rainfinity.com) hostcolor=34 ;;
-	(dylan-g4|dylan-sm) hostcolor=33 ;;
+	(icicle.dylex.net) hostcolor=36 ;;
 esac
 PROMPT=${hostcolor:+%{[${hostcolor}m%}}'%m%{[30;1m%}:%{[0;32m%}%~%1(j. %{[33m%}[%j].)%{[%(?..31)m%}%(!,#,>)%{[m%}'
 RPROMPT='%(?..%{[31m%}%? )%{[36m%}%U%D %T%u%{[m%}'
@@ -56,7 +56,7 @@ TIMEFMT="%*E: %U %S (%P)	%J"
 SPROMPT="'%R' -> '%r'? "
 
 #eval `dircolors -b ~/.dircolors` 
-export LS_COLORS='no=00:fi=00:di=07:ln=04:or=04;05:pi=07;34:so=07;35:bd=07;31:cd=07;33:ex=01;36:*.cgi=36:*.c=01;34:*.cc=01;34:*.cpp=01;34:*.h=01;34:*.hh=01;34:*.i=01;34:*.ml=01;34:*.mli=01;34:*.hs=01;34:*.hsc=01;34:*.o=34:*.a=34:*.so=34:*.cmi=34:*.cmo=34:*.cmx=34:*.hi=34:*Makefile=04;34:*.pl=35:*.sh=35:*.php=01;35:*.pm=01;35:*.tar=01:*.tgz=01:*.gz=01:*.bz2=01:*.jpg=01;32:*.jpeg=01;32:*.gif=01;32:*.bmp=01;32:*.ppm=01;32:*.tga=01;32:*.xbm=01;32:*.xpm=01;32:*.fig=32:*.wav=01;33:*.au=01;33:*.mp3=01;33:*.midi=33:*.tex=33:*.html=33:*.ps=01;33:*.pdf=01;33:*.dvi=01;33:*.diff=04;33:*.txt=31:*.log=31:*INSTALL=31:*README=31:*,v=04;32:'
+export LS_COLORS='no=00:fi=00:di=07:ln=04:or=04;05:pi=07;34:so=07;35:bd=07;31:cd=07;33:ex=01;36:*.cgi=36:*.c=01;34:*.cc=01;34:*.cpp=01;34:*.h=01;34:*.hh=01;34:*.i=01;34:*.ml=01;34:*.mli=01;34:*.hs=01;34:*.hsc=01;34:*.o=34:*.a=34:*.so=34:*.cmi=34:*.cmo=34:*.cmx=34:*.hi=34:*Makefile=04;34:*.pl=35:*.sh=35:*.php=01;35:*.pm=01;35:*.tar=01:*.tgz=01:*.gz=01:*.bz2=01:*.jpg=01;32:*.jpeg=01;32:*.gif=01;32:*.png=01;32:*.bmp=01;32:*.ppm=01;32:*.tga=01;32:*.xbm=01;32:*.xpm=01;32:*.xcf=01;32:*.fig=32:*.wav=01;33:*.au=01;33:*.mp3=01;33:*.midi=33:*.tex=33:*.html=33:*.ps=01;33:*.pdf=01;33:*.dvi=01;33:*.diff=04;34:*.txt=31:*.log=31:*INSTALL=31:*README=31:*,v=04;32:'
 
 alias c='cd; clear;'
 alias f='fg'
@@ -69,6 +69,7 @@ case $OSTYPE in
 		alias p='ps -AH So pid,user,stat,pcpu,bsdtime,start_time,vsz,command'
 		alias pw='ps -AH o pid,user,group,tty8,stat,pcpu,cputime,etime,pmem,rsz,vsz,command'
 		alias pl='ps -A o comm,pid,uid,gid,sz,rssize,vsize,nice,s,alarm,flags,wchan --sort session,pgrp,pid'
+		alias w='w -f'
 		;;
 	(freebsd*)
 		alias ls='gls --color=auto'
@@ -91,7 +92,7 @@ alias v='vim -c "normal '"'"'0"'
 
 alias ht=$BROWSER
 alias rm='rm -i'
-alias grep='grep -n'
+alias grep='grep -n --color'
 alias gerp='grep'
 alias spell='aspell -a'
 alias sup='cvs up'
@@ -102,10 +103,12 @@ alias mplay='mplayer'
 case $HOST in
 	(datura.dylex.net)
 		alias mplaya='mplayer -quiet -nortc -ao alsa:device=live'
-		alias w='w -f'
 		;;
 	(druid.pasadena.rainfinity.com)
 		alias cvsmerge='cvs -d :pserver:merge@cvshome.rainfinity.com:2401/home/cvs'
+		;;
+	(icicle.dylex.net)
+		alias srr='sudo screen -x root'
 		;;
 	(*)
 		alias mplaya='mplayer -quiet'
@@ -142,4 +145,4 @@ compinit
 
 export LESS='-iRJ'
 export MANSECT=2:3:1:8:6:4:5:7:9:x:n:l
-
+unset MAILCHECK

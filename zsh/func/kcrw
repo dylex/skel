@@ -2,7 +2,7 @@ local ip
 local stream
 local -a servers
 
-servers=(64.236.34.196 scfire-ntc0l-2.stream.aol.com scfire-chi0l-1.stream.aol.com scfire-ntc0l-1.stream.aol.com 64.236.34.97 scfire-chi0l-2.stream.aol.com)
+servers=(scfire-chi0l-1.stream.aol.com scfire-chi0l-2.stream.aol.com scfire-dll0l-1.stream.aol.com scfire-dll0l-2.stream.aol.com scfire-ntc0l-1.stream.aol.com scfire-ntc0l-2.stream.aol.com scfire-nyk0l-1.stream.aol.com scfire-nyk0l-2.stream.aol.com)
 ip=${servers[$RANDOM % $#servers]}
 case $1 in
 	(m*) stream=1045 ;;

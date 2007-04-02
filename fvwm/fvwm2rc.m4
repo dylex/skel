@@ -29,7 +29,7 @@ SnapAttraction 2 Screen
 
 DestroyFunc Execp
 AddToFunc Execp
-+	I Exec ifelse(OSTYPE, `Linux', `', `exec ')$*
++	I Exec exec $*
 
 DestroyFunc GotoHome
 AddToFunc GotoHome
@@ -91,7 +91,7 @@ Style * MwmBorder, BorderWidth 1, HandleWidth 3
 Style * DecorateTransient
 Style * MouseFocus, GrabFocus
 Style * MinOverlapPlacement
-Style * Slippery, StickyIcon, CirculateSkipIcon
+Style * Slippery, StickyAcrossPagesIcon, CirculateSkipIcon
 Style * IconBox 512x48`'ifelse(SCREEN, 0, -, +)1+0, IconGrid 48 48, IconFill ifelse(SCREEN, 0, r, l) b
 Style * WindowShadeScrolls, WindowShadeSteps 0
 Style * BackingStoreOff
@@ -99,14 +99,14 @@ OpaqueMoveSize 0
 
 Style "FvwmPager"	BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, NeverFocus, GrabFocusOff, Layer 3
 Style "FvwmWinList"	BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff
-Style "panel"		BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, Layer 3
+Style "panel"		BorderWidth 0, NoHandles, NoTitle, StickyAcrossPages, WindowListSkip, CirculateSkip, Layer 3
 Style "xeyes"		BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff, Layer 2
 Style "Stripchart"	BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff, Layer 2
 Style "xload"		BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff, Layer 2
 Style "xdaliclock"	BorderWidth 0, HandleWidth 0, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff, Layer 2
 Style "xbiff"		BorderWidth 0, HandleWidth 0, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus, GrabFocusOff, Layer 2
-Style "gomp"		BorderWidth 0, NoHandles, NoTitle, Sticky, WindowListSkip, GrabFocusOff, Layer 3
-Style "stuck term"	Sticky
+Style "gomp"		BorderWidth 0, NoHandles, NoTitle, StickyAcrossPages, WindowListSkip, GrabFocusOff, Layer 3
+Style "stuck term"	StickyAcrossPages
 #Style "xlogmaster"	StartsOnPage 7 0, SkipMapping, GrabFocusOff
 Style "qiv"		GrabFocusOff, CascadePlacement
 Style "feh"		GrabFocusOff, CascadePlacement
@@ -146,6 +146,7 @@ AddToFunc GotoScreen
 #*FvwmPager: Hilight #407099
 *FvwmPager: MiniIcons
 *FvwmPager: Balloons pager
+*FvwmPager: UseSkipList
 
 *FvwmEvent: Cmd
 *FvwmEvent: PassID
@@ -378,7 +379,7 @@ AddToFunc WarpFocus
 
 Mouse 1	1	N	MyIconify True
 Mouse 2	1	N	Delete
-Mouse 3	1	N	Stick True
+Mouse 3	1	N	StickAcrossPages
 ifelse(BUTTONS, 4, `Mouse 4	1	N	WindowShade True', `dnl')
 Mouse 1	2	N	MoveGoToPage -1p 0p
 Mouse 2	2	N	Bigify
@@ -390,7 +391,7 @@ Mouse 1 T	N	RaiseMoveShade
 Mouse 1 FS	N	RaiseResize
 Mouse 2 TFSI	N	Menu WindowMenu
 Mouse 3 TFSI	N	Lower
-ifelse(BUTTONS, 4, `Mouse 4 T	N	Stick', `dnl')
+ifelse(BUTTONS, 4, `Mouse 4 T	N	StickAcrossPages', `dnl')
 
 Mouse 1 TFSW	4	Move
 Mouse 2 TFSWI	4	Menu WindowMenu
@@ -436,6 +437,7 @@ Key d A		4S	LoginTo "dylex"
 Key d A		4CS	LoginTo "edylex"
 Key r A		4S	LoginTo "druid"
 Key r A		4CS	LoginTo "edruid"
+Key i A		4S	LoginTo "icicle"
 Key g A		4	Execp rxvt -e elinks
 
 define(MIXERSEL, ifelse(OSTYPE, Linux, `Master', HOSTNAME, `druid.pasadena.rainfinity.com', `ogain', OSTYPE, FreeBSD, `vol'))dnl

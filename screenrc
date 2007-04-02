@@ -1,7 +1,7 @@
 deflogin off
 defflow off
 defscrollback 1024
-shell -zsh
+#shell -zsh
 shelltitle -
 startup_message off
 caption always ' %-Lw%{Wk}%n%f %t%{-}%+Lw %=%?%{.r}%u%{-} %?%?%{=u kw}%h%{-} %?%{b}%l %{-kc}%c '
@@ -13,6 +13,7 @@ vbell off
 zombie cr
 altscreen on
 #nethack off
+screen -t - 0 -zsh
 
 bind / displays
 bind ; lockscreen

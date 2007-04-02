@@ -20,7 +20,9 @@ $(ZSHFDIR)/%: zsh/func/%
 zshrcs=zshenv zshrc zlogin
 zshfunc=$(notdir $(wildcard zsh/func/*))
 zshinstall+=$(addprefix $(ZSHDIR)/.,$(zshrcs)) $(addprefix $(ZSHFDIR)/,$(zshfunc))
+ifneq ($(ZSHDIR),)
 install+=$(zshinstall) $(addsuffix .zwc,$(zshinstall))
+endif
 
 home_install+=xsession xkeymap Xdefaults
 $(HOME)/.fvwm2rc.m4: fvwm/fvwm2rc.m4

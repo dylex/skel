@@ -1,0 +1,105 @@
+# Configuration file for dircolors, a utility to help you set the
+# LS_COLORS environment variable used by GNU ls with the --color option.
+
+# The keywords COLOR, OPTIONS, and EIGHTBIT (honored by the
+# slackware version of dircolors) are recognized but ignored.
+
+# Below, there should be one TERM entry for each termtype that is colorizable
+TERM linux
+TERM console
+TERM xterm
+TERM rxvt
+TERM vt100
+TERM ansi
+TERM screen
+
+# 00=none  01=bold  04=ul 05=blink  07=rev 08=concealed
+# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+
+# Reverse index:
+#		NORMAL	BOLD	UL	BLINK	REV	REVBLINK
+#	  White	DEFAULT	arch	link	br.link	dir
+#	    Red	text				block
+#	 Yellow	srctext	docs	diff		char
+#	  Green	subpix	pix	rcs
+#	   Blue	obj	code	Make		pipe
+#	   Cyan	subexec	exec
+#	Magenta	scripts	php/pm			socket
+#		
+NORMAL 00	# global default, although everything should be something.
+FILE 00 	# normal file
+DIR 07 		# directory
+LINK 04 	# symbolic link
+ORPHAN 04;05	# symlink to nonexistent file
+FIFO 07;34	# pipe
+SOCK 07;35	# socket
+BLK 07;31	# block device driver
+CHR 07;33 	# character device driver
+EXEC 01;36
+
+.cgi 36
+
+.c   01;34 # code
+.cc  01;34
+.cpp 01;34
+.h   01;34
+.hh  01;34
+.i   01;34
+.ml  01;34
+.mli 01;34
+.hs  01;34
+.hsc 01;34
+
+.o   34 # objects
+.a   34
+.so  34
+.cmi 34
+.cmo 34
+.cmx 34
+.hi  34
+
+*Makefile 04;34
+
+.pl  35 # scripts
+.sh  35
+
+.php 01;35
+.pm  01;35
+
+.tar 01 # archives/compressed
+.tgz 01
+.gz  01
+.bz2 01
+
+.jpg 01;32 # image formats
+.jpeg 01;32
+.gif 01;32
+.png 01;32
+.bmp 01;32
+.ppm 01;32
+.tga 01;32
+.xbm 01;32
+.xpm 01;32
+.xcf 01;32
+.fig 32
+
+.wav 01;33 # audio
+.au  01;33
+.mp3 01;33
+.midi 33 # kinda audio
+
+.tex 33 # documents
+.html 33
+.ps 01;33
+.pdf 01;33
+.dvi 01;33
+
+.diff 04;34
+
+.txt 31
+.log 31
+*INSTALL 31
+*README 31
+
+*,v  04;32

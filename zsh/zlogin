@@ -5,6 +5,7 @@ case $HOST in
 	(datura.dylex.net)
 		MAIL=$HOME/mail/spool
 		MAILPATH=$MAIL'?>> New mail':$HOME/mail/fm'?>> Mmm... freshmeat':$HOME/mail/gale.messages'?>> New gale messages':$HOME/mail/gale.ugcs'?>> New ugcs gale':$HOME/mail/mb'?>> Musicbrainz updates':$HOME/mail/rainbugs'?>> Oh, great, more bugs':$HOME/mail/netflix'?>> Netflix activity':$HOME/.pork/dylexs/logs'?>> New pork messages in $_'
+		MAILCHECK=60
 		hash -d src=/usr/src
 		;;
 	(dylex.dylex.net)

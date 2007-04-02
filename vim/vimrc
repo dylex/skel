@@ -51,7 +51,6 @@ map Y y$
 map ZW :update<CR>
 nmap <Leader>p :set paste<CR>
 nmap <Leader>u :set nopaste<CR>
-let c_gnu=1
 if has('spell')
 	nmap <Leader>/ :set spell<CR>
 	nmap <Leader>c :set nospell<CR>
@@ -73,35 +72,19 @@ else
 	let spell_accept_map =          "\<Leader>,"
 	let spell_case_accept_map =     "\<Leader>'"
 endif
+let c_gnu=1
+let c_no_curly_error=1
 
 nmap \l :call LineUpPrevWord()<CR>
 nmap \r :call LineUpNextWord()<CR>
 
+com -range=% StripTrailing <line1>,<line2>s:\s\+$::
+nmap <Leader>s :StripTrailing<CR>
+vmap <Leader>s :StripTrailing<CR>
+
 if hostname() =~ '^druid\.'
-	fun SyncSourcesSetup ()
-		let d = getcwd()
-		let c = resolve($HOME . '/cvs/')
-		if strpart(d, 0, strlen(c)) != c
-			let $SYNCDIR = ''
-			return
-		endif
-		let d = strpart(d, strlen(c))
-		let i = stridx(d, '/')
-		if i != -1
-			let d = strpart(d, 0, i)
-		endif
-		let $SYNCDIR = c . d
-	endfun
-	fun SyncSources ()
-		update
-		if !exists($SYNCDIR)
-			call SyncSourcesSetup ()
-		endif
-		if $SYNCDIR != ''
-			!$SYNCDIR/sync
-		endif
-	endfun
 	nmap <Leader>y :call SyncSources()<CR>
+	set tags+=~/cvs/current/tags
 endif
 
 fun OCamlSetup ()

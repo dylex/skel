@@ -45,7 +45,7 @@ bind "!" function_factorial
 bind "%" function_mod
 bind "S" function_store
 bind ";" function_eval
-bind "&" function_and
+#bind "&" function_and
 
 # keys for "command" operations, which do not take an argument
 bind "\\" command_drop
@@ -155,9 +155,9 @@ abbrev "ustand"  function_standardize_units
 abbrev "uconvert" function_convert_units
 abbrev "uvalue"  function_unit_value
 abbrev "trace"   function_trace
-abbrev "and"	 function_and
-abbrev "or"	 function_or
-abbrev "xor"	 function_xor
+#abbrev "and"	 function_and
+#abbrev "or"	 function_or
+#abbrev "xor"	 function_xor
 abbrev "drop"    command_drop
 abbrev "clear"   command_clear
 abbrev "swap"    command_swap
