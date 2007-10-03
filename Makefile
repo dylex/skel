@@ -1,6 +1,5 @@
 place=\
-	[ -d $(dir $@) ] || mkdir -p $(dir $@) ;\
-	args="$$args -m $${mode:-444}" ;\
+	args="$$args -D -m $${mode:-444}" ;\
 	targ='$@' ;\
 	[ -f $$targ.keep ] && targ=$$targ.skel ;\
 	[ -w $$targ ] && args="$$args -b" ;\
@@ -45,6 +44,10 @@ home_install+=mailrc
 home_install+=ghci
 home_install+=orpierc
 home_install+=nethackrc
+
+$(HOME)/bin/%: bin/%
+	mode=555 ; $(place)
+install+=$(addprefix $(HOME)/,$(wildcard bin/*))
 
 $(HOME)/.%: %
 	$(place)

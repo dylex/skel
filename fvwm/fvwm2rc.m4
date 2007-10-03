@@ -62,7 +62,7 @@ define(STARTLIST, `
 			`"screensaver",	Execp xscreensaver','')
 		IFEXEC(xbg, ``
 		`"xbg",		Execp xbg','')')`
-	`"xset",	Execp xset b 100 3520 ''ifdef(HOMEHOST, 20, 35)`` m 3 5 +dpms dpms 1200 0 2400 r rate 250 30'')dnl
+	`"xset",	Execp xset b 100 3520 ''ifdef(HOMEHOST, 20, 35)`` m 3 5 +dpms dpms 900 0 1200 r rate 250 30'')dnl
 dnl
 *FvwmWinList: Geometry TOPGEOM(500, 0, 0)
 
@@ -425,14 +425,14 @@ Key Down A	4	Direction South FlipFocus
 Key Right A	4	Direction East FlipFocus
 
 Key b A		4	Exec xbg && [ -p HOME/.xtail ] && touch HOME/.xtail
-Key semicolon A 4	ifdef(`HOMEHOST', `Exec sleep 2 && xset dpms force off', `Execp xscreensaver-command -lock')
-Key apostrophe A 4	ifdef(`HOMEHOST', `Exec sleep 2 && xset s activate', `Execp xscreensaver-command -activate')
-Key q A 	4	Execp IFEXEC(xtrlock, `xtrlock', `xscreensaver-command -lock')
-Key XF86Standby	A N	Execp xscreensaver-command -lock
+Key semicolon A 4	ifdef(`HOMEHOST', `Exec sleep 2 && xset dpms force off', `Exec xlock && sleep 1 && xset dpms force off')
+Key apostrophe A 4	Exec sleep 2 && xset s activate
+Key q A 	4	Execp xlock
+Key XF86Standby	A N	Execp xlock
 Key t A		4	Execp rxvt
-IFEXEC(jpilot, `Key p A		4	Execp jpilot', `dnl')
 Key f A		4	OpenBrowser
 Mouse 2 A	4S	OpenBrowser "$(xclip -o)"
+Key slash A	4C	Exec xclip -o | aspell -a | grep "^&" | xmessage -default okay -file -
 Key d A		4S	LoginTo "dylex"
 Key d A		4CS	LoginTo "edylex"
 Key r A		4S	LoginTo "druid"
@@ -440,16 +440,12 @@ Key r A		4CS	LoginTo "edruid"
 Key i A		4S	LoginTo "icicle"
 Key g A		4	Execp rxvt -e elinks
 
-define(MIXERSEL, ifelse(OSTYPE, Linux, `Master', HOSTNAME, `druid.pasadena.rainfinity.com', `ogain', OSTYPE, FreeBSD, `vol'))dnl
+define(MIXERSEL, ifelse(HOSTNAME, `greed', `Front', OSTYPE, Linux, `Master', HOSTNAME, `druid.pasadena.rainfinity.com', `ogain', OSTYPE, FreeBSD, `vol'))dnl
 define(MIXERSET, `Execp ifelse(OSTYPE, Linux, `amixer -q ifdef(`HOMEHOST', -c1) set MIXERSEL $1$2', OSTYPE, FreeBSD, `/usr/sbin/mixer MIXERSEL $2$1 > /dev/null')')dnl
 Key KP_Add A	4S	MIXERSET(1,-)
-Key Down A	5	MIXERSET(1,-)
 Key KP_Subtract A 4S	MIXERSET(1,+)
-Key Up A 	5	MIXERSET(1,+)
 Key KP_Enter A	4	MIXERSET(8)
-Key Left A	5	MIXERSET(8)
 Key KP_Enter A	4S	MIXERSET(48)
-Key Right A	5	MIXERSET(48)
 Key XF86AudioLowerVolume A N MIXERSET(1,-)
 Key XF86AudioRaiseVolume A N MIXERSET(1,+)
 Key XF86AudioMute A N 	MIXERSET(8)
@@ -461,17 +457,21 @@ ifelse(HOSTNAME, `pancake.dylex.net', `dnl
 Key Prior A 	4S 	Execp /usr/sbin/setcx C1
 Key Next A 	4S 	Execp /usr/sbin/setcx C3', `dnl')
 
-ifdef(`HOMEHOST', `dnl
+IFEXEC(mpc, `dnl
 Key KP_Insert A 4S	Execp mpc -p
-Key KP_Insert A 5	Execp mpc -p
 Key KP_Delete A 4S	Execp mpc -r
-Key KP_Delete A 5	Execp mpc -r
 Key KP_Up A 	4S	Execp mpcpush -p
 Key KP_Left A 	4S	Execp mpc -s -1
 Key KP_Right A 	4S	Execp mpc -s +1
 Key KP_End A 	4S	Execp mpc -s -0:30
 Key KP_Down A 	4S	Execp mpcpop -s -0:15
 Key KP_Next A 	4S	Execp mpc -s +0:30
+Key KP_Insert A 5	Execp mpc -p
+Key KP_Delete A 5	Execp mpc -r
+Key Left A	5	Execp mpc -s -0:10
+Key Right A	5	Execp mpc -s +0:10
+Key Down A	5	Execp mpc -s -1
+Key Up A	5	Execp mpc -s +1
 ', `dnl
 Key 8 A 4C         	Execp gomp --geometry=70x6-0+0 http://dylex.net:2352/music/play-q5.ogg
 Key 8 A 4CS         	Execp gomp --geometry=70x6-0+0 http://dylex.net:2352/music/play-q2.ogg

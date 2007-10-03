@@ -1,0 +1,9 @@
+#!/usr/bin/zsh
+
+fonts=(/usr/share/figlet/*.flf)
+font=${fonts[$RANDOM % $#fonts]}
+if [[ $1 = -f ]] ; then
+	shift
+	echo $font >&2
+fi
+exec figlet -f $font $@

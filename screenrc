@@ -13,6 +13,7 @@ vbell off
 zombie cr
 altscreen on
 #nethack off
+setenv SHLVL 0
 screen -t - 0 -zsh
 
 bind / displays
@@ -24,9 +25,9 @@ bind k focus up
 bind ` select 0
 bind 0 select 10
 
-bind \^ screen -t ht  6 elinks
+bind \^ screen -T screen-256color -t ht  6 elinks
 bind & screen -t pork 7 pork
-bind * screen -t gale 8 ginsu
+bind * screen -T screen-256color -t gale 8 ginsu
 bind ( screen -t moo  9 tf
 bind ) screen -t logs 10 watchlogs
 

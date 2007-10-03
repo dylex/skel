@@ -113,6 +113,13 @@ fun TextSetup ()
 	endif
 endfun
 
+fun MailSetup ()
+	call TextSetup()
+	if match(getline(2), '^To: bugs') == 0 && match(getline(5), '^Subject: .*\[Bug') == 0
+		5s/^Subject: .*\(\[Bug \d*\]\).*/Subject: \1/
+	endif
+endfun
+
 fun TexSetup ()
 	setl nocindent
 	setl matchpairs+=`:'
@@ -145,12 +152,16 @@ endfun
 autocmd BufRead *.ml* call OCamlSetup()
 autocmd BufRead *.hs* call HaskellSetup()
 autocmd BufRead DOC call TextSetup()
-autocmd FileType mail call TextSetup()
+autocmd FileType mail call MailSetup()
 autocmd FileType tex call TexSetup()
 autocmd FileType c,cpp call CodeSetup()
 autocmd FileType *m4 call M4Setup()
 autocmd FileType matlab call MatlabSetup()
 autocmd BufReadPost * exe "normal `\""
+
+if $TERM =~ '^\(screen\|rxvt\|xterm-xfree86\)\(-256color\)\?$'
+	set t_Co=256
+endif
 
 filetype on
 syntax on

@@ -1,0 +1,4 @@
+local t
+t=`date +%s -d "$*"` || return 1
+((t-=`date +%s`))
+echo $t

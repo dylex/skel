@@ -1,0 +1,17 @@
+#!/bin/sh
+if [ $# -lt 1 ] ; then
+        echo "Usage: $0 <sed expr> <file> ..."
+        exit 1;
+fi
+sub=$1 ; shift
+sed "$sub" < /dev/null
+if [ $? -ne 0 ] ; then
+        exit $?;
+fi
+for old in "$@" ; do
+        new=`echo "$old" | sed "$sub"`
+        if [ "$new" != "$old" ] ; then
+                echo $old '->' $new
+                mv -i -- "$old" "$new"
+        fi
+done

@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+use strict;
+use POSIX;
+
+my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime;
+
+my $y = mktime(0,0,0,1,0,$year);
+my $ny = mktime(0,0,0,1,0,$year+1);
+my $n = mktime($sec,$min,$hour,$mday,$mon,$year);
+my $t = 1900+$year + ($n-$y)/($ny-$y);
+print 1000000*$t, "\n";

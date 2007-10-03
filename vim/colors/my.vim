@@ -48,36 +48,81 @@ hi MatchParen    term=reverse cterm=bold,underline
 hi Normal        NONE
 hi Comment       term=bold ctermfg=4
 hi Constant      term=underline ctermfg=1
-hi Special       term=bold ctermfg=5
-hi Identifier    term=underline ctermfg=6
-hi Statement     term=bold ctermfg=3
-hi PreProc       term=underline ctermfg=5
-hi Type          term=underline ctermfg=2
-hi Underlined    term=underline cterm=underline ctermfg=5
-hi Ignore        ctermfg=0
-hi Error         term=reverse cterm=bold ctermfg=7 ctermbg=1
-hi Todo          term=standout ctermfg=0 ctermbg=3
 hi link String         Constant
 hi link Character      Constant
 hi link Number         Constant
-hi link Boolean        Constant
 hi link Float          Number
+hi link Boolean        Constant
+hi Special       term=bold ctermfg=5
+hi link Tag            Special
+hi link SpecialChar    Special
+hi link Delimiter      Special
+hi link SpecialComment Special
+hi link Debug          Special
+hi Identifier    term=underline ctermfg=6
 hi link Function       Identifier
+hi Statement     term=bold ctermfg=3
 hi link Conditional    Statement
 hi link Repeat         Statement
 hi link Label          Statement
 hi link Operator       Statement
 hi link Keyword        Statement
 hi link Exception      Statement
+hi PreProc       term=underline ctermfg=5
 hi link Include        PreProc
 hi link Define         PreProc
 hi link Macro          PreProc
 hi link PreCondit      PreProc
+hi Type          term=underline ctermfg=2
 hi link StorageClass   Type
 hi link Structure      Type
 hi link Typedef        Type
-hi link Tag            Special
-hi link SpecialChar    Special
-hi link Delimiter      Special
-hi link SpecialComment Special
-hi link Debug          Special
+hi Underlined    term=underline cterm=underline
+hi Ignore        ctermfg=8
+hi Error         term=reverse cterm=bold ctermfg=7 ctermbg=1
+hi Todo          term=standout ctermfg=0 ctermbg=3
+
+if &t_Co == 256
+	hi LineNr 	ctermfg=230
+	hi Comment 	ctermfg=111
+	hi Constant 	ctermfg=174
+	hi Character 	ctermfg=125
+	hi String 	ctermfg=126
+	hi Number 	ctermfg=130
+	hi Float 	ctermfg=136
+	hi Boolean 	ctermfg=124
+	hi Special	ctermfg=164
+	hi Tag		ctermfg=133
+	hi SpecialChar	ctermfg=162
+	hi Delimiter	ctermfg=135
+	hi SpecialComment ctermfg=141
+	hi Debug	ctermfg=127
+	hi Identifier 	ctermfg=44 cterm=none
+	hi Function	ctermfg=123
+	hi Statement	ctermfg=3
+	hi Conditional	ctermfg=142
+	hi Repeat	ctermfg=184
+	hi Label	ctermfg=137
+	hi Operator	ctermfg=191
+	hi Keyword	ctermfg=144
+	hi Exception	ctermfg=178
+	hi PreProc	ctermfg=213
+	hi Include	ctermfg=219
+	hi Define	ctermfg=170
+	hi Macro	ctermfg=183
+	hi PreCondit	ctermfg=181
+	hi Type		ctermfg=34
+	hi StorageClass	ctermfg=36
+	hi Structure	ctermfg=71
+	hi Typedef	ctermfg=106
+
+	hi mailQuoted1	ctermfg=189
+	hi mailQuoted2	ctermfg=147
+	hi mailQuoted3	ctermfg=105
+	hi mailQuoted4	ctermfg=63
+	hi mailQuoted5	ctermfg=21
+	hi mailQuoted6	ctermfg=20
+	hi mailHeaderKey ctermfg=157
+	hi mailHeaderEmail ctermfg=225
+	hi mailEmail	ctermfg=141
+endif

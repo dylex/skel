@@ -2,12 +2,9 @@ local fundir=$fpath[1]
 local funs
 
 if [ $# -gt 0 ] ; then
-	funs=($@)
+	funs=("$@")
 else
-	local f
-	for f in $fundir/[^_]* ; do
-		funs=($funs `basename $f`)
-	done ;
+	funs=($fundir/^*(.zwc|~)(:t))
 fi
 
 for f in $funs ; do

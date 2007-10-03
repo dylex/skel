@@ -1,0 +1,3 @@
+local t
+t=`till "$@"`
+[[ $t -ge 0 ]] && sleep $t
