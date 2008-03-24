@@ -6,7 +6,7 @@ define(`FORLIST', `pushdef(`_FORITER', `$1')_FORLIST(shift($@))`'popdef(`_FORITE
 define(`SEQLIST', `ifelse($1, $2, $1, `$1, SEQLIST(incr($1), $2)')')dnl
 define(`IFEXEC', `syscmd(which -s $1 >/dev/null 2>&1)ifelse(sysval, 0, shift($@))')dnl
 dnl
-define(ifelse(HOSTNAME, `datura.dylex.net', `HOMEHOST',
+define(ifelse(CLIENTHOST, `datura.dylex.net', `HOMEHOST',
 	HOSTNAME, `druid.pasadena.rainfinity.com', `WORKHOST',
 	`OTHERHOST'))dnl
 define(`SCREENS', ifdef(`WORKHOST', 2, 1))dnl
@@ -219,6 +219,7 @@ AddToMenu WindowMenu
 +	"resize"	Resize
 +	"big"		Bigify
 +	"fill"		Maximize grow grow
++	"full"		ResizeMove eval(WIDTH)p eval(HEIGHT)p -3p -17p
 +	""		Nop
 +	"icon"		MyIconify
 +	"stick"		Stick
@@ -438,9 +439,10 @@ Key d A		4CS	LoginTo "edylex"
 Key r A		4S	LoginTo "druid"
 Key r A		4CS	LoginTo "edruid"
 Key i A		4S	LoginTo "icicle"
+Key g A		4S	LoginTo "greed"
 Key g A		4	Execp rxvt -e elinks
 
-define(MIXERSEL, ifelse(HOSTNAME, `greed', `Front', OSTYPE, Linux, `Master', HOSTNAME, `druid.pasadena.rainfinity.com', `ogain', OSTYPE, FreeBSD, `vol'))dnl
+define(MIXERSEL, ifelse(SERVERHOST, `greed', `Front', OSTYPE, Linux, `Master', HOSTNAME, `druid.pasadena.rainfinity.com', `ogain', OSTYPE, FreeBSD, `vol'))dnl
 define(MIXERSET, `Execp ifelse(OSTYPE, Linux, `amixer -q ifdef(`HOMEHOST', -c1) set MIXERSEL $1$2', OSTYPE, FreeBSD, `/usr/sbin/mixer MIXERSEL $2$1 > /dev/null')')dnl
 Key KP_Add A	4S	MIXERSET(1,-)
 Key KP_Subtract A 4S	MIXERSET(1,+)
@@ -450,9 +452,8 @@ Key XF86AudioLowerVolume A N MIXERSET(1,-)
 Key XF86AudioRaiseVolume A N MIXERSET(1,+)
 Key XF86AudioMute A N 	MIXERSET(8)
 Key XF86AudioMute A S 	MIXERSET(48)
-ifelse(BUTTONS, 3, `dnl
-Mouse 5 R 	N 	MIXERSET(-1)
-Mouse 4 R 	N	MIXERSET(+1)', `dnl')
+Mouse 5 R 	N 	MIXERSET(1,-)
+Mouse 4 R 	N	MIXERSET(1,+)
 ifelse(HOSTNAME, `pancake.dylex.net', `dnl
 Key Prior A 	4S 	Execp /usr/sbin/setcx C1
 Key Next A 	4S 	Execp /usr/sbin/setcx C3', `dnl')
@@ -473,10 +474,10 @@ Key Right A	5	Execp mpc -s +0:10
 Key Down A	5	Execp mpc -s -1
 Key Up A	5	Execp mpc -s +1
 ', `dnl
-Key 8 A 4C         	Execp gomp --geometry=70x6-0+0 http://dylex.net:2352/music/play-q5.ogg
-Key 8 A 4CS         	Execp gomp --geometry=70x6-0+0 http://dylex.net:2352/music/play-q2.ogg
-Key XF86WWW A N         Execp gomp --display=:0.1 --geometry=180x0+0+0 http://dylex.net:2401/music/play-q5.ogg
-Key XF86WWW A S         Execp gomp --display=:0.1 --geometry=180x0+0+0 http://dylex.net:2401/music/play-q2.ogg
+Key 8 A 4C         	Execp gomp --geometry=70x6-0+0 http://datura.dylex.net:2352/music/play-q5.ogg
+Key 8 A 4CS         	Execp gomp --geometry=70x6-0+0 http://datura.dylex.net:2352/music/play-q2.ogg
+Key XF86WWW A N         Execp gomp --display=:0.1 --geometry=180x0+0+0 http://datura.dylex.net:2401/music/play-q5.ogg
+Key XF86WWW A S         Execp gomp --display=:0.1 --geometry=180x0+0+0 http://datura.dylex.net:2401/music/play-q2.ogg
 ')dnl
 
 #Key backslash A 4	Execp xmodmap HOME/.Xmodmap.default

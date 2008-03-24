@@ -37,6 +37,7 @@ SOCK 07;35	# socket
 BLK 07;31	# block device driver
 CHR 07;33 	# character device driver
 EXEC 38;5;87
+
 .cgi 38;5;159
 
 # code
@@ -50,6 +51,7 @@ EXEC 38;5;87
 .hs  01;38;5;93
 .hsc 01;38;5;57
 .s   38;5;38
+.m   01;38;5;33
 
 # objects
 .o   38;5;68
@@ -59,6 +61,7 @@ EXEC 38;5;87
 .cmo 38;5;68
 .cmx 38;5;104
 .hi  38;5;98
+.mex 38;5;69
 
 *Makefile 04;38;5;111
 

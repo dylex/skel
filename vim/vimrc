@@ -97,7 +97,15 @@ endfun
 fun HaskellSetup ()
 	setl sw=2
 	setl sts=2
-	setl errorformat=%-Gghc%m\,%-GCompiling\ %m\,%-G\,%f:%l:%m\,%A%f:%l:\,%-Zmake:\ ***\ [%f]\ Error\ %n\,%C%m
+	setl errorformat=%-Gghc%m,
+		\%-G[%\\d%#\ of\ %\\d%#]\ Compiling\ %.%#\ (\ %f\\,\ %.%#\ ),
+		\%-GLinking\ %.%#,
+		\Loading\ package\ %.%#,
+		\%f:%l:%c:\ %m,
+		\%A%f:%l:%c:,
+		\%+C\ \ %#%m,
+		\%-Gmake:\ ***\ [%f]\ Error\ %n,
+		\%-G
 	setl ft=haskell
 	set   suffixes+=.hi
 endfun
@@ -108,6 +116,33 @@ fun TextSetup ()
 	setl nosmartindent
 	setl textwidth=78
 	setl et
+	setl errorformat=%E!\ LaTeX\ %trror:\ %m,
+		\%E!\ %m,
+		\%+WLaTeX\ %.%#Warning:\ %.%#line\ %l%.%#,
+		\%+W%.%#\ at\ lines\ %l--%*\\d,
+		\%WLaTeX\ %.%#Warning:\ %m,
+		\%Cl.%l\ %m,
+		\%+C\ \ %m.,
+		\%+C%.%#-%.%#,
+		\%+C%.%#[]%.%#,
+		\%+C[]%.%#,
+		\%+C%.%#%[{}\\]%.%#,
+		\%+C<%.%#>%.%#,
+		\%C\ \ %m,
+		\%-GSee\ the\ LaTeX%m,
+		\%-GType\ \ H\ <return>%m,
+		\%-G\ ...%.%#,
+		\%-G%.%#\ (C)\ %.%#,
+		\%-G(see\ the\ transcript%.%#),
+		\%-G\\s%#,
+		\%+O(%f)%r,
+		\%+P(%f%r,
+		\%+P\ %\\=(%f%r,
+		\%+P%*[^()](%f%r,
+		\%+P[%\\d%[^()]%#(%f%r,
+		\%+Q)%r,
+		\%+Q%*[^()])%r,
+		\%+Q[%\\d%*[^()])%r
 	if has('spell')
 		setl spell
 	endif
@@ -166,3 +201,4 @@ endif
 filetype on
 syntax on
 colorscheme my
+filetype indent on
