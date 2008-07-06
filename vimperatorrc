@@ -1,0 +1,35 @@
+" vim: set ft=vimperator:
+noremap a t
+noremap A T
+noremap t H
+noremap T <C-^>
+noremap s L
+noremap L gt
+noremap H gT
+noremap c d
+noremap C D
+noremap = g<C-g>
+noremap x <C-c>
+map <A-1> b1<Enter>
+map <A-2> b2<Enter>
+map <A-3> b3<Enter>
+map <A-4> b4<Enter>
+map <A-5> b5<Enter>
+map <A-6> b6<Enter>
+map <A-7> b7<Enter>
+map <A-8> b8<Enter>
+map <A-9> b9<Enter>
+map <A-0> b10<Enter>
+map 0 gg
+imap <C-t> <C-i>
+set guioptions=m
+set titlestring=Firefox
+set maxhints=100
+set hintchars=1234567890
+set editor=rxvt -e vim
+set hintmatching=wordstartswith
+set hlsearch
+set newtab=help,prefs
+set wildmode=full
+set linkbgcolor=
+set linkfgcolor=

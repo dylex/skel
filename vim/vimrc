@@ -48,9 +48,10 @@ let mapleader = ""
 map!  <BS>
 map!  <BS>
 map Y y$
-map ZW :update<CR>
+map ZW :up<CR>
 nmap <Leader>p :set paste<CR>
 nmap <Leader>u :set nopaste<CR>
+nmap <Leader>m :up<CR>:make<CR>
 if has('spell')
 	nmap <Leader>/ :set spell<CR>
 	nmap <Leader>c :set nospell<CR>

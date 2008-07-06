@@ -41,11 +41,11 @@ hi TabLineSel    term=bold cterm=bold
 hi TabLineFill   term=reverse cterm=reverse
 hi CursorColumn  term=reverse ctermbg=7
 hi CursorLine    term=underline cterm=underline
-hi Cursor        NONE
-hi lCursor       NONE
+hi Cursor        guibg=grey guifg=black
+hi lCursor       guibg=grey guibg=black
 hi clear MatchParen
 hi MatchParen    term=reverse cterm=bold,underline
-hi Normal        NONE
+hi Normal        guibg=black guifg=grey
 hi Comment       term=bold ctermfg=4
 hi Constant      term=underline ctermfg=1
 hi link String         Constant

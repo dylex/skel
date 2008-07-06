@@ -44,6 +44,7 @@ home_install+=mailrc
 home_install+=ghci
 home_install+=orpierc
 home_install+=nethackrc
+home_install+=vimperatorrc
 
 $(HOME)/bin/%: bin/%
 	mode=555 ; $(place)
