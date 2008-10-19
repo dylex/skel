@@ -22,6 +22,7 @@ map <A-9> b9<Enter>
 map <A-0> b10<Enter>
 map 0 gg
 imap <C-t> <C-i>
+map <C-a> b
 set guioptions=m
 set titlestring=Firefox
 set maxhints=100

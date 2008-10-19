@@ -28,3 +28,5 @@ case $HOST in
 esac
 
 setopt noglobalrcs
+
+[[ ! -f ${ZDOTDIR:-~}/.zshenv.local ]] || . ${ZDOTDIR:-~}/.zshenv.local

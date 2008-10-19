@@ -4,7 +4,7 @@ HISTSIZE=256
 case $HOST in
 	(datura.dylex.net)
 		MAIL=$HOME/mail/spool
-		MAILPATH=$MAIL'?>> New mail':$HOME/mail/fm'?>> Mmm... freshmeat':$HOME/mail/netflix'?>> Netflix activity':$HOME/.pork/dylexs/logs'?>> New pork messages in $_'
+		MAILPATH=$MAIL'?>> New mail':$HOME/mail/fm'?>> Mmm... freshmeat':$HOME/mail/netflix'?>> Netflix activity':$HOME/.purple/logs'?>> New purple messages in $_'
 		MAILCHECK=60
 		;;
 esac
@@ -13,3 +13,5 @@ setopt ignoreeof
 mesg y
 uname -a
 w
+
+[[ ! -f ${ZDOTDIR:-~}/.zlogin.local ]] || . ${ZDOTDIR:-~}/.zlogin.local

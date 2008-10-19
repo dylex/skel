@@ -157,5 +157,7 @@ autoload -U compinit
 compinit
 
 export LESS='-iRJw'
-export MANSECT=2:3:1:8:6:4:5:7:9:x:n:l
+export MANSECT=2:3:1:8:6:4:5:7:9:0:x:n:l
 unset MAILCHECK
+
+[[ ! -f ${ZDOTDIR:-~}/.zshrc.local ]] || . ${ZDOTDIR:-~}/.zshrc.local

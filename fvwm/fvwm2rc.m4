@@ -62,7 +62,7 @@ define(STARTLIST, `
 			`"screensaver",	Execp xscreensaver','')
 		IFEXEC(xbg, ``
 		`"xbg",		Execp xbg','')')`
-	`"xset",	Execp xset b 100 3520 ''ifdef(HOMEHOST, 20, 35)`` m 3 5 +dpms dpms 900 0 1200 r rate 250 30'')dnl
+	`"xset",	Execp xset b 100 3520 ''ifdef(HOMEHOST, 20, 35)`` m 3 5 +dpms dpms 900 0 1200 r rate 250 30 s 0'')dnl
 dnl
 *FvwmWinList: Geometry TOPGEOM(500, 0, 0)
 
@@ -263,8 +263,11 @@ AddToMenu LoginMenu
 FORLIST(`+	"$1"	LoginTo "$1"
 ', localhost`'esyscmd(awk 'BEGIN { ORS="" } /^Host ([a-z0-9_-]*)$/ { print "`,'"$2 }' HOME/.ssh/config))dnl
 ifdef(`WORKHOST',
-+       "gotracker"   	Execp exec rdesktop -u qaguest -p rain -d rainbay -K -g 1274x948 128.222.168.207
-+	"xombie"	Execp exec rdesktop -g 1274x948 -r sound:local -a 24 xombie
++       "gotracker"   	Execp rdesktop -u qaguest -p rain -d rainbay -K -g 1274x948 128.222.168.207
++	"xombie"	Execp rdesktop -g 1274x948 -r sound:local -a 24 xombie
+)dnl
+ifdef(`HOMEHOST',
++	"greed-vnc"	Execp vncviewer localhost:28659
 )dnl
 
 DestroyFunc OpenBrowser
@@ -328,7 +331,7 @@ DestroyModuleConfig FvwmForm-Run: *
 *FvwmForm-Run: Line         expand
 *FvwmForm-Run: Input        Prog 40 ""
 *FvwmForm-Run: Button       quit "Run" ^M
-*FvwmForm-Run: Command      Execp exec $(Prog)
+*FvwmForm-Run: Command      Execp $(Prog)
 
 DestroyMenu ConfMenu
 AddToMenu ConfMenu
