@@ -10,27 +10,46 @@ noremap c d
 noremap C D
 noremap = g<C-g>
 noremap x <C-c>
-map <A-1> b1<Enter>
-map <A-2> b2<Enter>
-map <A-3> b3<Enter>
-map <A-4> b4<Enter>
-map <A-5> b5<Enter>
-map <A-6> b6<Enter>
-map <A-7> b7<Enter>
-map <A-8> b8<Enter>
-map <A-9> b9<Enter>
-map <A-0> b10<Enter>
+noremap ga gn
 map 0 gg
+map <A-`> b1<Enter>
+map <A-1> b2<Enter>
+map <A-2> b3<Enter>
+map <A-3> b4<Enter>
+map <A-4> b5<Enter>
+map <A-5> b6<Enter>
+map <A-6> b7<Enter>
+map <A-7> b8<Enter>
+map <A-8> b9<Enter>
+map <A-9> b10<Enter>
+map <A-0> b11<Enter>
+map <C-a>` b1<Enter>
+map <C-a>1 b2<Enter>
+map <C-a>2 b3<Enter>
+map <C-a>3 b4<Enter>
+map <C-a>4 b5<Enter>
+map <C-a>5 b6<Enter>
+map <C-a>6 b7<Enter>
+map <C-a>7 b8<Enter>
+map <C-a>8 b9<Enter>
+map <C-a>9 b10<Enter>
+map <C-a>0 b11<Enter>
+map <C-o>r :set! network.http.sendRefererHeader=0<Enter>
+map <C-o>R :set! network.http.sendRefererHeader=2<Enter>
+map & :set! browser.display.use_document_colors!<Enter>
 imap <C-t> <C-i>
-map <C-a> b
 set guioptions=m
 set titlestring=Firefox
 set maxhints=100
 set hintchars=1234567890
 set editor=rxvt -e vim
+set noinsertmode
+set focuscontent
 set hintmatching=wordstartswith
 set hlsearch
 set newtab=help,prefs
 set wildmode=full
 set linkbgcolor=
 set linkfgcolor=
+set urlseparator=;
+set defsearch=g

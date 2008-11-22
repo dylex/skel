@@ -46,6 +46,8 @@ bindkey "^[_"    other
 bindkey "\337"   other
 bindkey "^[B"    copy
 bindkey "\302"   copy
+bindkey "^[[5;5~" copy
+bindkey "^[[5\^"  copy
 bindkey "^[S"    split
 bindkey "\323"   split
 bindkey "^[:"	 colon
@@ -88,4 +90,4 @@ bindkey "\250"   select 9
 bindkey "^[)"    select 10
 bindkey "\251"   select 10
 
-markkeys "^U=(:^D=):^B=K:^F=J"
+markkeys "^U=(:^D=):^B=K:^F=j"

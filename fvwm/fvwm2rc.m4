@@ -402,7 +402,9 @@ Mouse 2 TFSWI	4	Menu WindowMenu
 Mouse 3 TFSW	4	Resize
 ifelse(BUTTONS, 4, `Mouse 4 A	4	Module FvwmIdent', `dnl')
 
-FORLIST(`Key F`'incr($1) A	N	GotoPage $1 0p
+FORLIST(`dnl
+Key F`'incr($1) A N	GotoPage $1 0p
+Key incr($1) A	4	GotoPage $1 0p
 ', SEQLIST(0, decr(DESKTOPS)))dnl
 
 Key n A		4	Prev (CurrentPage) Focus

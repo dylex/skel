@@ -49,6 +49,8 @@ map!  <BS>
 map!  <BS>
 map Y y$
 map ZW :up<CR>
+nmap q: :q
+nmap Q :confirm q<CR>
 nmap <Leader>p :set paste<CR>
 nmap <Leader>u :set nopaste<CR>
 nmap <Leader>m :up<CR>:make<CR>

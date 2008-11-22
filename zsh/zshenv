@@ -20,6 +20,7 @@ export PERLLIB=$HOME/bin/perllib
 #export CC=gcc
 #export CXX=g++
 export TZ=America/New_York
+unset LANG
 
 [[ "$DISPLAY" = "unix:0.0" ]] && export DISPLAY=":0.0"
 case $HOST in 
