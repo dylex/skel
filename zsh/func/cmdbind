@@ -1,3 +1,0 @@
-bindkey "^I" expand-or-complete
-bindkey "^M" accept-line
-bindkey "^D" list-choices

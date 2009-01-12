@@ -13,6 +13,7 @@ define(`SCREENS', ifdef(`WORKHOST', 2, 1))dnl
 define(`DESKTOPS', ifdef(`WORKHOST', 10, 8))dnl
 define(`TOPHEIGHT', 50)dnl
 define(`BUTTONS', ifdef(`HOMEHOST', 4, 3))dnl
+ifelse(syscmd(`test -d /usr/share/fonts/proggy-fonts')sysval, 0, define(`HAVE_PROGGY_FONTS'))
 dnl
 dnl
 ifelse(SCREENS, 1, `dnl',
@@ -23,8 +24,7 @@ DeskTopSize DESKTOPS 1
 ClickTime 200
 EdgeThickness 1
 EdgeScroll 0 0
-EdgeResistance 0 0
-SnapAttraction 2 Screen
+EdgeResistance 0
 #Emulate Mwm
 
 DestroyFunc Execp
@@ -56,7 +56,7 @@ define(STARTLIST, `
 		`"xrw",		Execp nice -5 xrtail -geom 80x7''ADDTO(`TOPSTARTX', 2)TOPPUSHX(80*5)``+0 -fn 5x8 -fg "#FFFFBB" HOME/.xrw','')
 	ifelse(SCREENS.SCREEN, `2.1',, `IFEXEC(xdaliclock, ``
 		`"clock",	Execp nice -5 xdaliclock -geometry ''ADDTO(`TOPSTARTX', -50)TOPGEOM(220, 0, 0)`` -transparent -hex -noseconds -fg "#FFFFCC" -fn "-*-luxi sans-medium-r-*-*-*-400-*-*-*-*-iso8859-1"','')')`
-	`"stuck term",	Execp xterm -title "stuck term" -fn 6x10 -fb 6x10 -geometry 80x24-0+TOPHEIGHT','
+	`"stuck term",	Execp xterm -title "stuck term" ''ifdef(`HAVE_PROGGY_FONTS', ``-fn "-*-proggytinysz-medium-*-*-*-*-*-*-*-*-*-*-*" -fb "-*-proggytinysz-bold-*-*-*-*-*-*-*-*-*-*-*"'', ``-fn 6x10 -fb 6x10'')`` -geometry 80x24-0+TOPHEIGHT','
 	ifelse(SCREEN, 0, `
 		ifdef(`HOMEHOST',, ``
 			`"screensaver",	Execp xscreensaver','')
@@ -92,6 +92,8 @@ Style * DecorateTransient
 Style * MouseFocus, GrabFocus
 Style * MinOverlapPlacement
 Style * Slippery, StickyAcrossPagesIcon, CirculateSkipIcon
+Style * EdgeMoveDelay 0, EdgeMoveResistance 0
+Style * SnapAttraction 2 Screen
 Style * IconBox 512x48`'ifelse(SCREEN, 0, -, +)1+0, IconGrid 48 48, IconFill ifelse(SCREEN, 0, r, l) b
 Style * WindowShadeScrolls, WindowShadeSteps 0
 Style * BackingStoreOff
@@ -447,8 +449,8 @@ Key i A		4S	LoginTo "icicle"
 Key g A		4S	LoginTo "greed"
 Key g A		4	Execp rxvt -e elinks
 
-define(MIXERSEL, ifelse(SERVERHOST, `greed', `Front', OSTYPE, Linux, `Master', HOSTNAME, `druid.pasadena.rainfinity.com', `ogain', OSTYPE, FreeBSD, `vol'))dnl
-define(MIXERSET, `Execp ifelse(OSTYPE, Linux, `amixer -q ifdef(`HOMEHOST', -c1) set MIXERSEL $1$2', OSTYPE, FreeBSD, `/usr/sbin/mixer MIXERSEL $2$1 > /dev/null')')dnl
+define(MIXERSEL, ifelse(OSTYPE, Linux, `Master', HOSTNAME, `druid.pasadena.rainfinity.com', `ogain', OSTYPE, FreeBSD, `vol'))dnl
+define(MIXERSET, `Execp ifelse(OSTYPE, Linux, `amixer -q -D main set MIXERSEL $1$2', OSTYPE, FreeBSD, `/usr/sbin/mixer MIXERSEL $2$1 > /dev/null')')dnl
 Key KP_Add A	4S	MIXERSET(1,-)
 Key KP_Subtract A 4S	MIXERSET(1,+)
 Key KP_Enter A	4	MIXERSET(8)
@@ -466,11 +468,11 @@ Key Next A 	4S 	Execp /usr/sbin/setcx C3', `dnl')
 IFEXEC(mpc, `dnl
 Key KP_Insert A 4S	Execp mpc -p
 Key KP_Delete A 4S	Execp mpc -r
-Key KP_Up A 	4S	Execp mpcpush -p
+Key KP_Up A 	4S	Execp mpc --push
 Key KP_Left A 	4S	Execp mpc -s -1
 Key KP_Right A 	4S	Execp mpc -s +1
 Key KP_End A 	4S	Execp mpc -s -0:30
-Key KP_Down A 	4S	Execp mpcpop -s -0:15
+Key KP_Down A 	4S	Execp mpc --pop -s -0:15
 Key KP_Next A 	4S	Execp mpc -s +0:30
 Key KP_Insert A 5	Execp mpc -p
 Key KP_Delete A 5	Execp mpc -r

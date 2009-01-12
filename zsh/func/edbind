@@ -1,4 +1,7 @@
-bindkey "^D" accept-line
-bindkey "^M" self-insert-unmeta
-#bindkey "^M" vi-open-line-below
-bindkey "^I" self-insert
+bindkey -M ed >& /dev/null && return
+bindkey -N ed main
+bindkey -M ed "^D" accept-line
+bindkey -M ed '^M' self-insert-unmeta
+bindkey -M ed "^I" self-insert
+bindkey -N edcmd vicmd
+bindkey -M edcmd "ZZ" accept-line

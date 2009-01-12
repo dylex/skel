@@ -1,14 +1,14 @@
 local file=$1
 if [ -n "$file" -a -e "$file" ] ; then
-	note=`<$file` || return 1
+	note="$(<$file)" || return 1
 elif [ ${+note} -eq 0 ] ; then
 	note=
 fi
 edbind
-vared note
-cmdbind
+setopt localoptions nobanghist
+vared -M ed -m edcmd note
 if [ -n "$file" ] ; then
-	echo "$note" >! $file || return 1
+	print -r -- "$note" >! $file || return 1
 	note=
 fi
 return 0

@@ -4,4 +4,4 @@ if [[ $# -eq 1 && -f ~/mail/$1 ]] ; then
 	[[ -L ~/mail/$box ]] && box=`readlink ~/mail/$box`
 	set -- -f "=$box"
 fi
-mutt "$@"
+TERM=${TERM/screen*/screen-256color} mutt "$@"

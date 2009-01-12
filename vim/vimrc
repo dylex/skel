@@ -44,6 +44,9 @@ set   viminfo='12,h,%,n~/.vim/viminfo
 set   whichwrap=b,s,<,>,[,]
 set   wrap
 
+let netrw_list_hide='^\.'
+let netrw_http_cmd="curl -o"
+
 let mapleader = ""
 map!  <BS>
 map!  <BS>
@@ -197,7 +200,7 @@ autocmd FileType *m4 call M4Setup()
 autocmd FileType matlab call MatlabSetup()
 autocmd BufReadPost * exe "normal `\""
 
-if $TERM =~ '^\(screen\|rxvt\|xterm-xfree86\)\(-256color\)\?$'
+if $TERM =~ '^\(screen\.\)\?\(screen\|rxvt\|xterm-xfree86\)\(-256color\)\?$'
 	set t_Co=256
 endif
 

@@ -1,5 +1,6 @@
 bindkey -v
 bindkey -r '^A' # I am not a screen
+bindkey -M vicmd K run-help
 #stty erase2 
 
 setopt noalwayslastprompt
@@ -130,6 +131,8 @@ esac
 
 zmodload -i zsh/stat
 
+autoload zfinit
+autoload zmv
 for f in $fpath[1]/[^_]* ; do
 	autoload ${f:t} ;
 done

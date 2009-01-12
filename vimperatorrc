@@ -2,53 +2,78 @@
 noremap a t
 noremap A T
 noremap t H
-noremap T <C-^>
 noremap s L
 noremap L gt
 noremap H gT
 noremap c d
 noremap C D
+noremap _ -
+noremap - <C-^>
 noremap = g<C-g>
 noremap x <C-c>
 noremap ga gn
+map d <Nop>
 map 0 gg
-map <A-`> b1<Enter>
-map <A-1> b2<Enter>
-map <A-2> b3<Enter>
-map <A-3> b4<Enter>
-map <A-4> b5<Enter>
-map <A-5> b6<Enter>
-map <A-6> b7<Enter>
-map <A-7> b8<Enter>
-map <A-8> b9<Enter>
-map <A-9> b10<Enter>
-map <A-0> b11<Enter>
-map <C-a>` b1<Enter>
-map <C-a>1 b2<Enter>
-map <C-a>2 b3<Enter>
-map <C-a>3 b4<Enter>
-map <C-a>4 b5<Enter>
-map <C-a>5 b6<Enter>
-map <C-a>6 b7<Enter>
-map <C-a>7 b8<Enter>
-map <C-a>8 b9<Enter>
-map <C-a>9 b10<Enter>
-map <C-a>0 b11<Enter>
-map <C-o>r :set! network.http.sendRefererHeader=0<Enter>
-map <C-o>R :set! network.http.sendRefererHeader=2<Enter>
-map & :set! browser.display.use_document_colors!<Enter>
+map <A-`> b1<CR>
+map <A-1> b2<CR>
+map <A-2> b3<CR>
+map <A-3> b4<CR>
+map <A-4> b5<CR>
+map <A-5> b6<CR>
+map <A-6> b7<CR>
+map <A-7> b8<CR>
+map <A-8> b9<CR>
+map <A-9> b10<CR>
+map <A-0> b11<CR>
+map <C-a>` b1<CR>
+map <C-a>1 b2<CR>
+map <C-a>2 b3<CR>
+map <C-a>3 b4<CR>
+map <C-a>4 b5<CR>
+map <C-a>5 b6<CR>
+map <C-a>6 b7<CR>
+map <C-a>7 b8<CR>
+map <C-a>8 b9<CR>
+map <C-a>9 b10<CR>
+map <C-a>0 b11<CR>
+map T :tabd<CR>
+map <A-L> :tabm -1<CR>
+map <A-R> :tabm +1<CR>
+map <C-o>r :set! network.http.sendRefererHeader=0<CR>
+map <C-o>R :set! network.http.sendRefererHeader=2<CR>
+map <C-o>i :set! permission.default.image=1<CR>
+map <C-o>I :set! permission.default.image=2<CR>
+map <C-o>a :set! image.animation_mode="normal"<CR>
+map <C-o>A :set! image.animation_mode="none"<CR>
+map ^ :set usermode!<CR>
+map & :set! browser.display.use_document_colors!<CR>
+" todo: key for animations/images (*?)
+" dom.disable_image_src_set=true/false
+js <<EOF
+mappings.addUserMap([modes.NORMAL], ["\\"],
+	"Toggle view source",
+	function () {
+		let loc = content.location;
+		if (loc.protocol == "view-source:")
+			loc.href = loc.href.substr(12);
+		else
+			loc.href = "view-source:" + loc.href;
+	});
+EOF
 imap <C-t> <C-i>
-set guioptions=m
+set guioptions=mnbl
 set titlestring=Firefox
 set maxhints=100
-set hintchars=1234567890
-set editor=rxvt -e vim
+"set hintchars=1234567890
+set editor="rxvt -e vim"
 set noinsertmode
 set focuscontent
 set hintmatching=wordstartswith
+set hinttimeout=1000
 set hlsearch
 set newtab=help,prefs
 set wildmode=full
+set showstatuslinks=2
 set linkbgcolor=
 set linkfgcolor=
 set urlseparator=;
