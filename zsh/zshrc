@@ -49,8 +49,8 @@ case $HOST in
 	(druid.pasadena.rainfinity.com) hostcolor=34 ;;
 	(icicle.dylex.net) hostcolor=36 ;;
 esac
-#      (in hostcolor) hostname              +shlvl                :            path          [jobs]                (red if error) >
-PROMPT=${hostcolor:+%{[${hostcolor}m%}}'%m%2(L.%{[1;34m%}+%L.)%{[30;1m%}:%{[0;32m%}%~%1(j. %{[33m%}[%j].)%{[%(?..31)m%}%(!,#,>)%{[m%}'
+#      (in hostcolor) hostname              <blue>+shlvl          <grey>:      <green>path   <yellow>[jobs]        <cyan>psvar        <red if error>  >
+PROMPT=${hostcolor:+%{[${hostcolor}m%}}'%m%2(L.%{[1;34m%}+%L.)%{[30;1m%}:%{[0;32m%}%~%1(j. %{[33m%}[%j].)%1(v. %{[36m%}%v.)%{[%(?..31)m%}%(!,#,>)%{[m%}'
 RPROMPT='%(?..%{[31m%}%? )%{[36m%}%U%D %T%u%{[m%}'
 PROMPT2=${hostcolor:+%{[${hostcolor}m%}}'%m%{[30;1m%}:%{[0;32m%}%~%{[m%} %B%_%b%(!,#,>)'
 REPORTTIME=1

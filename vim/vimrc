@@ -40,6 +40,8 @@ set   suffixes-=.h
 set   switchbuf=useopen,split
 set   tabstop=8
 set   textwidth=0
+set   timeoutlen=2000
+set   ttimeoutlen=100
 set   viminfo='12,h,%,n~/.vim/viminfo
 set   whichwrap=b,s,<,>,[,]
 set   wrap

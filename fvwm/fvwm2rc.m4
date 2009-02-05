@@ -56,7 +56,7 @@ define(STARTLIST, `
 		`"xrw",		Execp nice -5 xrtail -geom 80x7''ADDTO(`TOPSTARTX', 2)TOPPUSHX(80*5)``+0 -fn 5x8 -fg "#FFFFBB" HOME/.xrw','')
 	ifelse(SCREENS.SCREEN, `2.1',, `IFEXEC(xdaliclock, ``
 		`"clock",	Execp nice -5 xdaliclock -geometry ''ADDTO(`TOPSTARTX', -50)TOPGEOM(220, 0, 0)`` -transparent -hex -noseconds -fg "#FFFFCC" -fn "-*-luxi sans-medium-r-*-*-*-400-*-*-*-*-iso8859-1"','')')`
-	`"stuck term",	Execp xterm -title "stuck term" ''ifdef(`HAVE_PROGGY_FONTS', ``-fn "-*-proggytinysz-medium-*-*-*-*-*-*-*-*-*-*-*" -fb "-*-proggytinysz-bold-*-*-*-*-*-*-*-*-*-*-*"'', ``-fn 6x10 -fb 6x10'')`` -geometry 80x24-0+TOPHEIGHT','
+	`"stuck term",	Execp xterm -title "stuck term" ''ifdef(`HAVE_PROGGY_FONTS', ``-fn "-*-proggytiny-medium-*-*-*-*-*-*-*-*-*-*-*" -fb "-*-proggytiny-bold-*-*-*-*-*-*-*-*-*-*-*"'', ``-fn 6x10 -fb 6x10'')`` -geometry 80x24-0+TOPHEIGHT','
 	ifelse(SCREEN, 0, `
 		ifdef(`HOMEHOST',, ``
 			`"screensaver",	Execp xscreensaver','')
