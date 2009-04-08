@@ -1,9 +1,3 @@
-bindkey -v
-bindkey -r '^A' # I am not a screen
-bindkey -M vicmd K run-help
-#stty erase2 
-
-setopt noalwayslastprompt
 setopt   autocd
 setopt   autocontinue
 setopt   autolist
@@ -17,8 +11,6 @@ setopt nobgnice
 setopt noclobber
 setopt   complete_in_word
 setopt nocorrect
-setopt nocsh_junkie_quotes
-setopt nocsh_nullglob
 setopt   dvorak
 setopt   equals
 setopt   extended_glob
@@ -41,6 +33,7 @@ setopt   rcquotes
 setopt   rmstarsilent
 
 DIRSTACKSIZE=8
+HISTSIZE=256
 KEYTIMEOUT=10
 case $HOST in
 	(datura.dylex.net) hostcolor=35 ;;
@@ -56,10 +49,11 @@ PROMPT2=${hostcolor:+%{[${hostcolor}m%}}'%m%{[30;1m%}:%{[0;32m%}%~%{[m%} %B%
 REPORTTIME=1
 TIMEFMT="%*E: %U %S (%P)	%J"
 SPROMPT="'%R' -> '%r'? "
+unset MAILCHECK
 
 #eval `dircolors -b ~/.dircolors` 
 case $TERM in
-	(rxvt|rxvt-256colors|screen|screen-256colors|xterm-xfree86)
+	(rxvt|rxvt-256colors|mrxvt|screen|screen-256colors|xterm-xfree86)
 		export LS_COLORS='no=00:fi=00:di=07:ln=04:or=04;05:pi=07;34:so=07;35:bd=07;31:cd=07;33:ex=38;5;87:*.cgi=38;5;159:*.c=01;34:*.cc=01;38;5;26:*.cpp=01;38;5;26:*.h=01;38;5;21:*.hh=01;38;5;25:*.ml=01;38;5;57:*.mli=01;38;5;56:*.hs=01;38;5;93:*.hsc=01;38;5;57:*.s=38;5;38:*.m=01;38;5;33:*.o=38;5;68:*.a=38;5;110:*.so=38;5;117:*.cmi=38;5;62:*.cmo=38;5;68:*.cmx=38;5;104:*.hi=38;5;98:*.mex=38;5;69:*Makefile=04;38;5;111:*.sh=38;5;147:*.pl=38;5;141:*.pm=38;5;135:*.php=38;5;129:*.tar=01;38;5;249:*.tgz=01;38;5;254:*.tar.gz=01;38;5;254:*.tar.bz2=01;38;5;255:*.gz=38;5;254:*.bz2=38;5;255:*.jpg=38;5;118:*.jpeg=38;5;118:*.gif=38;5;40:*.png=38;5;46:*.bmp=38;5;41:*.ppm=38;5;42:*.pnm=38;5;42:*.xbm=38;5;36:*.xpm=38;5;37:*.xcf=38;5;47:*.fig=01;38;5;38:*.wav=38;5;119:*.au=38;5;119:*.mp3=38;5;155:*.midi=38;5;114:*.tex=01;38;5;220:*.html=01;38;5;184:*.ps=38;5;186:*.pdf=38;5;222:*.dvi=38;5;185:*.doc=38;5;148:*.xls=38;5;149:*.gnumeric=38;5;192:*.xml=38;5;180:*.diff=04;38;5;146:*.txt=38;5;161:*.log=38;5;132:*INSTALL=38;5;203:*README=38;5;203:*.dump=38;5;172:*,v=04;38;5;126:' ;;
 
 	(*)
@@ -104,9 +98,7 @@ alias rm='rm -i'
 alias grep='grep -n --color'
 alias gerp='grep'
 alias spell='aspell -a'
-alias sup='cvs up'
 alias sr='screen -r main || screen -r'
-alias up='uptime'
 alias sz='su zoot'
 alias mplay='mplayer'
 case $HOST in
@@ -131,36 +123,57 @@ esac
 
 zmodload -i zsh/stat
 
-autoload zfinit
-autoload zmv
+autoload -U zfinit
+EMAIL_ADDR=dylan-ftp@dylex.net
+autoload -U zmv
 for f in $fpath[1]/[^_]* ; do
 	autoload ${f:t} ;
 done
+unset f
 
-zstyle ':completion:*' completions 0
-zstyle ':completion:*' glob 1
-zstyle ':completion:*' substitute 1
-zstyle ':completion:*' file-sort name
+zstyle ':completion:*' completer _complete _history _ignored
 zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*:(all-|)files' last-prompt false
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-packed true
-zstyle ':completion:*' add-space true
 zstyle ':completion:*' original true
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
 zstyle ':completion:*' word true
-zstyle ':completion:*' domains dylex.net
-zstyle ':completion:*' hosts dylex druid ugcs
+zstyle ':completion:*' mail-directory ~/mail
+zstyle ':completion:*' domains dylex.net cns.nyu.edu psych.nyu.edu nyu.edu
+zstyle ':completion:*' hosts `awk '/^Host ([a-z0-9_-]*)$/ { print $2 }' ~/.ssh/config`
 zstyle ':completion:*' urls ~/.elinks/gotohist
 #zstyle ':completion:*:processes' command ps -Hu dylan o pid,s,start_time,tty8,command
-zstyle ':completion:complete:(all-|)files' ignored-patterns '(|*/)CVS'
-#zstyle :compinstall filename '/home/dylan/.zsh/.zlogin'
+zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
 autoload -U compinit
 compinit
 
-export LESS='-iRJw'
-export MANSECT=2:3:1:8:6:4:5:7:9:0:x:n:l
-unset MAILCHECK
+bindkey -M viins -r '^A'
+bindkey -M vicmd -r '^A'
+bindkey -M vicmd K run-help
+bindkey -M vicmd 'u' undo
+bindkey -M vicmd '^R' redo
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^E' vi-kill-eol
+bindkey -M vicmd '^E' vi-kill-eol
+bindkey -M viins '^K' kill-whole-line
+bindkey -M vicmd '^K' kill-buffer
+bindkey -M viins '^F' up-history
+bindkey -M vicmd '^F' up-history
+bindkey -M viins '^B' down-history
+bindkey -M vicmd '^B' down-history
+bindkey -M viins '^N' history-beginning-search-backward
+bindkey -M vicmd '^N' history-beginning-search-backward
+bindkey -M viins '^P' history-beginning-search-forward
+bindkey -M vicmd '^P' history-beginning-search-forward
+bindkey -M viins '^J' accept-line-and-down-history
+bindkey -M vicmd '^J' accept-line-and-down-history
+bindkey -M viins '^Y' accept-and-infer-next-history
+bindkey -M vicmd '^Y' accept-and-infer-next-history
+bindkey -M viins '^Z' push-line
+bindkey -M vicmd '^Z' push-line
+bindkey -v
 
 [[ ! -f ${ZDOTDIR:-~}/.zshrc.local ]] || . ${ZDOTDIR:-~}/.zshrc.local

@@ -202,7 +202,7 @@ autocmd FileType *m4 call M4Setup()
 autocmd FileType matlab call MatlabSetup()
 autocmd BufReadPost * exe "normal `\""
 
-if $TERM =~ '^\(screen\.\)\?\(screen\|rxvt\|xterm-xfree86\)\(-256color\)\?$'
+if $TERM =~ '^\(screen\.\)\?\(screen\|m\?rxvt\|xterm-xfree86\)\(-256color\)\?$'
 	set t_Co=256
 endif
 

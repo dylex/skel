@@ -1,10 +1,14 @@
+if [[ $0 == /usr/src/zsh-* ]] ; then
+    MODULE_PATH=${0:h}/Modules:${0:h}/Zle
+fi
+
 umask 022
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 [[ -d /usr/X11R6/bin ]] && PATH=$PATH:/usr/X11R6/bin
 [[ -d /usr/local/bin ]] && PATH=$PATH:/usr/local/bin:/usr/local/sbin
 [[ -d /usr/local/pgsql/bin ]] && PATH=$PATH:/usr/local/pgsql/bin
-PATH=$PATH:$HOME/bin
+PATH=$HOME/bin:$PATH
 
 [[ -d ~/.zsh/func ]] && FPATH=~/.zsh/func:$FPATH
 
@@ -19,6 +23,8 @@ export PERLLIB=$HOME/bin/perllib
 #export PYTHONSTARTUP=~/.pythonrc
 #export CC=gcc
 #export CXX=g++
+export LESS='-iRJw'
+export MANSECT=2:3:1:8:6:4:5:7:9:0:x:n:l
 export TZ=America/New_York
 unset LANG
 

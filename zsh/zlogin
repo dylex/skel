@@ -1,6 +1,5 @@
 WATCH=all
 WATCHFMT="%D %T %S%n%s %l %a %M"
-HISTSIZE=256
 case $HOST in
 	(datura.dylex.net)
 		MAIL=$HOME/mail/spool

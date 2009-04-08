@@ -14,6 +14,7 @@ define(`DESKTOPS', ifdef(`WORKHOST', 10, 8))dnl
 define(`TOPHEIGHT', 50)dnl
 define(`BUTTONS', ifdef(`HOMEHOST', 4, 3))dnl
 ifelse(syscmd(`test -d /usr/share/fonts/proggy-fonts')sysval, 0, define(`HAVE_PROGGY_FONTS'))
+define(`TERMINAL', IFEXEC(mrxvt, mrxvt, IFEXEC(rxvt, rxvt, xterm)))dnl
 dnl
 dnl
 ifelse(SCREENS, 1, `dnl',
@@ -244,7 +245,7 @@ AddToMenu CDMenu "%HOME/media/pix/cd/loop.xpm%refresh" Function MakeCDMenu
 
 DestroyFunc LoginTo
 AddToFunc LoginTo
-+	I Execp xterm -title $0 -e ssh $*
++	I Execp TERMINAL -title $0 -e ssh $*
 
 DestroyModuleConfig FvwmForm-Login: *
 *FvwmForm-Login: WarpPointer
@@ -303,10 +304,10 @@ AddToMenu MainMenu
 +	"xterm"		Execp xterm
 +	"xterm-login"	Execp xterm +ut
 +	"rxvt"		Execp rxvt
-+	"srxvt"		Execp rxvt -fn 6x10 -fb 6x10 -geometry 166x69
++	"mrxvt"		Execp mrxvt
 +	""		Nop
 +	"firefox"	OpenBrowser
-IFEXEC(w4m, `+	"w3m"		Execp rxvt -e w3m -v', `dnl')
+IFEXEC(w4m, `+	"w3m"		Execp TERMINAL -e w3m -v', `dnl')
 IFEXECMENU(nethack, --geometry=553x128)
 IFEXECMENU(zsnes)
 +	"Login"		Popup LoginMenu
@@ -437,7 +438,7 @@ Key semicolon A 4	ifdef(`HOMEHOST', `Exec sleep 2 && xset dpms force off', `Exec
 Key apostrophe A 4	Exec sleep 2 && xset s activate
 Key q A 	4	Execp xlock
 Key XF86Standby	A N	Execp xlock
-Key t A		4	Execp rxvt
+Key t A		4	Execp TERMINAL
 Key f A		4	OpenBrowser
 Mouse 2 A	4S	OpenBrowser "$(xclip -o)"
 Key slash A	4C	Exec xclip -o | aspell -a | grep "^&" | xmessage -default okay -file -
@@ -447,7 +448,7 @@ Key r A		4S	LoginTo "druid"
 Key r A		4CS	LoginTo "edruid"
 Key i A		4S	LoginTo "icicle"
 Key g A		4S	LoginTo "greed"
-Key g A		4	Execp rxvt -e elinks
+Key g A		4	Execp TERMINAL -e elinks
 
 define(MIXERSEL, ifelse(OSTYPE, Linux, `Master', HOSTNAME, `druid.pasadena.rainfinity.com', `ogain', OSTYPE, FreeBSD, `vol'))dnl
 define(MIXERSET, `Execp ifelse(OSTYPE, Linux, `amixer -q -D main set MIXERSEL $1$2', OSTYPE, FreeBSD, `/usr/sbin/mixer MIXERSEL $2$1 > /dev/null')')dnl

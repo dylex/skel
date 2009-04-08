@@ -9,8 +9,8 @@ if [[ $ZFTP_PWD != $zfconfig[lastdir_$ZFTP_SESSION] ]]; then
   [[ -n $curdir && -f $curdir ]] && rm -f $curdir
   zfconfig[otherargs_$ZFTP_SESSION]=
   zffcache -d
-  psvar=(${(@)psvar[2,$]})
 fi
+psvar=(${(@)psvar[2,$]})
 
 if [[ -z $ZFTP_USER ]]; then
   # last call, after an FTP logout

@@ -1,6 +1,6 @@
 #!/bin/sh
 cd $HOME
-export PATH=/bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:$HOME/bin
+export PATH=$HOME/bin:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin
 unset SHLVL
 
 xmodmap -pke > .Xmodmap.default

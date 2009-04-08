@@ -1,0 +1,17 @@
+local dir
+dir=${1:-.}
+if [[ -d $dir/.svn ]] ; then
+	echo svn
+elif [[ -d $dir/.git ]] ; then
+	echo git
+elif [[ -d $dir/CVS ]] ; then
+	echo cvs
+elif [[ -d $dir/_darcs ]] ; then
+	echo darcs
+elif [[ -d $dir/_MTN ]] ; then
+	echo mtn
+elif [[ -d $dir/RCS ]] ; then
+	echo rcs
+else
+	return 1
+fi
