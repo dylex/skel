@@ -156,9 +156,12 @@ bindkey -M vicmd 'u' undo
 bindkey -M vicmd '^R' redo
 bindkey -M viins '^H' backward-delete-char
 bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^O' vi-kill-line
 bindkey -M viins '^E' vi-kill-eol
 bindkey -M vicmd '^E' vi-kill-eol
-bindkey -M viins '^K' kill-whole-line
+bindkey -M viins '^U' kill-whole-line
+bindkey -M vicmd '^U' kill-whole-line
+bindkey -M viins '^K' kill-buffer
 bindkey -M vicmd '^K' kill-buffer
 bindkey -M viins '^F' up-history
 bindkey -M vicmd '^F' up-history
@@ -173,7 +176,7 @@ bindkey -M vicmd '^J' accept-line-and-down-history
 bindkey -M viins '^Y' accept-and-infer-next-history
 bindkey -M vicmd '^Y' accept-and-infer-next-history
 bindkey -M viins '^Z' push-line
-bindkey -M vicmd '^Z' push-line
+bindkey -M vicmd '^Z' push-input
 bindkey -v
 
 [[ ! -f ${ZDOTDIR:-~}/.zshrc.local ]] || . ${ZDOTDIR:-~}/.zshrc.local

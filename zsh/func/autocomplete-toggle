@@ -1,0 +1,105 @@
+# mostly borrowed from predict-on
+#
+# To use it:
+#   autoload -Uz autocomplete-toggle
+#   zle -N autocomplete-toggle
+#   bindkey -M vicmd '^I' autocomplete-toggle
+
+autocomplete-toggle() {
+    setopt localoptions shwordsplit
+    if [[ $WIDGETFUNC != autocomplete-toggle ]] ; then
+	if zle -l autocomplete-toggle ; then
+	    (( ${+AUTOCOMPLETE_STATE} )) && zle autocomplete-widget
+	    zle -D autocomplete-toggle
+	else
+	    zle -N autocomplete-toggle
+	    bindkey ${1:--M vicmd "^I"} autocomplete-toggle
+	fi
+    elif (( ${+AUTOCOMPLETE_STATE} )) ; then
+	zle -A .self-insert self-insert
+	zle -A .backward-delete-char backward-delete-char
+	#zle -A .expand-or-complete expand-or-complete
+	bindkey '^I' expand-or-complete
+	zle -D autocomplete-complete
+	unset AUTOCOMPLETE_STATE
+    else
+	zle -N self-insert autocomplete-widget
+	zle -N backward-delete-char autocomplete-widget
+	#zle -N expand-or-complete autocomplete-complete
+	zle -N autocomplete-complete
+	bindkey '^I' autocomplete-complete
+	integer -g AUTOCOMPLETE_STATE=1
+    fi
+    return 0
+}
+
+autocomplete-widget () {
+    setopt localoptions noshwordsplit noksharrays
+
+    if [[ -z $BUFFER && $AUTOCOMPLETE_STATE -eq 0 ]] && ! (( PENDING )) ; then 
+	AUTOCOMPLETE_STATE=1
+    elif [[ $AUTOCOMPLETE_STATE -eq 0
+	 || $LASTWIDGET != (self-insert|backward-delete-char|complete-word|expand-or-complete|list-choices|history-beginning-*|accept-*|autocomplete-*|zle-line-init)
+	 || $BUFFER == *$'\012'* ]] || (( PENDING )) ; then
+	[[ $AUTOCOMPLETE_STATE -ne 0 ]] && zstyle -t :autocomplete debug && zle -M "autocomplete off after $LASTWIDGET"
+	AUTOCOMPLETE_STATE=0
+	zle .$WIDGET -- "$@"
+	return
+    fi
+
+    if [[ $WIDGET == self-insert && ${RBUFFER[1,$#KEYS]} = $KEYS ]] ; then
+	((CURSOR+=$#KEYS))
+	return 0
+    fi
+
+    if [[ $LASTWIDGET == history-* ]] ; then
+	AUTOCOMPLETE_STATE=2
+    elif [[ $LASTWIDGET == *complete* ]] ; then
+	AUTOCOMPLETE_STATE=1
+    fi
+
+    case $WIDGET in
+	(self-insert) 
+	    LBUFFER="$LBUFFER$KEYS"
+	    ;;
+	(backward-delete-char)
+	    LBUFFER="$LBUFFER[1,-2]"
+	    RBUFFER=""
+	    return 0
+	    ;;
+        (*)
+	    zle -M "unknown autocomplete widget: $WIDGET"
+	    return 1
+    esac
+
+    [[ -z $LBUFFER ]] && return
+
+    if [[ $AUTOCOMPLETE_STATE -eq 2 ]] ; then
+	zle .history-beginning-search-backward && return
+    fi
+
+    RBUFFER=""
+    [[ ${LBUFFER[-1]} == [^,-:@-Z_a-z~] ]] && return
+
+    unsetopt automenu recexact autolist
+    setopt alwayslastprompt
+    integer curs=$CURSOR
+    local curcontext="autocomplete:${${curcontext:-:::}#*:}"
+
+    zle complete-word
+    CURSOR=$curs
+
+    return 0
+}
+
+autocomplete-complete () {
+    if [[ $AUTOCOMPLETE_STATE -ne 1 || -z $RBUFFER ]] ; then
+	zle expand-or-complete -w -- "$@"
+	return
+    fi
+    CURSOR=$#BUFFER
+    return 0
+}
+
+# Handle zsh autoloading conventions
+[[ -o kshautoload ]] || autocomplete-toggle "$@"
