@@ -9,28 +9,38 @@ autocomplete-toggle() {
     setopt localoptions shwordsplit
     if [[ $WIDGETFUNC != autocomplete-toggle ]] ; then
 	if zle -l autocomplete-toggle ; then
-	    (( ${+AUTOCOMPLETE_STATE} )) && zle autocomplete-widget
+	    (( ${+AUTOCOMPLETE_STATE} )) && autocomplete-disable
+	    bindkey -r ${1:--M vicmd "^I"}
 	    zle -D autocomplete-toggle
 	else
 	    zle -N autocomplete-toggle
 	    bindkey ${1:--M vicmd "^I"} autocomplete-toggle
+	    zstyle 'autocomplete:completion:*' insert-unambiguous true
 	fi
     elif (( ${+AUTOCOMPLETE_STATE} )) ; then
-	zle -A .self-insert self-insert
-	zle -A .backward-delete-char backward-delete-char
-	#zle -A .expand-or-complete expand-or-complete
-	bindkey '^I' expand-or-complete
-	zle -D autocomplete-complete
-	unset AUTOCOMPLETE_STATE
+	autocomplete-disable
     else
-	zle -N self-insert autocomplete-widget
-	zle -N backward-delete-char autocomplete-widget
-	#zle -N expand-or-complete autocomplete-complete
-	zle -N autocomplete-complete
-	bindkey '^I' autocomplete-complete
-	integer -g AUTOCOMPLETE_STATE=1
+	autocomplete-enable
     fi
     return 0
+}
+
+autocomplete-enable () {
+    zle -N self-insert autocomplete-widget
+    zle -N backward-delete-char autocomplete-widget
+    #zle -N expand-or-complete autocomplete-complete
+    zle -N autocomplete-complete
+    bindkey '^I' autocomplete-complete
+    integer -g AUTOCOMPLETE_STATE=1
+}
+
+autocomplete-disable () {
+    zle -A .self-insert self-insert
+    zle -A .backward-delete-char backward-delete-char
+    #zle -A .expand-or-complete expand-or-complete
+    bindkey '^I' expand-or-complete
+    zle -D autocomplete-complete
+    unset AUTOCOMPLETE_STATE
 }
 
 autocomplete-widget () {
@@ -40,7 +50,7 @@ autocomplete-widget () {
 	AUTOCOMPLETE_STATE=1
     elif [[ $AUTOCOMPLETE_STATE -eq 0
 	 || $LASTWIDGET != (self-insert|backward-delete-char|complete-word|expand-or-complete|list-choices|history-beginning-*|accept-*|autocomplete-*|zle-line-init)
-	 || $BUFFER == *$'\012'* ]] || (( PENDING )) ; then
+	 || $BUFFER == *$'\012'* ]] ; then
 	[[ $AUTOCOMPLETE_STATE -ne 0 ]] && zstyle -t :autocomplete debug && zle -M "autocomplete off after $LASTWIDGET"
 	AUTOCOMPLETE_STATE=0
 	zle .$WIDGET -- "$@"
@@ -50,6 +60,12 @@ autocomplete-widget () {
     if [[ $WIDGET == self-insert && ${RBUFFER[1,$#KEYS]} = $KEYS ]] ; then
 	((CURSOR+=$#KEYS))
 	return 0
+    fi
+
+    if (( PENDING )) ; then
+	AUTOCOMPLETE_STATE=0
+	zle .$WIDGET -- "$@"
+	return
     fi
 
     if [[ $LASTWIDGET == history-* ]] ; then

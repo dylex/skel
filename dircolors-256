@@ -32,13 +32,19 @@ FILE 00 	# normal file
 DIR 07 		# directory
 LINK 04 	# symbolic link
 ORPHAN 04;05	# symlink to nonexistent file
+HARDLINK 04	# regular file with more than one link
+DOOR 07;35	# door
 FIFO 07;34	# pipe
 SOCK 07;35	# socket
 BLK 07;31	# block device driver
 CHR 07;33 	# character device driver
 EXEC 38;5;87
-
-.cgi 38;5;159
+SETUID 37;41 # file that is setuid (u+s)
+SETGID 30;43 # file that is setgid (g+s)
+CAPABILITY 30;41 # file with capability
+STICKY_OTHER_WRITABLE 30;42 # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 34;42 # dir that is other-writable (o+w) and not sticky
+STICKY 37;44 # dir with the sticky bit set (+t) and not other-writable
 
 # code
 .c   01;34 
@@ -66,6 +72,7 @@ EXEC 38;5;87
 *Makefile 04;38;5;111
 
 # scripts
+.cgi 38;5;159
 .sh  38;5;147
 .pl  38;5;141
 .pm  38;5;135
