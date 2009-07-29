@@ -1,3 +1,11 @@
+while ! tput longname > /dev/null 2>&1 ; do
+	case $TERM in
+		(mrxvt) 	TERM=rxvt ;;
+		(screen-*) 	TERM=screen ;;
+		(xterm-*) 	TERM=xterm ;;
+		(*) echo "TERM=$TERM unknown" ; break ;;
+	esac
+done
 WATCH=all
 WATCHFMT="%D %T %S%n%s %l %a %M"
 case $HOST in

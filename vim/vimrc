@@ -5,6 +5,7 @@ set   backupskip=/tmp/*,/var/tmp/*
 "set   cindent
 set   cinkeys-=0#
 set   cpoptions-=s
+set   diffopt=filler,iwhite,vertical
 set noequalalways
 "set equalprg=indent
 set   fileformats=unix,dos,mac
@@ -14,6 +15,7 @@ set   formatoptions=rq
 set nohlsearch
 set   ignorecase
 set   incsearch
+set   langmap=tjjtnkksslln
 set   laststatus=2
 if $OSTYPE =~? 'freebsd'
 set   makeprg=gmake
@@ -114,7 +116,7 @@ fun HaskellSetup ()
 		\%+C\ \ %#%m,
 		\%-Gmake:\ ***\ [%f]\ Error\ %n,
 		\%-G
-	setl ft=haskell
+	setf haskell
 	set   suffixes+=.hi
 endfun
 
@@ -192,9 +194,10 @@ fun M4Setup ()
 	setl matchpairs+=`:'
 endfun
 
-autocmd BufRead *.ml* call OCamlSetup()
-autocmd BufRead *.hs* call HaskellSetup()
-autocmd BufRead DOC call TextSetup()
+autocmd BufNewFile,BufRead *.ml* call OCamlSetup()
+autocmd BufNewFile,BufRead *.hs* call HaskellSetup()
+autocmd BufNewFile,BufRead DOC call TextSetup()
+autocmd BufNewFile,BufRead *.r,*.R setf r
 autocmd FileType mail call MailSetup()
 autocmd FileType tex call TexSetup()
 autocmd FileType c,cpp call CodeSetup()
@@ -210,3 +213,7 @@ filetype on
 syntax on
 colorscheme my
 filetype indent on
+
+if filereadable($MYVIMRC . ".local")
+	source $MYVIMRC.local
+endif

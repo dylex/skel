@@ -49,6 +49,10 @@ home_install+=orpierc
 home_install+=nethackrc
 home_install+=vimperatorrc
 
+home_install+=less
+$(HOME)/.less: lesskey
+	lesskey $<
+
 $(HOME)/bin/%: bin/%
 	mode=555 ; $(place)
 install+=$(addprefix $(HOME)/,$(wildcard bin/*))

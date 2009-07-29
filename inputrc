@@ -3,4 +3,11 @@ $if python
 TAB: tab-insert
 "\e[2~": complete
 $endif
+set keymap vi
+t: next-history
+n: previous-history
+s: forward-char
+j: vi-char-search
+k: vi-subst
+l: vi-search-again
 # "\C-\M-I": tab-insert

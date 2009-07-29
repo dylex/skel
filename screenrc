@@ -20,6 +20,9 @@ screen -t - 0 -zsh
 bind / displays
 bind ; lockscreen
 bind h prev
+bind s next
+bind t focus down
+bind n focus up
 bind l next
 bind j focus down
 bind k focus up

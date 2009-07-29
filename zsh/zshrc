@@ -152,6 +152,14 @@ bindkey -M viins -r '^A'
 bindkey -M vicmd -r '^A'
 bindkey -M vicmd K run-help
 bindkey -M vicmd 'u' undo
+if true ; then
+bindkey -M vicmd 't' down-line-or-history
+bindkey -M vicmd 'j' vi-find-next-char-skip
+bindkey -M vicmd 'n' up-line-or-history
+bindkey -M vicmd 'k' vi-substitute
+bindkey -M vicmd 's' vi-forward-char
+bindkey -M vicmd 'l' vi-repeat-search
+fi
 bindkey -M vicmd '^R' redo
 bindkey -M viins '^H' backward-delete-char
 bindkey -M viins '^?' backward-delete-char
@@ -172,6 +180,8 @@ bindkey -M viins '^P' history-beginning-search-forward
 bindkey -M vicmd '^P' history-beginning-search-forward
 bindkey -M viins '^J' accept-line-and-down-history
 bindkey -M vicmd '^J' accept-line-and-down-history
+bindkey -M viins '^T' accept-line-and-down-history
+bindkey -M vicmd '^T' accept-line-and-down-history
 bindkey -M viins '^Y' accept-and-infer-next-history
 bindkey -M vicmd '^Y' accept-and-infer-next-history
 bindkey -M viins '^Z' push-line

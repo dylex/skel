@@ -411,7 +411,8 @@ Key incr($1) A	4	GotoPage $1 0p
 ', SEQLIST(0, decr(DESKTOPS)))dnl
 
 Key n A		4	Prev (CurrentPage) Focus
-Key s A		4	Next (CurrentPage) Focus
+#Key s A		4	Next (CurrentPage) Focus
+Key t A		4	Next (CurrentPage) Focus
 Key d A 	4	ifelse(SCREENS, 1, `Next (CurrentPage) WarpFocus', `GotoScreen ifelse(SCREEN, 0, 1, 0)')
 Key r A		4	Prev (CurrentPage) FocusRaise
 Key c A		4	Next (CurrentPage) FocusRaise
@@ -419,7 +420,8 @@ Key w A		4	Raise
 Key v A		4	Lower
 
 Key h A		4	GotoPage -1p 0p
-Key l A		4	GotoPage +1p 0p
+#Key l A		4	GotoPage +1p 0p
+Key s A		4	GotoPage +1p 0p
 Key j A		4	GotoDesk +1
 Key k A		4	GotoDesk -1
 Key minus A	4	GotoPage prev
@@ -438,7 +440,8 @@ Key semicolon A 4	ifdef(`HOMEHOST', `Exec sleep 2 && xset dpms force off', `Exec
 Key apostrophe A 4	Exec sleep 2 && xset s activate
 Key q A 	4	Execp xlock
 Key XF86Standby	A N	Execp xlock
-Key t A		4	Execp TERMINAL
+#Key t A		4	Execp TERMINAL
+Key l A		4	Execp TERMINAL
 Key f A		4	OpenBrowser
 Mouse 2 A	4S	OpenBrowser "$(xclip -o)"
 Key slash A	4C	Exec xclip -o | aspell -a | grep "^&" | xmessage -default okay -file -

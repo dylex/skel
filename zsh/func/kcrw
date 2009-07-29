@@ -1,15 +1,17 @@
-local ip
+#local ip
 local stream
-local -a servers
+local name
+#local -a servers
 
 # http://media.kcrw.com/live/kcrwlive.pls
-servers=( scfire-chi-aa01.stream.aol.com scfire-chi-aa02.stream.aol.com scfire-chi-aa03.stream.aol.com scfire-chi-aa04.stream.aol.com scfire-chi-aa05.stream.aol.com scfire-dll-aa01.stream.aol.com scfire-dll-aa02.stream.aol.com scfire-dll-aa03.stream.aol.com scfire-dll-aa04.stream.aol.com scfire-dll-aa05.stream.aol.com scfire-ntc-aa01.stream.aol.com scfire-ntc-aa02.stream.aol.com scfire-ntc-aa03.stream.aol.com scfire-ntc-aa04.stream.aol.com scfire-ntc-aa05.stream.aol.com scfire-nyk-aa01.stream.aol.com scfire-nyk-aa02.stream.aol.com scfire-nyk-aa03.stream.aol.com scfire-nyk-aa04.stream.aol.com )
+#servers=( scfire-chi-aa01.stream.aol.com scfire-chi-aa02.stream.aol.com scfire-chi-aa03.stream.aol.com scfire-chi-aa04.stream.aol.com scfire-chi-aa05.stream.aol.com scfire-dll-aa01.stream.aol.com scfire-dll-aa02.stream.aol.com scfire-dll-aa03.stream.aol.com scfire-dll-aa04.stream.aol.com scfire-dll-aa05.stream.aol.com scfire-ntc-aa01.stream.aol.com scfire-ntc-aa02.stream.aol.com scfire-ntc-aa03.stream.aol.com scfire-ntc-aa04.stream.aol.com scfire-ntc-aa05.stream.aol.com scfire-nyk-aa01.stream.aol.com scfire-nyk-aa02.stream.aol.com scfire-nyk-aa03.stream.aol.com scfire-nyk-aa04.stream.aol.com )
 
-ip=${servers[$RANDOM % $#servers]}
+#ip=${servers[$RANDOM % $#servers]}
 case $1 in
-	(m*) stream=1045 ;;
-	(n*) stream=1047 ;;
-	(*) stream=1046 ;;
+	(m*) stream=1045 ; name=music ; shift ;;
+	(n*) stream=1047 ; name=news ; shift ;;
+	(*) stream=1046 ; name=live ;;
 esac
 
-mplaya "$@" "http://$ip:80/stream/$stream"
+#mplaya "$@" "http://$ip:80/stream/$stream"
+mplaya "$@" http://media.kcrw.com/live/kcrw$name.pls

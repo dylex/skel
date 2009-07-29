@@ -3,8 +3,15 @@ noremap a t
 noremap A T
 noremap t H
 noremap s L
-noremap L gt
-noremap H gT
+noremap t j
+noremap n k
+noremap s l
+noremap l n
+"noremap j H
+"noremap k L
+"noremap L <C-n>
+noremap S <C-n>
+noremap H <C-p>
 noremap c d
 noremap C D
 noremap _ -
@@ -36,9 +43,9 @@ map <C-a>7 b7<CR>
 map <C-a>8 b8<CR>
 map <C-a>9 b9<CR>
 map <C-a>0 b10<CR>
-map T :tabd<CR>
-map <A-L> :tabm -1<CR>
-map <A-R> :tabm +1<CR>
+" map T :tabd<CR>
+map <A-H> :tabm -1<CR>
+map <A-L> :tabm +1<CR>
 map <C-o>r :set! network.http.sendRefererHeader=0<CR>
 map <C-o>R :set! network.http.sendRefererHeader=2<CR>
 map <C-o>i :set! permission.default.image=1<CR>
