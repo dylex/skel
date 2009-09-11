@@ -1,0 +1,2 @@
+#!/bin/sh
+exec ci -l -i -d -M -norig -t- "$@"

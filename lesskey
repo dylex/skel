@@ -1,4 +1,8 @@
+#command
 t forw-line
 n back-line
 l repeat-search
 j next-tag
+
+#env
+LESS=-iRJw

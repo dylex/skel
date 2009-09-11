@@ -15,7 +15,7 @@ set   formatoptions=rq
 set nohlsearch
 set   ignorecase
 set   incsearch
-set   langmap=tjjtnkksslln
+"set   langmap=tjjtnkksslln
 set   laststatus=2
 if $OSTYPE =~? 'freebsd'
 set   makeprg=gmake
@@ -47,6 +47,24 @@ set   ttimeoutlen=100
 set   viminfo='12,h,%,n~/.vim/viminfo
 set   whichwrap=b,s,<,>,[,]
 set   wrap
+
+no t j
+no n k
+no s l
+no - t
+no j +
+no k -
+no l n
+no t j
+no n k
+no s l
+no j n
+no k t
+no l s
+no T J
+no N K
+no S L
+no K T
 
 let netrw_list_hide='^\.'
 let netrw_http_cmd="curl -o"
@@ -198,11 +216,13 @@ autocmd BufNewFile,BufRead *.ml* call OCamlSetup()
 autocmd BufNewFile,BufRead *.hs* call HaskellSetup()
 autocmd BufNewFile,BufRead DOC call TextSetup()
 autocmd BufNewFile,BufRead *.r,*.R setf r
+autocmd BufNewFile,BufRead *.gnuplot setf gnuplot
 autocmd FileType mail call MailSetup()
 autocmd FileType tex call TexSetup()
 autocmd FileType c,cpp call CodeSetup()
 autocmd FileType *m4 call M4Setup()
 autocmd FileType matlab call MatlabSetup()
+autocmd BufReadPost */duck/* setl et
 autocmd BufReadPost * exe "normal `\""
 
 if $TERM =~ '^\(screen\.\)\?\(screen\|m\?rxvt\|xterm-xfree86\)\(-256color\)\?$'

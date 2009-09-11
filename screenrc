@@ -93,4 +93,4 @@ bindkey "\250"   select 9
 bindkey "^[)"    select 10
 bindkey "\251"   select 10
 
-markkeys "^U=(:^D=):^B=K:^F=J"
+markkeys "^U=(:^D=):^B=K:^F=J:j=t:k=n:l=s:n=l"

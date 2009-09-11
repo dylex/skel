@@ -1,14 +1,12 @@
 " vim: set ft=vimperator:
 noremap a t
 noremap A T
-noremap t H
-noremap s L
 noremap t j
 noremap n k
 noremap s l
 noremap l n
-"noremap j H
-"noremap k L
+noremap j H
+noremap k L
 "noremap L <C-n>
 noremap S <C-n>
 noremap H <C-p>

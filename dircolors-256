@@ -32,7 +32,6 @@ FILE 00 	# normal file
 DIR 07 		# directory
 LINK 04 	# symbolic link
 ORPHAN 04;05	# symlink to nonexistent file
-HARDLINK 04	# regular file with more than one link
 DOOR 07;35	# door
 FIFO 07;34	# pipe
 SOCK 07;35	# socket

@@ -80,6 +80,9 @@ AddToMenu StartupMenu
 	FORLIST(`+ $1	$2
 	', STARTLIST)dnl
 
+DestroyFunc EWMHActivateWindowFunc
+AddToFunc EWMHActivateWindowFunc I Iconify Off
+
 Colorset 0 bg #000000, fg #ffffff
 Colorset 1 RootTransparent, fg #000000
 
