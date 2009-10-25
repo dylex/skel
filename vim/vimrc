@@ -215,13 +215,14 @@ endfun
 autocmd BufNewFile,BufRead *.ml* call OCamlSetup()
 autocmd BufNewFile,BufRead *.hs* call HaskellSetup()
 autocmd BufNewFile,BufRead DOC call TextSetup()
-autocmd BufNewFile,BufRead *.r,*.R setf r
+autocmd! filetypedetect BufNewFile,BufRead *.r,*.R setf r
 autocmd BufNewFile,BufRead *.gnuplot setf gnuplot
 autocmd FileType mail call MailSetup()
 autocmd FileType tex call TexSetup()
 autocmd FileType c,cpp call CodeSetup()
 autocmd FileType *m4 call M4Setup()
 autocmd FileType matlab call MatlabSetup()
+autocmd FileType mp setl indentkeys= " metapost indenting sucks
 autocmd BufReadPost */duck/* setl et
 autocmd BufReadPost * exe "normal `\""
 

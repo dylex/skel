@@ -53,6 +53,8 @@ home_install+=less
 $(HOME)/.less: lesskey
 	lesskey $<
 
+home_install+=xpdfrc
+
 $(HOME)/bin/%: bin/%
 	mode=555 ; $(place)
 install+=$(addprefix $(HOME)/,$(wildcard bin/*))

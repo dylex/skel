@@ -10,6 +10,8 @@ elif [[ -d $dir/_darcs ]] ; then
 	echo darcs
 elif [[ -d $dir/_MTN ]] ; then
 	echo mtn
+elif [[ -d $dir/.hg ]] ; then
+	echo hg
 elif [[ -d $dir/RCS ]] ; then
 	echo rcs
 else

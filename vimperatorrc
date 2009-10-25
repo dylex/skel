@@ -5,8 +5,9 @@ noremap t j
 noremap n k
 noremap s l
 noremap l n
-noremap j H
-noremap k L
+noremap e H
+noremap u L
+noremap k u
 "noremap L <C-n>
 noremap S <C-n>
 noremap H <C-p>

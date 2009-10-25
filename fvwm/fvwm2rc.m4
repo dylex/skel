@@ -49,7 +49,7 @@ define(STARTLIST, `
 	`"commandS",	Module FvwmCommandS',
 	`"event",	Module FvwmEvent',
 	`"home",	GotoHome',
-	`"eyes",	Execp nice xeyes -geometry ''TOPGEOM(eval(TOPHEIGHT-2), 2, 1)``','
+	`"eyes",	Execp nice xeyes -distance -geometry ''TOPGEOM(eval(TOPHEIGHT), 0, 0)``','
 	ifelse(SCREENS.SCREEN, `2.0',, `IFEXEC(stripchart, ``
 		`"stripchart",	Execp nice -8 stripchart --geometry ''TOPGEOM(360, 0, 0)``','', ``
 		`"xload",	Execp nice -8 xload -bg "#3050A0" -fg "#F0E000" -nolabel -update 30 -geometry ''TOPGEOM(120, 0, 0)``','')')

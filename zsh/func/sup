@@ -15,6 +15,7 @@ case $type in
 	(cvs) 	cvs up -d "$@" ;;
 	(darcs) darcs pull "$@" ;;
 	(git) 	git pull "$@" ;;
+	(hg) 	hg pull -u "$@" ;;
 	(mtn) 	mtn pull "$@" && mtn up "$@" ;;
 	(svn) 	svn up "$@" ;;
 	(*) 
