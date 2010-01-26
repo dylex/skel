@@ -3,7 +3,14 @@ $if python
 TAB: tab-insert
 "\e[2~": complete
 $endif
+C-n: history-search-backward
+C-t: history-search-forward
+C-u: kill-whole-line
 set keymap vi
+C-n: history-search-backward
+C-t: history-search-forward
+C-u: kill-whole-line
+u: undo
 $if term=connectbot
 $else
 t: next-history
