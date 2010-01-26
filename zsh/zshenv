@@ -35,4 +35,8 @@ esac
 
 setopt noglobalrcs
 
+if [[ $TERM = connectbot ]] ; then
+	export QWERTY=1
+fi
+
 [[ ! -f ${ZDOTDIR:-~}/.zshenv.local ]] || . ${ZDOTDIR:-~}/.zshenv.local

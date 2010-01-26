@@ -48,6 +48,7 @@ set   viminfo='12,h,%,n~/.vim/viminfo
 set   whichwrap=b,s,<,>,[,]
 set   wrap
 
+if $QWERTY == ""
 no t j
 no n k
 no s l
@@ -65,6 +66,7 @@ no T J
 no N K
 no S L
 no K T
+endif
 
 let netrw_list_hide='^\.'
 let netrw_http_cmd="curl -o"
@@ -110,6 +112,8 @@ com -range=% StripTrailing <line1>,<line2>s:\s\+$::
 nmap <Leader>s :StripTrailing<CR>
 vmap <Leader>s :StripTrailing<CR>
 
+nmap <Leader>2 :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
+
 if hostname() =~ '^druid\.'
 	nmap <Leader>y :call SyncSources()<CR>
 	set tags+=~/cvs/current/tags
@@ -134,6 +138,7 @@ fun HaskellSetup ()
 		\%+C\ \ %#%m,
 		\%-Gmake:\ ***\ [%f]\ Error\ %n,
 		\%-G
+	setl matchpairs-=<:>
 	setf haskell
 	set   suffixes+=.hi
 endfun
@@ -215,7 +220,8 @@ endfun
 autocmd BufNewFile,BufRead *.ml* call OCamlSetup()
 autocmd BufNewFile,BufRead *.hs* call HaskellSetup()
 autocmd BufNewFile,BufRead DOC call TextSetup()
-autocmd! filetypedetect BufNewFile,BufRead *.r,*.R setf r
+autocmd BufNewFile,BufRead *.r,*.R setf r
+autocmd BufNewFile,BufRead *.hsc setf chaskell
 autocmd BufNewFile,BufRead *.gnuplot setf gnuplot
 autocmd FileType mail call MailSetup()
 autocmd FileType tex call TexSetup()
@@ -226,7 +232,7 @@ autocmd FileType mp setl indentkeys= " metapost indenting sucks
 autocmd BufReadPost */duck/* setl et
 autocmd BufReadPost * exe "normal `\""
 
-if $TERM =~ '^\(screen\.\)\?\(screen\|m\?rxvt\|xterm-xfree86\)\(-256color\)\?$'
+if $TERM =~ '^\(screen\.\)\?\(screen\|m\?rxvt\|xterm-xfree86\|connectbot\)\(-256color\)\?$'
 	set t_Co=256
 endif
 

@@ -63,7 +63,7 @@ define(STARTLIST, `
 			`"screensaver",	Execp xscreensaver','')
 		IFEXEC(xbg, ``
 		`"xbg",		Execp xbg','')')`
-	`"xset",	Execp xset b 100 3520 ''ifdef(HOMEHOST, 20, 35)`` m 3 5 +dpms dpms 900 0 1200 r rate 250 30 s 0'')dnl
+	`"xset",	Execp xset b 100 3520 ''ifdef(HOMEHOST, 20, 35)`` m 3 5 +dpms dpms 300 0 900 r rate 250 30 s 0'')dnl
 dnl
 *FvwmWinList: Geometry TOPGEOM(500, 0, 0)
 
@@ -98,7 +98,7 @@ Style * MinOverlapPlacement
 Style * Slippery, StickyAcrossPagesIcon, CirculateSkipIcon
 Style * EdgeMoveDelay 0, EdgeMoveResistance 0
 Style * SnapAttraction 2 Screen
-Style * IconBox 512x48`'ifelse(SCREEN, 0, -, +)1+0, IconGrid 48 48, IconFill ifelse(SCREEN, 0, r, l) b
+Style * IconBox 512x48`'ifelse(SCREEN, 0, -64, +1)+0, IconGrid 48 48, IconFill ifelse(SCREEN, 0, r, l) b
 Style * WindowShadeScrolls, WindowShadeSteps 0
 Style * BackingStoreOff
 OpaqueMoveSize 0

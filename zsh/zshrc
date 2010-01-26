@@ -145,6 +145,7 @@ zstyle ':completion:*' hosts `awk '/^Host ([a-z0-9_-]*)$/ { print $2 }' ~/.ssh/c
 zstyle ':completion:*' urls ~/.elinks/gotohist
 #zstyle ':completion:*:processes' command ps -Hu dylan o pid,s,start_time,tty8,command
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
+zstyle ':completion:*:*:(^vi):*:(all-|)files' ignored-patterns '*.hi' '*.o' '*.mat'
 autoload -U compinit
 compinit
 
@@ -152,7 +153,7 @@ bindkey -M viins -r '^A'
 bindkey -M vicmd -r '^A'
 bindkey -M vicmd K run-help
 bindkey -M vicmd 'u' undo
-if true ; then
+if [[ -z $QWERTY ]] ; then
 bindkey -M vicmd 't' down-line-or-history
 bindkey -M vicmd 'n' up-line-or-history
 bindkey -M vicmd 's' vi-forward-char
@@ -177,16 +178,18 @@ bindkey -M viins '^B' down-history
 bindkey -M vicmd '^B' down-history
 bindkey -M viins '^N' history-beginning-search-backward
 bindkey -M vicmd '^N' history-beginning-search-backward
-bindkey -M viins '^P' history-beginning-search-forward
-bindkey -M vicmd '^P' history-beginning-search-forward
+bindkey -M viins '^T' history-beginning-search-forward
+bindkey -M vicmd '^T' history-beginning-search-forward
 bindkey -M viins '^J' accept-line-and-down-history
 bindkey -M vicmd '^J' accept-line-and-down-history
-bindkey -M viins '^T' accept-line-and-down-history
-bindkey -M vicmd '^T' accept-line-and-down-history
 bindkey -M viins '^Y' accept-and-infer-next-history
 bindkey -M vicmd '^Y' accept-and-infer-next-history
 bindkey -M viins '^Z' push-line
 bindkey -M vicmd '^Z' push-input
 bindkey -v
+
+if [[ $TERM = connectbot ]] ; then
+	alias srd='screen -rd'
+fi
 
 [[ ! -f ${ZDOTDIR:-~}/.zshrc.local ]] || . ${ZDOTDIR:-~}/.zshrc.local
