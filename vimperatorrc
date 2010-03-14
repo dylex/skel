@@ -83,4 +83,4 @@ set showstatuslinks=2
 "set linkbgcolor=
 "set linkfgcolor=
 set urlseparator=;
-set defsearch=g
+set defsearch=s

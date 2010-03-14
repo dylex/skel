@@ -8,15 +8,10 @@ while ! tput longname > /dev/null 2>&1 ; do
 done
 WATCH=all
 WATCHFMT="%D %T %S%n%s %l %a %M"
-case $HOST in
-	(datura.dylex.net)
-		MAIL=$HOME/mail/spool
-		MAILPATH=$MAIL/new'?>> New mail':$HOME/mail/fm'?>> Mmm... freshmeat':$HOME/mail/netflix'?>> Netflix activity':$HOME/.purple/logs'?>> New purple messages in $_'
-		MAILCHECK=60
-		;;
-esac
 
-setopt ignoreeof
+if [[ $TERM != connectbot ]] ; then
+	setopt ignoreeof
+fi
 mesg y
 uname -a
 w

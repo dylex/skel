@@ -1,3 +1,4 @@
+urlCommand "firefox '%s'"
 bind h any scrollLeft(16)
 bind H any scrollToLeftEdge
 bind s any scrollRight(16)

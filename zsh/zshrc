@@ -100,25 +100,7 @@ alias spell='aspell -a'
 alias sr='screen -r main || screen -r'
 alias sz='su zoot'
 alias mplay='mplayer'
-case $HOST in
-	(datura.dylex.net)
-		alias mplaya='mplayer -quiet -nortc -ao alsa:device=live'
-		hash -d src=/usr/src
-		;;
-	(druid.pasadena.rainfinity.com)
-		hash -d cur=~/cvs/current
-		hash -d pdp=~/cvs/HEAD/PDP
-		hash -d pdpberlin=~pdp/Berlin/Drafts
-		hash -d cvsroot=~/cvs/HEAD/CVSROOT
-		;;
-	(icicle.dylex.net)
-		alias mplaya='mplayer -quiet -nortc'
-		alias srr='sudo screen -x root'
-		;;
-	(*)
-		alias mplaya='mplayer -quiet'
-		;;
-esac
+alias mplaya='mplayer -quiet'
 
 zmodload -i zsh/stat
 
@@ -149,8 +131,8 @@ zstyle ':completion:*:*:(^vi):*:(all-|)files' ignored-patterns '*.hi' '*.o' '*.m
 autoload -U compinit
 compinit
 
-bindkey -M viins -r '^A'
-bindkey -M vicmd -r '^A'
+bindkey -M viins '^A' beep
+bindkey -M vicmd '^A' beep
 bindkey -M vicmd K run-help
 bindkey -M vicmd 'u' undo
 if [[ -z $QWERTY ]] ; then
