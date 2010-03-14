@@ -41,6 +41,7 @@ $(HOME)/.vim/%: vim/%
 home_install+=vimrc $(vimfiles)
 
 home_install+=screenrc
+home_install+=tmux.conf
 home_install+=elinks/elinks.conf
 home_install+=inputrc
 home_install+=mailrc
