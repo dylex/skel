@@ -1,0 +1,7 @@
+local s
+s=${1:-main} ; [[ $# -ge 1 ]] && shift
+if tmux has-session -t $s ; then
+	tmux attach-session -t $s
+else
+	tmux new-session -s $s -n "$1" "$@" \; set-option -t $s default-path $PWD
+fi

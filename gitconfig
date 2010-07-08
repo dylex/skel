@@ -1,0 +1,23 @@
+[user]
+	email = dylan@dylex.net
+	name = Dylan Simon
+[core]
+	pager = less -FX
+[push]
+	default = current
+[rerere]
+	enabled = false
+[alias]
+	st = status
+	ci = commit -v
+	ch = cherry -v
+	cia = commit -va
+	amend = commit -v --amend
+	logs = log --stat
+	diffs = diff --stat
+	b = branch -v
+	ba = branch -av
+	cat = show --format=raw
+	up = remote update
+[color]
+	ui = auto

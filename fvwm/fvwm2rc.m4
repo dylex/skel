@@ -310,7 +310,8 @@ AddToMenu MainMenu
 +	"mrxvt"		Execp mrxvt
 +	""		Nop
 +	"firefox"	OpenBrowser
-IFEXEC(w4m, `+	"w3m"		Execp TERMINAL -e w3m -v', `dnl')
+IFEXECMENU(chrome)
+IFEXEC(w3m, `+	"w3m"		Execp TERMINAL -e w3m -v', `dnl')
 IFEXECMENU(nethack, --geometry=553x128)
 IFEXECMENU(zsnes)
 +	"Login"		Popup LoginMenu
