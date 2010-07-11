@@ -4,7 +4,7 @@ defscrollback 1024
 #shell -zsh
 shelltitle -
 startup_message off
-caption always ' %-Lw%{Wk}%n%f %t%{-}%+Lw %=%?%{.r}%u%{-} %?%?%{=u kw}%h%{-} %?%{b}%l %{-kc}%c '
+caption always ' %-Lw%{Wk}%n%f %t%{-}%+Lw %=%?%{.r}%u%{-} %?%?%{=u kw}%h%{-} %?%{b}%H %l %{-kc}%c '
 bell_msg '^GBell in window %n'
 activity '^GActivity in window %n'
 vbell_msg '-*-*-'
