@@ -50,6 +50,7 @@ home_install+=orpierc
 home_install+=nethackrc
 home_install+=vimperatorrc
 home_install+=gitconfig
+home_install+=mrxvtrc
 
 home_install+=less
 $(HOME)/.less: lesskey
