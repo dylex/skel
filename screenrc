@@ -21,9 +21,8 @@ bind / displays
 bind ; lockscreen
 bind h prev
 bind s next
-bind t focus down
-bind n focus up
-bind l next
+bind t prev
+bind n next
 bind j focus down
 bind k focus up
 bind ` select 0
