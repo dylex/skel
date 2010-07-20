@@ -13,11 +13,13 @@
 	ch = cherry -v
 	cia = commit -va
 	amend = commit -v --amend
+	co = checkout -m
 	logs = log --stat
 	diffs = diff --stat
 	b = branch -v
 	ba = branch -av
 	cat = show --format=raw
+	ap = cherry-pick -n
 	up = remote update
 [color]
 	ui = auto
