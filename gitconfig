@@ -23,3 +23,5 @@
 	up = remote update
 [color]
 	ui = auto
+[merge]
+	tool = vimdiff
