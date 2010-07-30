@@ -28,17 +28,17 @@ xterm.vt100.scrollBar:		false
 xterm.vt100.saveLines:		1024
 xterm.vt100.scrollKey:		true
 xterm.vt100.scrollTtyOutput:	false
-!xterm.vt100.font2:		-*-proggytiny-medium-*-*-*-10-*-*-*-*-*-*-*
-!xterm.vt100.font3:		-*-proggysquare-medium-*-*-*-11-*-*-*-*-*-*-*
-!xterm.vt100.font4:		-*-proggyclean-medium-*-*-*-13-*-*-*-*-*-*-*
+xterm.vt100.font2:		-*-proggytiny-medium-*-*-*-10-*-*-*-*-*-*-*
+xterm.vt100.font3:		-*-proggysquare-medium-*-*-*-11-*-*-*-*-*-*-*
+xterm.vt100.font4:		-*-proggyclean-medium-*-*-*-13-*-*-*-*-*-*-*
 xterm.backarrowKeyIsErase:	true
-!xterm.vt100.geometry:		231x86+2+50
-!xterm.termName:		xterm-xfree86
+xterm.vt100.geometry:		193x75+2+50
+xterm.termName:		xterm-256color
 
 rxvt.font:			fixed
-!rxvt.font1:			-*-proggytiny-medium-*-*-*-10-*-*-*-*-*-*-*
-!rxvt.font2:			-*-proggysquare-medium-*-*-*-11-*-*-*-*-*-*-*
-!rxvt.font3:			-*-proggyclean-medium-*-*-*-13-*-*-*-*-*-*-*
+rxvt.font1:			-*-proggytiny-medium-*-*-*-10-*-*-*-*-*-*-*
+rxvt.font2:			-*-proggysquare-medium-*-*-*-11-*-*-*-*-*-*-*
+rxvt.font3:			-*-proggyclean-medium-*-*-*-13-*-*-*-*-*-*-*
 rxvt.loginShell:		false
 rxvt.utmpInhibit:               true
 rxvt.termName:			rxvt
@@ -63,7 +63,7 @@ rxvt.color12:                   #0000FF
 rxvt.color13:                   #FF00FF
 rxvt.color14:                   #00FFFF
 rxvt.color15:                   #FFFFFF
-!rxvt.geometry:			231x86+2+50
+rxvt.geometry:			193x75+2+50
 
 xfig*customization:		-color
 

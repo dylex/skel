@@ -1,12 +1,16 @@
 place=\
-	args="$$args -D -m $${mode:-444}" ;\
+	args="$$args -p -D -m $${mode:-444}" ;\
 	targ='$@' ;\
-	[ -f $$targ.keep ] && targ=$$targ.skel ;\
-	[ -w $$targ ] && args="$$args -b" ;\
+	[ -f $$targ.keep ] && echo "Preserving $$targ" && targ=$$targ.skel ;\
+	[ -w $$targ ] && echo "Backing up $$targ" && args="$$args -b" ;\
 	install $$args $< $$targ
 install=
+HOST:=$(shell hostname -s)
 
 default:
+
+%.$(HOST): %
+	cp -pi $< $@
 
 ZSHDIR:=$(shell zsh -c 'echo $${ZDOTDIR:-~}')
 $(ZSHDIR)/.%: zsh/%
@@ -62,7 +66,7 @@ $(HOME)/bin/%: bin/%
 	mode=555 ; $(place)
 install+=$(addprefix $(HOME)/,$(wildcard bin/*))
 
-$(HOME)/.%: %
+$(HOME)/.%: %.$(HOST)
 	$(place)
 install+=$(addprefix $(HOME)/.,$(home_install))
 
