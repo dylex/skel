@@ -21,6 +21,7 @@ if $OSTYPE =~? 'freebsd'
 set   makeprg=gmake
 endif
 set   matchpairs+=<:>
+set   modeline
 set   mouse=a
 set   number
 set   ruler
@@ -44,6 +45,8 @@ set   tabstop=8
 set   textwidth=0
 set   timeoutlen=2000
 set   ttimeoutlen=100
+set   undodir=/tmp/vimundo-$USER
+set   undofile
 set   viminfo='12,h,%,n~/.vim/viminfo
 set   whichwrap=b,s,<,>,[,]
 set   wrap
