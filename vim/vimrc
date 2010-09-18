@@ -45,8 +45,10 @@ set   tabstop=8
 set   textwidth=0
 set   timeoutlen=2000
 set   ttimeoutlen=100
+if has('persistent_undo')
 set   undodir=/tmp/vimundo-$USER
 set   undofile
+endif
 set   viminfo='12,h,%,n~/.vim/viminfo
 set   whichwrap=b,s,<,>,[,]
 set   wrap
