@@ -58,7 +58,7 @@ home_install+=mrxvtrc
 
 home_install+=less
 $(HOME)/.less: lesskey
-	lesskey $<
+	lesskey -o $@ $<
 
 home_install+=xpdfrc
 
