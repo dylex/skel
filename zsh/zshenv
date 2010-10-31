@@ -28,10 +28,6 @@ export TZ=America/New_York
 unset LANG
 
 [[ "$DISPLAY" = "unix:0.0" ]] && export DISPLAY=":0.0"
-case $HOST in 
-	(*.rainfinity.*|*.emc.com)
-		export CVSROOT=:ext:simond@aleve.lss.emc.com:/cvs/rain/cvs_root ;;
-esac
 
 setopt noglobalrcs
 

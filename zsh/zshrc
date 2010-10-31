@@ -40,6 +40,7 @@ case $HOST in
 	(pancake.dylex.net) hostcolor=33 ;;
 	(greed) hostcolor=31 ;;
 	(druid.pasadena.rainfinity.com) hostcolor=34 ;;
+	(wampum) hostcolor=34 ;;
 	(icicle.dylex.net) hostcolor=36 ;;
 esac
 #      (in hostcolor) hostname              <blue>+shlvl          <grey>:      <green>path   <yellow>[jobs]        <cyan>psvar        <red if error>  >
