@@ -1,12 +1,14 @@
-local s
-if [[ $# -ge 2 && $1 = -j ]] ; then
-	shift
-	[[ $# -eq 1 ]] && set -- "$@" "$@"
-	set -- "$@" \; set status off \; link-window -k -s main:$1 -t 0
-fi
-s=${1:-main} ; [[ $# -ge 1 ]] && shift
-if tmux has-session -t $s ; then
-	tmux attach-session -t $s
+local s o d j
+while getopts 'jd' o ; do case $o in
+	(j) j=1 ;;
+	(d) d=1 ;;
+esac ; done
+shift $[OPTIND-1]
+s=${1:-main} ; [[ $# -gt 0 ]] && shift
+if [[ -n $j ]] ; then
+	tmux new-session -s $s -n "$s" \; set status off \; link-window -k -s main:$s -t 0
+elif tmux has-session -t $s ; then
+	tmux attach-session ${d:+-d} -t $s
 else
 	tmux new-session -s $s -n "$1" "$@" \; set-option -t $s default-path $PWD
 fi
