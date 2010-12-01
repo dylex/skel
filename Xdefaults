@@ -69,8 +69,8 @@ xfig*customization:		-color
 
 xmessage.nearMouse:		false
 xmessage.center:		true
-xmessage.Form.Text*font:	-sony-fixed-medium-r-normal-*-*-150-*-*-c-*-*-*
-xmessage.Form.Command.font:	-sony-fixed-medium-r-normal-*-*-150-*-*-c-*-*-*
+!xmessage.Form.Text*font:	-sony-fixed-medium-r-normal-*-*-150-*-*-c-*-*-*
+!xmessage.Form.Command.font:	-sony-fixed-medium-r-normal-*-*-150-*-*-c-*-*-*
 xmessage.Form.background:	darkgray
 xmessage.Form.Command.background:	gray
 xmessage.Form.Text*background:	lightblue
