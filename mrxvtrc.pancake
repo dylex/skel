@@ -42,6 +42,7 @@ mrxvt.color15:			#FFFFFF
 mrxvt.altPrefix:		^A
 mrxvt.modifier:			mod4
 mrxvt.geometry:			199x75+1+50
+mrxvt.cutChars:			#%&*-./0123456789:=ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~
 
 Mrxvt.macro.Primary+Shift+Prior:	Scroll -1p
 Mrxvt.macro.Primary+Shift+Next:		Scroll +1p
