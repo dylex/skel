@@ -1,1 +1,1 @@
-mplay -cache 1024 `youtube-dl -g "$@"`
+mplay -cache 2048 `youtube-dl -g "$@"`
