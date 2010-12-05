@@ -9,9 +9,6 @@ HOST:=$(shell hostname -s)
 
 default:
 
-%.$(HOST): %
-	cp -pi $< $@
-
 ZSHDIR:=$(shell zsh -c 'echo $${ZDOTDIR:-~}')
 $(ZSHDIR)/.%: zsh/%
 	$(place)
@@ -66,7 +63,7 @@ $(HOME)/bin/%: bin/%
 	mode=555 ; $(place)
 install+=$(addprefix $(HOME)/,$(wildcard bin/*))
 
-$(HOME)/.%: %.$(HOST)
+$(HOME)/.%: %
 	$(place)
 install+=$(addprefix $(HOME)/.,$(home_install))
 
