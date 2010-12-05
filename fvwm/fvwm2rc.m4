@@ -154,8 +154,12 @@ AddToFunc GotoScreen
 *FvwmPager: Balloons pager
 *FvwmPager: UseSkipList
 
-*FvwmEvent: Cmd
-*FvwmEvent: PassID
+*FvwmEvent: StartDelay 4
+*FvwmEvent: add_window NewWindow
+
+DestroyFunc NewWindow
+AddToFunc NewWindow
++	I ThisWindow ("Gtk2Hack *") Resize 537p 128p
 
 *FvwmIdent: Back #5090B0
 *FvwmIdent: Fore #FFFF00
@@ -312,7 +316,7 @@ AddToMenu MainMenu
 +	"firefox"	OpenBrowser
 IFEXECMENU(chrome)
 IFEXEC(w3m, `+	"w3m"		Execp TERMINAL -e w3m -v', `dnl')
-IFEXECMENU(nethack, --geometry=553x128)
+IFEXECMENU(nethack, --geometry=537x128)
 IFEXECMENU(zsnes)
 +	"Login"		Popup LoginMenu
 +	"Apps"		Popup AppsMenu
