@@ -77,6 +77,7 @@ set focuscontent
 set hintmatching=wordstartswith
 set hinttimeout=1000
 set hlsearch
+set complete=slfbh
 set newtab=help,prefs
 set wildmode=full
 set showstatuslinks=2
