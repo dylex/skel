@@ -32,7 +32,6 @@ xterm.vt100.scrollTtyOutput:	false
 !xterm.vt100.font3:		-*-proggysquare-medium-*-*-*-11-*-*-*-*-*-*-*
 !xterm.vt100.font4:		-*-proggyclean-medium-*-*-*-13-*-*-*-*-*-*-*
 xterm.backarrowKeyIsErase:	true
-!xterm.vt100.geometry:		231x86+2+50
 !xterm.termName:		xterm-xfree86
 
 rxvt.font:			fixed
@@ -63,14 +62,13 @@ rxvt.color12:			#0000FF
 rxvt.color13:			#FF00FF
 rxvt.color14:			#00FFFF
 rxvt.color15:			#FFFFFF
-!rxvt.geometry:			231x86+2+50
 
 xfig*customization:		-color
 
 xmessage.nearMouse:		false
 xmessage.center:		true
-xmessage.Form.Text*font:	-sony-fixed-medium-r-normal-*-*-150-*-*-c-*-*-*
-xmessage.Form.Command.font:	-sony-fixed-medium-r-normal-*-*-150-*-*-c-*-*-*
+!xmessage.Form.Text*font:	-sony-fixed-medium-r-normal-*-*-150-*-*-c-*-*-*
+!xmessage.Form.Command.font:	-sony-fixed-medium-r-normal-*-*-150-*-*-c-*-*-*
 xmessage.Form.background:	darkgray
 xmessage.Form.Command.background:	gray
 xmessage.Form.Text*background:	lightblue
