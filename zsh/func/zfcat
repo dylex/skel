@@ -1,0 +1,9 @@
+local z
+z=`zstyle -L :zftp:zfget progress`
+zstyle :zftp:zfget progress none
+zfget -c "$@"
+if [[ -n $z ]] ; then
+	eval "$z"
+else
+	zstyle -d :zftp:zfget progress
+fi
