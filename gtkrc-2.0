@@ -1,0 +1,5 @@
+style "default" {
+	bg[NORMAL] = "#000000"
+	fg[NORMAL] = "#EEEEEE"
+}
+class "*" style "default"
