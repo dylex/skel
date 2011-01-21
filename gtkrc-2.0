@@ -1,5 +1,34 @@
 style "default" {
-	bg[NORMAL] = "#000000"
-	fg[NORMAL] = "#EEEEEE"
+	# general
+	bg[NORMAL] 	= "#222A33"
+	fg[NORMAL] 	= "#DDDDDD"
+	# mouseover
+	bg[PRELIGHT] 	= "#444433"
+	fg[PRELIGHT] 	= "#FFFFFF"
+	# inactive titles (some fg always black)
+	bg[ACTIVE] 	= "#222A33"
+	fg[ACTIVE] 	= "#AAAAAA"
+	# 
+	bg[SELECTED] 	= "#000000"
+	fg[SELECTED] 	= "#FFFF88" # focus border
+	# greyed out
+	bg[INSENSITIVE] = "#222222"
+	fg[INSENSITIVE] = "#444444"
+
+	# entry boxes
+	base[NORMAL] 	= "#000000"
+	text[NORMAL] 	= "#DDDDDD"
+	# mouseover sensitive
+	base[PRELIGHT] 	= "#222200"
+	text[PRELIGHT] 	= "#FFFFFF"
+	# unfocused selection, inactive titles
+	base[ACTIVE] 	= "#446666"
+	text[ACTIVE] 	= "#000000"
+	# focused selection
+	base[SELECTED] 	= "#88AAAA"
+	text[SELECTED] 	= "#000000"
+	#
+	base[INSENSITIVE] = "#000000"
+	text[INSENSITIVE] = "#333333"
 }
 class "*" style "default"
