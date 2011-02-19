@@ -8,12 +8,12 @@ style "default" {
 	# inactive titles (some fg always black)
 	bg[ACTIVE] 	= "#222A33"
 	fg[ACTIVE] 	= "#AAAAAA"
-	# 
-	bg[SELECTED] 	= "#000000"
+	# bar charts
+	bg[SELECTED] 	= "#554466"
 	fg[SELECTED] 	= "#FFFF88" # focus border
 	# greyed out
-	bg[INSENSITIVE] = "#222222"
-	fg[INSENSITIVE] = "#444444"
+	bg[INSENSITIVE] = "#202020"
+	fg[INSENSITIVE] = "#888888"
 
 	# entry boxes
 	base[NORMAL] 	= "#000000"
