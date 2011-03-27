@@ -106,7 +106,8 @@ alias sz='su zoot'
 alias mplay='mplayer'
 alias mplaya='mplayer -quiet'
 
-zmodload -i zsh/stat
+#zmodload -i zsh/stat
+#zmodload -F zsh/stat b:zstat
 
 autoload -U zfinit
 EMAIL_ADDR=dylan-ftp@dylex.net
