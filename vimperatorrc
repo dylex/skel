@@ -15,7 +15,7 @@ noremap c d
 noremap C D
 noremap _ -
 noremap -- - <C-^>
-noremap = g<C-g>
+noremap = :pageinfo<CR>
 noremap x <C-c>
 noremap ga gn
 map d <Nop>
@@ -67,7 +67,7 @@ mappings.addUserMap([modes.NORMAL], ["\\"],
 	});
 EOF
 imap <C-t> <C-i>
-set guioptions=mnbl
+"set guioptions=mnbl
 set titlestring=Firefox
 "set maxhints=100
 "set hintchars=1234567890
@@ -85,3 +85,5 @@ set showstatuslinks=2
 "set linkfgcolor=
 set urlseparator=;
 set defsearch=s
+set noautocomplete
+set visualbell
