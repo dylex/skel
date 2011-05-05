@@ -129,14 +129,15 @@ endif
 fun OCamlSetup ()
 	setl sw=2
 	setl sts=2
-	setl errorformat=%-Gocaml%m,%AFile\ \"%f\"\\,\ line\ %l\\,\ characters\ %c-%*\\d:,%-Zmake:\ ***\ [%f]\ Error\ %n\,%C%m
+	setl errorformat+=%-Gocaml%m,%AFile\ \"%f\"\\,\ line\ %l\\,\ characters\ %c-%*\\d:,%-Zmake:\ ***\ [%f]\ Error\ %n\,%C%m
 	set   suffixes+=.cmi,.cmo,.cmx
 endfun
 
 fun HaskellSetup ()
 	setl sw=2
 	setl sts=2
-	setl errorformat=%-Gghc%m,
+	setl et
+	setl errorformat+=%-Gghc%m,
 		\%-G[%\\d%#\ of\ %\\d%#]\ Compiling\ %.%#\ (\ %f\\,\ %.%#\ ),
 		\%-GLinking\ %.%#,
 		\Loading\ package\ %.%#,
@@ -156,7 +157,7 @@ fun TextSetup ()
 	setl nosmartindent
 	setl textwidth=78
 	setl et
-	setl errorformat=%E!\ LaTeX\ %trror:\ %m,
+	setl errorformat+=%E!\ LaTeX\ %trror:\ %m,
 		\%E!\ %m,
 		\%+WLaTeX\ %.%#Warning:\ %.%#line\ %l%.%#,
 		\%+W%.%#\ at\ lines\ %l--%*\\d,
@@ -236,7 +237,6 @@ autocmd FileType c,cpp call CodeSetup()
 autocmd FileType *m4 call M4Setup()
 autocmd FileType matlab call MatlabSetup()
 autocmd FileType mp setl indentkeys= " metapost indenting sucks
-autocmd BufReadPost */duck/* setl et
 autocmd BufReadPost * exe "normal `\""
 
 if $TERM =~ '^\(screen\.\)\?\(screen\|m\?rxvt\|xterm-xfree86\|connectbot\)\(-256color\)\?$'
