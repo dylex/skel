@@ -40,7 +40,7 @@ set   splitright
 set nostartofline
 set   statusline=%2n\ %f%=%<\ %(%Y%W%H%R%M%)\ \ %P\ %10(%c%V%),%-6l\ %7o=%02B
 set   suffixes-=.h
-set   switchbuf=useopen,split
+set   switchbuf=useopen,usetab
 set   tabstop=8
 set   textwidth=0
 set   timeoutlen=2000
