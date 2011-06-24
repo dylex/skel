@@ -60,7 +60,7 @@ case $TERM in
 			xterm_title=`print -Pn "%m:"`
 		fi
 		precmd () {
-			print -Pn "\e]2;$xterm_title%~\a"
+			print -Pn "\e]2;$xterm_title%1~\a"
 		}
 		preexec () {
 			print -n "\e]2;$xterm_title$2\a"
