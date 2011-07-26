@@ -15,6 +15,7 @@
 	amend = commit -v --amend
 	co = checkout -m
 	logs = log --stat
+	logp = log -p
 	diffs = diff --stat
 	b = branch -v
 	ba = branch -av
