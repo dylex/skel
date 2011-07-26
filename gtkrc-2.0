@@ -4,7 +4,7 @@ style "default" {
 	fg[NORMAL] 	= "#DDDDDD"
 	# mouseover
 	bg[PRELIGHT] 	= "#444433"
-	fg[PRELIGHT] 	= "#FFFFFF"
+	fg[PRELIGHT] 	= "#EEEEFF"
 	# inactive titles (some fg always black)
 	bg[ACTIVE] 	= "#222A33"
 	fg[ACTIVE] 	= "#AAAAAA"
@@ -20,7 +20,7 @@ style "default" {
 	text[NORMAL] 	= "#DDDDDD"
 	# mouseover sensitive
 	base[PRELIGHT] 	= "#222200"
-	text[PRELIGHT] 	= "#FFFFFF"
+	text[PRELIGHT] 	= "#FFFFDD"
 	# unfocused selection, inactive titles
 	base[ACTIVE] 	= "#446666"
 	text[ACTIVE] 	= "#000000"
@@ -32,3 +32,6 @@ style "default" {
 	text[INSENSITIVE] = "#333333"
 }
 class "*" style "default"
+gtk-icon-theme = "gnome"
+gtk-fallback-icon-theme = "gnome"
+gtk-scrolled-window-placement = top-right
