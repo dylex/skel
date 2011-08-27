@@ -1,7 +1,4 @@
-#local ip
-local stream
-local name
-#local -a servers
+#!/bin/sh
 
 # http://media.kcrw.com/live/kcrwlive.pls
 #servers=( scfire-chi-aa01.stream.aol.com scfire-chi-aa02.stream.aol.com scfire-chi-aa03.stream.aol.com scfire-chi-aa04.stream.aol.com scfire-chi-aa05.stream.aol.com scfire-dll-aa01.stream.aol.com scfire-dll-aa02.stream.aol.com scfire-dll-aa03.stream.aol.com scfire-dll-aa04.stream.aol.com scfire-dll-aa05.stream.aol.com scfire-ntc-aa01.stream.aol.com scfire-ntc-aa02.stream.aol.com scfire-ntc-aa03.stream.aol.com scfire-ntc-aa04.stream.aol.com scfire-ntc-aa05.stream.aol.com scfire-nyk-aa01.stream.aol.com scfire-nyk-aa02.stream.aol.com scfire-nyk-aa03.stream.aol.com scfire-nyk-aa04.stream.aol.com )
@@ -14,4 +11,4 @@ case $1 in
 esac
 
 #mplaya "$@" "http://$ip:80/stream/$stream"
-mplaya "$@" http://media.kcrw.com/live/kcrw$name.pls
+mplayer -profile music "$@" http://media.kcrw.com/live/kcrw$name.pls

@@ -111,7 +111,7 @@ alias spell='aspell -a'
 alias sr='screen -r main || screen -r'
 alias sz='su zoot'
 alias mplay='mplayer'
-alias mplaya='mplayer -quiet'
+alias mplaya='mplayer -profile music'
 
 #zmodload -i zsh/stat
 #zmodload -F zsh/stat b:zstat
