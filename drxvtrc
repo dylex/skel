@@ -1,0 +1,49 @@
+drxvt.noSysConfig:		true
+drxvt.font:			fixed
+drxvt.font1:			-*-proggytiny-medium-*-*-*-10-*-*-*-*-*-*-*
+drxvt.boldFont1:		-*-proggytinysz-bold-*-*-*-10-*-*-*-*-*-*-*
+drxvt.font2:			-*-proggysquare-medium-*-*-*-11-*-*-*-*-*-*-*
+drxvt.font3:			-*-proggyclean-medium-*-*-*-13-*-*-*-*-*-*-*
+drxvt.font4:			-misc-fixed-medium-r-*-*-15-*-*-*-*-*-*-*
+drxvt.boldFont4:		-misc-fixed-bold-r-*-*-15-*-*-*-*-*-*-*
+drxvt.font5:			-misc-fixed-medium-r-*-*-20-*-*-*-*-*-*-*
+drxvt.boldFont5:		-misc-fixed-bold-r-*-*-20-*-*-*-*-*-*-*
+drxvt.boldColors:		true
+drxvt.loginShell:		false
+drxvt.utmpInhibit:		true
+drxvt.termName:			mrxvt
+drxvt.saveLines:		1024
+drxvt.scrollTtyKeypress:	true
+drxvt.scrollTtyOutputInhibit:	true
+drxvt.pointerBlank:		true
+drxvt.pointerBlankDelay:	15
+drxvt.focusDelay:		250
+drxvt.fading:			20
+drxvt.background:		black
+drxvt.foreground:		#E0E0E0
+drxvt.cursorColor:		#E0E0E0
+drxvt.color0:			#000000
+drxvt.color1:			#E07070
+drxvt.color2:			#70E070
+drxvt.color3:			#E0E070
+drxvt.color4:			#7070E0
+drxvt.color5:			#E070E0
+drxvt.color6:			#70E0E0
+drxvt.color7:			#E0E0E0
+drxvt.color8:			#808080
+drxvt.color9:			#FF0000
+drxvt.color10:			#00FF00
+drxvt.color11:			#FFFF00
+drxvt.color12:			#0000FF
+drxvt.color13:			#FF00FF
+drxvt.color14:			#00FFFF
+drxvt.color15:			#FFFFFF
+drxvt.altPrefix:		^A
+drxvt.modifier:			mod4
+drxvt.cutChars:			#%&*-./0123456789:=ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~
+
+Drxvt.macro.Primary+Shift+Prior:	Scroll -1p
+Drxvt.macro.Primary+Shift+Next:		Scroll +1p
+Drxvt.macro.Shift+Insert:		Paste
+Drxvt.macro.Shift+KP_Add:		ResizeFont +1
+Drxvt.macro.Shift+KP_Subtract:		ResizeFont -1
