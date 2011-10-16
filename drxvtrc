@@ -13,7 +13,7 @@ drxvt.boldFont5:		-dylex-terminal-bold-r-*-*-20-*-*-*-*-*-*-*
 drxvt.boldColors:		true
 drxvt.loginShell:		false
 drxvt.utmpInhibit:		true
-drxvt.termName:			mrxvt
+drxvt.termName:			drxvt
 drxvt.saveLines:		1024
 drxvt.scrollTtyKeypress:	true
 drxvt.scrollTtyOutputInhibit:	true
