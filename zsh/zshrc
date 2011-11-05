@@ -54,7 +54,7 @@ unset MAILCHECK
 
 #eval `dircolors -b ~/.dircolors` 
 case $TERM in
-	(rxvt|rxvt-*|mrxvt|xterm-*|screen|screen-*) # 256 color/xtermy
+	(*rxvt*|xterm-*|screen*|*tmux*) # 256 color/xtermy
 		xterm_title=""
 		if [[ ${+SSH_CLIENT} -eq 1 ]] ; then
 			xterm_title=`print -Pn "%m:"`
