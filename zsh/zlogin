@@ -3,6 +3,7 @@ while ! tput longname > /dev/null 2>&1 ; do
 		(mrxvt) 	TERM=rxvt ;;
 		(screen-*) 	TERM=screen ;;
 		(xterm-*) 	TERM=xterm ;;
+		(*tmux)		TERM=screen ;;
 		(*) echo "TERM=$TERM unknown" ; break ;;
 	esac
 done
