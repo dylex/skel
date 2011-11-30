@@ -76,19 +76,25 @@ no S L
 no K T
 endif
 
-let netrw_list_hide='^\.'
-let netrw_http_cmd="curl -o"
-
-let mapleader = ""
 map!  <BS>
 map!  <BS>
 map Y y$
 map ZW :up<CR>
 nmap q: :q
 nmap Q :confirm q<CR>
+let mapleader = ""
 nmap <Leader>p :set paste<CR>
 nmap <Leader>u :set nopaste<CR>
 nmap <Leader>m :up<CR>:make<CR>
+
+try
+	call pathogen#infect()
+catch /E117/
+endtry
+
+let netrw_list_hide='^\.'
+let netrw_http_cmd="curl -o"
+
 if has('spell')
 	nmap <Leader>/ :set spell<CR>
 	nmap <Leader>c :set nospell<CR>
@@ -110,8 +116,6 @@ else
 	let spell_accept_map =          "\<Leader>,"
 	let spell_case_accept_map =     "\<Leader>'"
 endif
-let c_gnu=1
-let c_no_curly_error=1
 
 nmap \l :call LineUpPrevWord()<CR>
 nmap \r :call LineUpNextWord()<CR>
@@ -122,11 +126,6 @@ vmap <Leader>s :StripTrailing<CR>
 
 nmap <Leader>2 :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
 nmap \* :execute "lvimgrep /\\<" . expand("<cword>") . "\\>/j **" <Bar> bot lw<CR>
-
-if hostname() =~ '^druid\.'
-	nmap <Leader>y :call SyncSources()<CR>
-	set tags+=~/cvs/current/tags
-endif
 
 fun OCamlSetup ()
 	setl sw=2
@@ -219,10 +218,9 @@ if $TERM =~ '^screen\|tmux$'
 	set t_EI=[\ q
 endif
 
-filetype on
+filetype indent on
 syntax on
 colorscheme my
-filetype indent on
 
 if filereadable($MYVIMRC . ".local")
 	source $MYVIMRC.local
