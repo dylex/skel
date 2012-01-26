@@ -1,14 +1,19 @@
-local s o d j
-while getopts 'jd' o ; do case $o in
+local s o d j cmd
+cmd=tmux
+while getopts 'jdxs' o ; do case $o in
 	(j) j=1 ;;
 	(d) d=1 ;;
+	(x) cmd="$cmd -f $HOME/.xtmux.conf -x" ;;
+	(s) cmd="$cmd start \;"
 esac ; done
 shift $[OPTIND-1]
 s=${1:-main} ; [[ $# -gt 0 ]] && shift
 if [[ -n $j ]] ; then
-	tmux new-session -s $s -n "$s" \; set status off \; link-window -k -s main:$s -t 0
+	${=cmd} new-session -s $s -n "$s" \; set status off \; link-window -k -s main:$s -t 0
 elif tmux has-session -t $s ; then
-	tmux attach-session ${d:+-d} -t $s
+	${=cmd} attach-session ${d:+-d} -t $s
+elif [[ -f ~/.tmux.$s ]] ; then
+	${=cmd} source ~/.tmux.$s
 else
-	tmux new-session -s $s -n "$1" "$@" \; set-option -t $s default-path $PWD
+	${=cmd} new-session -s $s -n "$1" "$@" \; set-option -t $s default-path $PWD
 fi
