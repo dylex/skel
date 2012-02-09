@@ -1,0 +1,4 @@
+if [[ $1 = "-d" ]] ; then
+	shift ; set -- "$@" --debug
+fi
+ebuild --skip-manifest ${2:-*.ebuild([-1])} ${=1:-clean install}
