@@ -11,4 +11,4 @@ case $1 in
 esac
 
 #mplaya "$@" "http://$ip:80/stream/$stream"
-exec mplayer -profile music "$@" http://media.kcrw.com/live/kcrw$name.pls
+exec mplayer -profile music "$@" -playlist http://media.kcrw.com/live/kcrw$name.pls
