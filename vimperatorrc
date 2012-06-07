@@ -84,6 +84,6 @@ set showstatuslinks=2
 "set linkbgcolor=
 "set linkfgcolor=
 set urlseparator=;
-set defsearch=s
+set defsearch=dd
 set noautocomplete
 set visualbell

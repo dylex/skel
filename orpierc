@@ -70,9 +70,9 @@ bind "Q" command_quit
 # stack browsing mode
 bind "q" browse_end
 bind "h" browse_scroll_left
-bind "l" browse_scroll_right
-bind "k" browse_prev_line
-bind "j" browse_next_line
+bind "s" browse_scroll_right
+bind "n" browse_prev_line
+bind "t" browse_next_line
 bind "r" browse_rolldown
 bind "R" browse_rollup
 bind "v" browse_view
