@@ -3,6 +3,7 @@
 	name = Dylan Simon
 [core]
 	pager = less -FX
+	excludesfile = ~/.gitignore
 [push]
 	default = current
 [rerere]

@@ -50,7 +50,7 @@ home_install+=ghci
 home_install+=orpierc
 home_install+=nethackrc
 home_install+=vimperatorrc
-home_install+=gitconfig
+home_install+=gitconfig gitignore
 home_install+=drxvtrc
 home_install+=gtkrc-2.0
 
