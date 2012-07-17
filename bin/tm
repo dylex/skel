@@ -13,7 +13,7 @@ if [[ -n $j ]] ; then
 elif tmux has-session -t $s ; then
 	exec ${cmd} attach-session ${d:+-d} -t $s
 elif [[ -f ~/.tmux.$s ]] ; then
-	exec ${cmd} source ~/.tmux.$s
+	exec ${cmd} new-session -s $s -n "$1" \; source ~/.tmux.$s
 else
 	exec ${cmd} new-session -s $s -n "$1" "$@" \; set-option -t $s default-path $PWD
 fi
