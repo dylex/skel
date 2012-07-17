@@ -1,5 +1,12 @@
-#!/usr/bin/perl
-my @passwdset = split '', '!"#$%&\'()*+,-./0123456789;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
+#!/usr/bin/perl -w
+use strict;
+use Getopt::Std;
+our $opt_e;
+getopts('e');
+my $passwdset = $opt_e 
+	? '!#%()*+,./0123456789;=?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+	: '!"#$%&\'()*+,-./0123456789;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
+my @passwdset = split '', $passwdset;
 my $p;
 my $l = 8;
 $l = shift if @ARGV;
