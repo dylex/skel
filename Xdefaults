@@ -1,5 +1,4 @@
 xterm.messages:			false
-xterm*utmpInhibit:		true
 xterm.vt100.alwaysHighlight:	false
 xterm.vt100.background:		black
 xterm.vt100.foreground:		#E0E0E0
@@ -28,17 +27,18 @@ xterm.vt100.scrollBar:		false
 xterm.vt100.saveLines:		1024
 xterm.vt100.scrollKey:		true
 xterm.vt100.scrollTtyOutput:	false
-!xterm.vt100.font2:		-*-proggytiny-medium-*-*-*-10-*-*-*-*-*-*-*
-!xterm.vt100.font3:		-*-proggysquare-medium-*-*-*-11-*-*-*-*-*-*-*
-!xterm.vt100.font4:		-*-proggyclean-medium-*-*-*-13-*-*-*-*-*-*-*
+xterm.vt100.font2:		-dylex-terminal-medium-*-*-*-10-*-*-*-*-*-*-*
+xterm.vt100.font3:		-dylex-terminal-medium-*-*-*-13-*-*-*-*-*-*-*
+xterm.vt100.font4:		-dylex-terminal-medium-*-*-*-15-*-*-*-*-*-*-*
+xterm.vt100.font5:		-dylex-terminal-medium-*-*-*-20-*-*-*-*-*-*-*
 xterm.vt100.forceBoxChars:	true
 xterm.backarrowKeyIsErase:	true
 !xterm.termName:		xterm-xfree86
 
 rxvt.font:			fixed
-!rxvt.font1:			-*-proggytiny-medium-*-*-*-10-*-*-*-*-*-*-*
-!rxvt.font2:			-*-proggysquare-medium-*-*-*-11-*-*-*-*-*-*-*
-!rxvt.font3:			-*-proggyclean-medium-*-*-*-13-*-*-*-*-*-*-*
+rxvt.font1:			-dylex-terminal-medium-*-*-*-10-*-*-*-*-*-*-*
+rxvt.font2:			-dylex-terminal-medium-*-*-*-13-*-*-*-*-*-*-*
+rxvt.font3:			-dylex-terminal-medium-*-*-*-15-*-*-*-*-*-*-*
 rxvt.loginShell:		false
 rxvt.utmpInhibit:		true
 rxvt.termName:			rxvt
