@@ -22,8 +22,10 @@
 	ba = branch -av
 	cat = show --format=raw
 	ap = cherry-pick -n
-	up = remote update
+	up = remote update --prune
 [color]
 	ui = auto
 [merge]
 	tool = vimdiff
+[log]
+	date = local
