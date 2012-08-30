@@ -1,12 +1,12 @@
 style "default" {
 	# general
-	bg[NORMAL] 	= "#222A33"
+	bg[NORMAL] 	= "#222A33" # scrollbar fg
 	fg[NORMAL] 	= "#DDDDDD"
 	# mouseover
 	bg[PRELIGHT] 	= "#444433"
 	fg[PRELIGHT] 	= "#EEEEFF"
 	# inactive titles (some fg always black)
-	bg[ACTIVE] 	= "#222A33"
+	bg[ACTIVE] 	= "#333333" # scrollbar bg
 	fg[ACTIVE] 	= "#AAAAAA"
 	# bar charts
 	bg[SELECTED] 	= "#554466"
