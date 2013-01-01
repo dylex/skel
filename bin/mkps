@@ -1,10 +1,12 @@
 #!/usr/bin/perl -w
 use strict;
 use Getopt::Std;
-our $opt_e;
-getopts('e');
+our ($opt_e, $opt_a);
+getopts('ea');
 my $passwdset = $opt_e 
 	? '!#%()*+,./0123456789;=?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+	: $opt_a 
+	? '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 	: '!"#$%&\'()*+,-./0123456789;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
 my @passwdset = split '', $passwdset;
 my $p;
