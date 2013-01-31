@@ -208,6 +208,7 @@ autocmd FileType *m4 call M4Setup()
 autocmd FileType matlab call MatlabSetup()
 autocmd FileType python call PythonSetup()
 autocmd FileType mp setl indentkeys= " metapost indenting sucks
+autocmd FileType cabal setl et
 autocmd BufReadPost * exe "normal `\""
 
 if $TERM =~ '^\(screen\.\)\?\(screen\|x?tmux\|[dm]\?rxvt\|xterm-xfree86\|connectbot\)\(-256color\)\?$'
