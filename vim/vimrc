@@ -154,6 +154,13 @@ fun TextSetup ()
 	endif
 endfun
 
+fun MarkdownSetup ()
+	setl nocindent
+	if has('spell')
+		setl spell
+	endif
+endfun
+
 fun MailSetup ()
 	call TextSetup()
 	if match(getline(2), '^To: bugs') == 0 && match(getline(5), '^Subject: .*\[Bug') == 0
@@ -198,6 +205,7 @@ endfun
 autocmd BufNewFile,BufRead *.ml* call OCamlSetup()
 autocmd BufNewFile,BufRead *.hs* call HaskellSetup()
 autocmd BufNewFile,BufRead DOC call TextSetup()
+autocmd BufNewFile,BufRead *.md setf markdown
 autocmd BufNewFile,BufRead *.r,*.R setf r
 autocmd BufNewFile,BufRead *.hsc setf chaskell
 autocmd BufNewFile,BufRead *.gnuplot setf gnuplot
@@ -207,6 +215,7 @@ autocmd FileType c,cpp call CodeSetup()
 autocmd FileType *m4 call M4Setup()
 autocmd FileType matlab call MatlabSetup()
 autocmd FileType python call PythonSetup()
+autocmd FileType markdown call MarkdownSetup()
 autocmd FileType mp setl indentkeys= " metapost indenting sucks
 autocmd FileType cabal setl et
 autocmd BufReadPost * exe "normal `\""
