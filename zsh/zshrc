@@ -77,7 +77,6 @@ alias j='jobs'
 case $OSTYPE in
 	(linux*)
 		alias ls='ls --color=auto'
-		alias l='ls -li'
 		alias p='ps -AH So pid,user,stat,pcpu,bsdtime,start_time,vsz,command'
 		alias pw='ps -AH o pid,user,group,tty8,stat,pcpu,cputime,etime,pmem,rsz,vsz,command'
 		alias pl='ps -A o comm,pid,uid,gid,sz,rssize,vsize,nice,s,alarm,flags,wchan --sort session,pgrp,pid'
@@ -90,15 +89,13 @@ case $OSTYPE in
 		alias make='gmake'
 		alias seq='gseq'
 		;;
+	(darwin*)
+		alias p='ps -axf'
+		;;
 	(*)
-		alias l='ls -li'
 		alias p='ps -auxf'
 		;;
 esac
-alias ll='l -a'
-alias ltr='ls -ltr'
-alias latr='ls -latr'
-alias lld='ll -d'
 alias vi='vim'
 alias v='vim -c "normal '"'"'0"'
 #'"'"'"'"'# fix for vim syntax highlighting
@@ -113,6 +110,12 @@ alias sz='su zoot'
 alias mplay='mplayer'
 alias mplaya='mplayer -profile music'
 alias xtmux='tmux -f ~/.xtmux.conf -x'
+
+command_not_found_handler() {
+	[[ $1 = l ]] && 1=li
+	[[ $1 = ll* ]] && 1=la${1#ll}
+	[[ $1 = l* ]] && ls -"$@"
+}
 
 #zmodload -i zsh/stat
 #zmodload -F zsh/stat b:zstat
