@@ -202,6 +202,11 @@ fun PythonSetup ()
 	setl sw=4
 endfun
 
+fun RubySetup ()
+	setl sts=2
+	setl sw=2
+endfun
+
 autocmd BufNewFile,BufRead *.ml* call OCamlSetup()
 autocmd BufNewFile,BufRead *.hs* call HaskellSetup()
 autocmd BufNewFile,BufRead DOC call TextSetup()
@@ -218,6 +223,7 @@ autocmd FileType python call PythonSetup()
 autocmd FileType markdown call MarkdownSetup()
 autocmd FileType mp setl indentkeys= " metapost indenting sucks
 autocmd FileType cabal setl et
+autocmd FileType ruby call RubySetup()
 autocmd BufReadPost * exe "normal `\""
 
 if $TERM =~ '^\(screen\.\)\?\(screen\|x?tmux\|[dm]\?rxvt\|xterm-xfree86\|connectbot\)\(-256color\)\?$'
