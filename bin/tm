@@ -1,5 +1,8 @@
 #!/bin/bash
 cmd=tmux
+if [[ $TERM = xtmux ]] ; then
+	cmd="$cmd -u"
+fi
 while getopts 'jdxs' o ; do case $o in
 	(j) j=1 ;;
 	(d) d=1 ;;
