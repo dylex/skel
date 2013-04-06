@@ -111,11 +111,14 @@ alias mplay='mplayer'
 alias mplaya='mplayer -profile music'
 alias xtmux='tmux -f ~/.xtmux.conf -x'
 
+# this is eval'd to force alias expansion
+eval '
 command_not_found_handler() {
 	[[ $1 = l ]] && 1=li
 	[[ $1 = ll* ]] && 1=la${1#ll}
 	[[ $1 = l* ]] && ls -"$@"
 }
+'
 
 #zmodload -i zsh/stat
 #zmodload -F zsh/stat b:zstat
