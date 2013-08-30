@@ -224,6 +224,7 @@ autocmd FileType markdown call MarkdownSetup()
 autocmd FileType mp setl indentkeys= " metapost indenting sucks
 autocmd FileType cabal setl et
 autocmd FileType ruby call RubySetup()
+autocmd FileType gitcommit setl spell
 autocmd BufReadPost * exe "normal `\""
 
 if $TERM =~ '^\(screen\.\)\?\(screen\|x?tmux\|[dm]\?rxvt\|xterm-xfree86\|connectbot\)\(-256color\)\?$'
