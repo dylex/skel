@@ -33,7 +33,7 @@ setopt   rcquotes
 setopt   rmstarsilent
 
 DIRSTACKSIZE=8
-HISTSIZE=256
+HISTSIZE=1024
 KEYTIMEOUT=10
 case $HOST in
 	(datura.dylex.net) hostcolor=35 ;;
