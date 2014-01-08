@@ -202,6 +202,7 @@ macro "L" "l 2 l /"
 macro "W" "2 <return> I ' ^"
 macro "M" "W # 1 <return> -"
 macro "~" "# 1 <return> _ ' -"
+# convert CD frames (samples, not bytes) to minutes
 macro "F" "5 2 9 2 0 0 0 <return> /"
 
 # arch-tag: DO_NOT_CHANGE_bb2181f2-1288-4d0f-849b-36482daf59c5  

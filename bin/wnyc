@@ -1,2 +1,13 @@
 #!/bin/sh
-exec mplayer -profile music "$@" -playlist http://www.wnyc.org/stream/wnyc-fm939/mp3.pls
+type=aac
+case $1 in
+	(-m) type=mp3 ; shift ;;
+	(-a) type=aac ; shift ;;
+esac
+which=wnyc-fm939
+case $1 in
+	(f*) which=wnyc-fm939 ; shift ;;
+	(a*) which=wnyc-am820 ; shift ;;
+	(q*) which=wqxr ; shift ;;
+esac
+exec mplayer -profile music "$@" -playlist http://www.wnyc.org/stream/$which/$type.pls
