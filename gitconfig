@@ -1,6 +1,7 @@
 [user]
 	email = dylan@dylex.net
 	name = Dylan Simon
+	signingkey = D55F9223
 [core]
 	pager = less -FX
 	excludesfile = ~/.gitignore
