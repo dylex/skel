@@ -110,6 +110,10 @@ alias mplay='mplayer'
 alias mplaya='mplayer -profile music'
 alias xtmux='tmux -f ~/.xtmux.conf -x'
 
+alias -g ...=../..
+alias -g ....=../../..
+alias -g .....=../../../..
+
 # this is eval'd to force alias expansion
 eval '
 command_not_found_handler() {
