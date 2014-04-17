@@ -195,7 +195,7 @@ bindkey -M vicmd '^Z' push-input
 bindkey -v
 
 if [[ $TERM = connectbot ]] ; then
-	alias srd='screen -rd'
+	alias tmd='tm -d'
 fi
 
 [[ ! -f ${ZDOTDIR:-~}/.zshrc.local ]] || . ${ZDOTDIR:-~}/.zshrc.local
