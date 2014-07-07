@@ -100,7 +100,7 @@ alias v='vim -c "normal '"'"'0"'
 #'"'"'"'"'# fix for vim syntax highlighting
 
 alias ht=$BROWSER
-alias rm='rm -i'
+alias rm='rm -I'
 alias grep='grep -n --color'
 alias gerp='grep'
 alias spell='aspell -a'
