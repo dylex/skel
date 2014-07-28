@@ -27,10 +27,11 @@ set   number
 set   ruler
 set   scrolloff=5
 set   selection=exclusive
-set   shiftwidth=8
+set   shiftwidth=2
 set   showcmd
 set   showmatch
 set   sidescroll=1
+set   softtabstop=-1
 set   smartcase
 "set   smartindent
 if has('spell')
@@ -128,15 +129,11 @@ nmap <Leader>2 :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR
 nmap \* :execute "lvimgrep /\\<" . expand("<cword>") . "\\>/j **" <Bar> bot lw<CR>
 
 fun OCamlSetup ()
-	setl sw=2
-	setl sts=2
 	setl errorformat+=%-Gocaml%m,%AFile\ \"%f\"\\,\ line\ %l\\,\ characters\ %c-%*\\d:,%-Zmake:\ ***\ [%f]\ Error\ %n\,%C%m
 	set   suffixes+=.cmi,.cmo,.cmx
 endfun
 
 fun HaskellSetup ()
-	setl sw=2
-	setl sts=2
 	setl et
 	setl matchpairs-=<:>
 	setf haskell
@@ -144,6 +141,7 @@ fun HaskellSetup ()
 endfun
 
 fun TextSetup ()
+	setl sw=0
 	setl fo+=t
 	setl nocindent
 	setl nosmartindent
@@ -159,6 +157,7 @@ fun MarkdownSetup ()
 	if has('spell')
 		setl spell
 	endif
+	setl sw=0
 endfun
 
 fun MailSetup ()
@@ -174,21 +173,17 @@ fun TexSetup ()
 	if has('spell')
 		setl spell
 	endif
+	setl sw=8
 	set   suffixes+=.aux,.log,.dvi,.ps,.pdf
 endfun
 
-fun CodeSetup ()
+fun CSetup ()
 	setl cindent
 	setl smartindent
-	if hostname() =~ '\.\(rainfinity\|emc\)\.com$'
-		setl sts=2
-		setl sw=2
-	endif
+	setl sw=8
 endfun
 
 fun MatlabSetup ()
-	call CodeSetup ()
-	setl sts=4
 	setl sw=4
 	setl et
 endfun
@@ -198,13 +193,7 @@ fun M4Setup ()
 endfun
 
 fun PythonSetup ()
-	setl sts=4
 	setl sw=4
-endfun
-
-fun RubySetup ()
-	setl sts=2
-	setl sw=2
 endfun
 
 autocmd BufNewFile,BufRead *.ml* call OCamlSetup()
@@ -216,14 +205,13 @@ autocmd BufNewFile,BufRead *.hsc setf chaskell
 autocmd BufNewFile,BufRead *.gnuplot setf gnuplot
 autocmd FileType mail call MailSetup()
 autocmd FileType tex call TexSetup()
-autocmd FileType c,cpp call CodeSetup()
+autocmd FileType c,cpp call CSetup()
 autocmd FileType *m4 call M4Setup()
 autocmd FileType matlab call MatlabSetup()
 autocmd FileType python call PythonSetup()
 autocmd FileType markdown call MarkdownSetup()
 autocmd FileType mp setl indentkeys= " metapost indenting sucks
 autocmd FileType cabal setl et
-autocmd FileType ruby call RubySetup()
 autocmd FileType gitcommit setl spell
 autocmd BufReadPost * exe "normal `\""
 
