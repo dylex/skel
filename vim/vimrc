@@ -122,8 +122,8 @@ nmap \l :call LineUpPrevWord()<CR>
 nmap \r :call LineUpNextWord()<CR>
 
 com -range=% StripTrailing <line1>,<line2>s:\s\+$::
-nmap <Leader>s :StripTrailing<CR>
-vmap <Leader>s :StripTrailing<CR>
+nmap \s :StripTrailing<CR>
+vmap \s :StripTrailing<CR>
 
 nmap <Leader>2 :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
 nmap \* :execute "lvimgrep /\\<" . expand("<cword>") . "\\>/j **" <Bar> bot lw<CR>
@@ -199,6 +199,15 @@ endfun
 fun HtmlSetup ()
 	setl nocindent
 	setl indentkeys=
+	nmap <buffer> <Leader>J :call SwitchExt("e", ".js")<CR>
+	nmap <buffer> <Leader>C :call SwitchExt("e", ".css")<CR>
+	nmap <buffer> <Leader>S :call SwitchExt("e", ".styl")<CR>
+endfun
+
+fun JSSetup ()
+	nmap <buffer> <Leader>H :call SwitchExt("e", ".html")<CR>
+	nmap <buffer> <Leader>C :call SwitchExt("e", ".css")<CR>
+	nmap <buffer> <Leader>S :call SwitchExt("e", ".styl")<CR>
 endfun
 
 autocmd BufNewFile,BufRead *.ml* call OCamlSetup()
@@ -219,6 +228,7 @@ autocmd FileType mp setl indentkeys= " metapost indenting sucks
 autocmd FileType cabal setl et
 autocmd FileType gitcommit setl spell
 autocmd FileType html call HtmlSetup()
+autocmd FileType javascript call JSSetup()
 autocmd BufReadPost * exe "normal `\""
 
 if $TERM =~ '^\(screen\.\)\?\(screen\|x?tmux\|[dm]\?rxvt\|xterm-xfree86\|connectbot\)\(-256color\)\?$'
