@@ -128,6 +128,10 @@ vmap \s :StripTrailing<CR>
 nmap <Leader>2 :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
 nmap \* :execute "lvimgrep /\\<" . expand("<cword>") . "\\>/j **" <Bar> bot lw<CR>
 
+fun TabsSetup ()
+	setl sw=0
+endfun
+
 fun OCamlSetup ()
 	setl errorformat+=%-Gocaml%m,%AFile\ \"%f\"\\,\ line\ %l\\,\ characters\ %c-%*\\d:,%-Zmake:\ ***\ [%f]\ Error\ %n\,%C%m
 	set   suffixes+=.cmi,.cmo,.cmx
@@ -229,6 +233,7 @@ autocmd FileType cabal setl et
 autocmd FileType gitcommit setl spell
 autocmd FileType html call HtmlSetup()
 autocmd FileType javascript call JSSetup()
+autocmd FileType sql,vim call TabsSetup()
 autocmd BufReadPost * exe "normal `\""
 
 if $TERM =~ '^\(screen\.\)\?\(screen\|x?tmux\|[dm]\?rxvt\|xterm-xfree86\|connectbot\)\(-256color\)\?$'
