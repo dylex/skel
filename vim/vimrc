@@ -203,15 +203,14 @@ endfun
 fun HtmlSetup ()
 	setl nocindent
 	setl indentkeys=
-	nmap <buffer> <Leader>J :call SwitchExt("e", ".js")<CR>
-	nmap <buffer> <Leader>C :call SwitchExt("e", ".css")<CR>
-	nmap <buffer> <Leader>S :call SwitchExt("e", ".styl")<CR>
+	nmap <buffer> <Leader>J :call SwitchExt("e", ".js", ".coffee")<CR>
+	nmap <buffer> <Leader>C :call SwitchExt("e", ".css", ".styl")<CR>
 endfun
 
 fun JSSetup ()
+	setl et
 	nmap <buffer> <Leader>H :call SwitchExt("e", ".html")<CR>
-	nmap <buffer> <Leader>C :call SwitchExt("e", ".css")<CR>
-	nmap <buffer> <Leader>S :call SwitchExt("e", ".styl")<CR>
+	nmap <buffer> <Leader>C :call SwitchExt("e", ".css", ".styl")<CR>
 endfun
 
 autocmd BufNewFile,BufRead *.ml* call OCamlSetup()
@@ -232,7 +231,7 @@ autocmd FileType mp setl indentkeys= " metapost indenting sucks
 autocmd FileType cabal setl et
 autocmd FileType gitcommit setl spell
 autocmd FileType html call HtmlSetup()
-autocmd FileType javascript call JSSetup()
+autocmd FileType javascript,coffee call JSSetup()
 autocmd FileType sql,vim call TabsSetup()
 autocmd BufReadPost * exe "normal `\""
 
