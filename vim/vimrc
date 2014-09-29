@@ -232,7 +232,7 @@ autocmd FileType cabal setl et
 autocmd FileType gitcommit setl spell
 autocmd FileType html call HtmlSetup()
 autocmd FileType javascript,coffee call JSSetup()
-autocmd FileType sql,vim call TabsSetup()
+autocmd FileType sql,vim,sh call TabsSetup()
 autocmd BufReadPost * exe "normal `\""
 
 if $TERM =~ '^\(screen\.\)\?\(screen\|x?tmux\|[dm]\?rxvt\|xterm-xfree86\|connectbot\)\(-256color\)\?$'
