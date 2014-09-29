@@ -1,0 +1,15 @@
+#!/bin/bash -e
+# Replicate the exact state of a git index and working tree to a remote
+# repository efficiently (leaving the remote detached but otherwise identical).
+# Will overwrite any remote changes.
+
+remote=${1%:*}
+if [[ $1 = *:* ]] ; then
+	base=${1##*:}
+else
+	base=${GIT_WORK_DIR:-`git rev-parse --show-toplevel`}
+fi
+
+sync=`git stash create sync`
+git push -q -f $remote:$base ${sync:-HEAD}:refs/heads/SYNC
+ssh $remote "cd $base && git checkout -q --detach -f refs/heads/SYNC ${sync:+&& git reset HEAD\^2 && git reset --soft HEAD\^}"
