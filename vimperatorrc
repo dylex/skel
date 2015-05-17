@@ -87,3 +87,4 @@ set urlseparator=;
 set defsearch=dd
 set noautocomplete
 set visualbell
+set toolbars=menu,tabs,nonavigation,nobookmarks

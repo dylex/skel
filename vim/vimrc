@@ -142,6 +142,9 @@ fun HaskellSetup ()
 	setl matchpairs-=<:>
 	setf haskell
 	set   suffixes+=.hi
+	if filereadable('Setup.hs')
+		set makeprg=runhaskell\ Setup.hs\ build
+	endif
 endfun
 
 fun TextSetup ()
@@ -232,7 +235,7 @@ autocmd FileType cabal setl et
 autocmd FileType gitcommit setl spell
 autocmd FileType html call HtmlSetup()
 autocmd FileType javascript,coffee call JSSetup()
-autocmd FileType sql,vim,sh call TabsSetup()
+autocmd FileType sql,vim,sh,make call TabsSetup()
 autocmd BufReadPost * exe "normal `\""
 
 if $TERM =~ '^\(screen\.\)\?\(screen\|x?tmux\|[dm]\?rxvt\|xterm-xfree86\|connectbot\)\(-256color\)\?$'
@@ -243,7 +246,7 @@ if $TERM =~ '^screen\|tmux$'
 	set t_EI=[\ q
 endif
 
-filetype indent on
+filetype indent plugin on
 syntax on
 colorscheme my
 
