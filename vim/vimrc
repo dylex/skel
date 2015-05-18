@@ -141,7 +141,7 @@ fun HaskellSetup ()
 	setl et
 	setl matchpairs-=<:>
 	setf haskell
-	set   suffixes+=.hi
+	set   suffixes+=.hi,.dyn_hi,.dyn_o
 	if filereadable('Setup.hs')
 		set makeprg=runhaskell\ Setup.hs\ build
 	endif
@@ -216,6 +216,8 @@ fun JSSetup ()
 	nmap <buffer> <Leader>C :call SwitchExt("e", ".css", ".styl")<CR>
 endfun
 
+filetype indent plugin on
+
 autocmd BufNewFile,BufRead *.ml* call OCamlSetup()
 autocmd BufNewFile,BufRead *.hs* call HaskellSetup()
 autocmd BufNewFile,BufRead DOC call TextSetup()
@@ -246,7 +248,6 @@ if $TERM =~ '^screen\|tmux$'
 	set t_EI=[\ q
 endif
 
-filetype indent plugin on
 syntax on
 colorscheme my
 
