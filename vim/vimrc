@@ -142,7 +142,9 @@ fun HaskellSetup ()
 	setl matchpairs-=<:>
 	setf haskell
 	set   suffixes+=.hi,.dyn_hi,.dyn_o
-	if filereadable('Setup.hs')
+	if filereadable('dist/setup/setup')
+		set makeprg=dist/setup/setup\ build
+	elseif filereadable('Setup.hs')
 		set makeprg=runhaskell\ Setup.hs\ build
 	endif
 endfun
