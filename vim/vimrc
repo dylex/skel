@@ -147,7 +147,7 @@ fun HaskellSetup ()
 	elseif filereadable('Setup.hs')
 		set makeprg=runhaskell\ Setup.hs\ build
 	endif
-	setl iskeyword=a-z,A-Z,_,.,39
+	setl iskeyword=a-z,A-Z,48-57,_,.,39
 endfun
 
 fun TextSetup ()
