@@ -52,7 +52,8 @@ map <C-o>I :set! permission.default.image=2<CR>
 map <C-o>a :set! image.animation_mode="normal"<CR>
 map <C-o>A :set! image.animation_mode="none"<CR>
 map ^ :set usermode!<CR>
-map & :set! browser.display.use_document_colors!<CR>
+map & :set! browser.display.document_color_use=2<CR>
+map * :set! browser.display.document_color_use=0<CR>
 " todo: key for animations/images (*?)
 " dom.disable_image_src_set=true/false
 js <<EOF
