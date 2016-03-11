@@ -14,7 +14,7 @@
 	ci = commit -v
 	ch = cherry -v
 	cia = commit -va
-	amend = commit -v --amend
+	amend = commit -v --amend --reset-author
 	co = checkout -m
 	logs = log --stat
 	logp = log -p
