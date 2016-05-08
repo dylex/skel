@@ -1,0 +1,8 @@
+#!/bin/sh
+which=wwno
+case $1 in
+	(1) which=wwno ; shift ;;
+	(2) which=wwno2 ; shift ;;
+	(3) which=wwno3 ; shift ;;
+esac
+exec mplayer -profile music "$@" http://pubint.ic.llnwd.net/stream/pubint_${which}_128
