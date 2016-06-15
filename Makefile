@@ -23,6 +23,7 @@ zshinstall+=$(addprefix $(ZSHDIR)/.,$(zshrcs)) $(addprefix $(ZSHFDIR)/,$(zshfunc
 ifneq ($(ZSHDIR),)
 install+=$(zshinstall) $(addsuffix .zwc,$(zshinstall))
 endif
+home_install+=bashrc bash_profile
 
 home_install+=xsession xkeymap Xdefaults
 $(HOME)/.xinitrc: $(HOME)/.xsession

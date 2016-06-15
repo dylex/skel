@@ -97,7 +97,6 @@ case $OSTYPE in
 esac
 alias vi='vim'
 alias v='vim -c "normal '"'"'0"'
-#'"'"'"'"'# fix for vim syntax highlighting
 
 alias ht=$BROWSER
 alias rm='rm -I'

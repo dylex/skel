@@ -16,6 +16,7 @@ export MANPATH=/usr/share/man:/usr/X11R6/man
 [[ -d /usr/local/man ]] && MANPATH=$MANPATH:/usr/local/man
 export PAGER=`which less`
 export VISUAL=`which vim`
+[[ -n $VISUAL ]] || VISUAL=`which vi`
 #export EDITOR=$VISUAL
 export CVS_RSH=ssh
 export BROWSER=`which elinks`
