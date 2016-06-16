@@ -7,12 +7,13 @@ export PATH=$HOME/bin:$PATH:/sbin:/usr/sbin
 
 PS1='\h:\w [\j]>'
 
-export PAGER=`which less`
-export VISUAL=`which vim`
-[[ -n $VISUAL ]] || VISUAL=`which vi`
+export PAGER=`which less 2> /dev/null`
+[[ -n $PAGER ]] || PAGER=`which more 2> /dev/null`
+export VISUAL=`which vim 2> /dev/null`
+[[ -n $VISUAL ]] || VISUAL=`which vi 2> /dev/null`
 #export EDITOR=$VISUAL
 export CVS_RSH=ssh
-export BROWSER=`which elinks`
+export BROWSER=`which elinks 2> /dev/null`
 export PERLLIB=$HOME/bin/perllib
 #export PYTHONSTARTUP=~/.pythonrc
 #export CC=gcc

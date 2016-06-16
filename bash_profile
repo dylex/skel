@@ -2,6 +2,8 @@
 
 if [[ -f ~/.bash_profile.local ]] ; then
 	. ~/.bash_profile.local
+elif [[ %- = *i* ]] ; then
+	return
 elif [[ -x /bin/zsh ]] ; then
 	export SHELL=/bin/zsh
 	exec /bin/zsh -l
