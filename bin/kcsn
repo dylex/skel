@@ -1,0 +1,2 @@
+#!/bin/sh
+exec mplayer -profile music "$@" -playlist http://130.166.82.184:8000/listen.pls
