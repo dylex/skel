@@ -5,7 +5,7 @@ unset SHLVL
 
 xmodmap -pke > .Xmodmap.default
 [ -f .Xmodmap ] && xmodmap .Xmodmap
-xset $( for i in 37 50 62 64 66 `seq 67 76` 77 95 96 106 109 113 115 116 117 ; do echo "-r $i" ; done )
+xset $( for i in 37 50 62 64 66 `seq 67 76` 77 95 96 106 109 ; do echo "-r $i" ; done )
 
 [ -p .xtail ] && rm -f .xtail
 [ -p .xrw ] && rm -f .xrw
