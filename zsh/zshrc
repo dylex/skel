@@ -38,7 +38,7 @@ KEYTIMEOUT=10
 case $HOST in
 	(datura.dylex.net) hostcolor=35 ;;
 	(icicle.dylex.net) hostcolor=36 ;;
-	(pancake.dylex.net) hostcolor=33 ;;
+	(newyork) hostcolor=33 ;;
 	(greed) hostcolor=31 ;;
 	(devbrary) hostcolor=34 ;;
 esac
@@ -76,7 +76,7 @@ alias j='jobs'
 case $OSTYPE in
 	(linux*)
 		alias ls='ls --color=auto'
-		alias p='ps -AH So pid,user,stat,pcpu,bsdtime,start_time,vsz,command'
+		alias p='ps -AH So pid,user,stat,pcpu,bsdtime,start_time,rsz,command'
 		alias pw='ps -AH o pid,user,group,tty8,stat,pcpu,cputime,etime,pmem,rsz,vsz,command'
 		alias pl='ps -A o comm,pid,uid,gid,sz,rssize,vsize,nice,s,alarm,flags,wchan --sort session,pgrp,pid'
 		alias w='w -f'
