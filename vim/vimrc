@@ -2,6 +2,7 @@ set   autoindent
 set   backspace=2
 set nobackup
 set   backupskip=/tmp/*,/var/tmp/*
+set   belloff=cursor,wildmode
 "set   cindent
 set   cinkeys-=0#
 set   cpoptions-=s
@@ -55,6 +56,7 @@ endif
 set   viminfo='12,h,%,n~/.vim/viminfo
 set   whichwrap=b,s,<,>,[,]
 set   wildignore+=*.o
+set   wildmode=list
 set   wrap
 
 if $QWERTY == ""
@@ -144,6 +146,8 @@ fun HaskellSetup ()
 	set   suffixes+=.hi,.dyn_hi,.dyn_o
 	if filereadable('dist/setup/setup')
 		set makeprg=dist/setup/setup\ build
+	elseif filereadable('stack.yaml')
+		set makeprg=stack\ build
 	elseif filereadable('Setup.hs')
 		set makeprg=runhaskell\ Setup.hs\ build
 	endif
@@ -230,7 +234,7 @@ autocmd! filetypedetect BufNewFile,BufRead *.hsc setf chaskell
 autocmd! filetypedetect BufNewFile,BufRead *.gnuplot setf gnuplot
 autocmd FileType mail call MailSetup()
 autocmd FileType tex call TexSetup()
-autocmd FileType c,cpp call CSetup()
+autocmd FileType c,cpp,rpcgen call CSetup()
 autocmd FileType *m4 call M4Setup()
 autocmd FileType matlab call MatlabSetup()
 autocmd FileType python call PythonSetup()
