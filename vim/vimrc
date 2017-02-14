@@ -56,7 +56,7 @@ endif
 set   viminfo='12,h,%,n~/.vim/viminfo
 set   whichwrap=b,s,<,>,[,]
 set   wildignore+=*.o
-set   wildmode=list
+set   wildmode=longest,list
 set   wrap
 
 if $QWERTY == ""
