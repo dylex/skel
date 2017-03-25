@@ -73,7 +73,7 @@ set titlestring=Firefox
 "set maxhints=100
 "set hintchars=1234567890
 set editor="rxvt -e vim"
-set noinsertmode
+set insertmode
 set focuscontent
 set hintmatching=wordstartswith
 set hinttimeout=1000
