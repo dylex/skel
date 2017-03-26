@@ -243,7 +243,7 @@ autocmd FileType mp setl indentkeys= " metapost indenting sucks
 autocmd FileType cabal setl et
 autocmd FileType gitcommit setl spell
 autocmd FileType html call HtmlSetup()
-autocmd FileType javascript,coffee call JSSetup()
+autocmd FileType javascript,coffee,typescript call JSSetup()
 autocmd FileType sql,vim,sh,make call TabsSetup()
 autocmd BufReadPost * exe "normal `\""
 
