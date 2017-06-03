@@ -3,6 +3,7 @@ cd $HOME
 export PATH=$HOME/bin:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin
 unset SHLVL
 
+xrdb .Xdefaults
 xmodmap -pke > .Xmodmap.default
 [ -f .Xmodmap ] && xmodmap .Xmodmap
 xset $( for i in 37 50 62 64 66 `seq 67 76` 77 95 96 106 109 ; do echo "-r $i" ; done )

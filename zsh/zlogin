@@ -1,3 +1,7 @@
+if [[ $- != *i* || -z $TERM ]] ; then
+	return
+fi
+
 while ! tput longname > /dev/null 2>&1 ; do
 	case $TERM in
 		(mrxvt) 	TERM=rxvt ;;

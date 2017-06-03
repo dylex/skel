@@ -2,7 +2,7 @@
 
 if [[ -f ~/.bash_profile.local ]] ; then
 	. ~/.bash_profile.local
-elif [[ %- = *i* ]] ; then
+elif [[ $- != *i* || -z $TERM ]] ; then
 	return
 elif [[ -x /bin/zsh ]] ; then
 	export SHELL=/bin/zsh
