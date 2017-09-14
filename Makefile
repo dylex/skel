@@ -29,10 +29,6 @@ home_install+=xsession xkeymap Xdefaults
 $(HOME)/.xinitrc: $(HOME)/.xsession
 	ln -f $< $@
 home_install+=xinitrc
-$(HOME)/.fvwm2rc.m4: fvwm/fvwm2rc.m4
-	$(place)
-home_install+=fvwm2rc.m4
-home_install+=fvwm/cdmenu.pl
 
 vimdirs=colors plugins
 vimfiles=$(wildcard vim/colors/* vim/plugin/*)
