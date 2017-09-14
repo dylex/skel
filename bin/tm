@@ -3,20 +3,22 @@ cmd=tmux
 if [[ $TERM = xtmux ]] ; then
 	cmd="$cmd -u"
 fi
-while getopts 'jdxs' o ; do case $o in
+append=""
+while getopts 'jdxSf:' o ; do case $o in
 	(j) j=1 ;;
 	(d) d=1 ;;
 	(x) cmd="$cmd -f $HOME/.xtmux.conf -x" ;;
-	(s) cmd="$cmd start \;"
+	(S) cmd="$cmd start ;" ;;
+	(f) append="$append ; set-option -c xtmux-font -dylex-terminal-medium-r-*-*-$OPTARG-*-*-*-*-*-*-*" ;;
 esac ; done
 shift $[OPTIND-1]
 s=${1:-main} ; [[ $# -gt 0 ]] && shift
 if [[ -n $j ]] ; then
-	exec ${cmd} new-session -s $s -n "$s" \; set status off \; link-window -k -s main:$s -t 0
+	exec $cmd new-session -s $s -n "$s" \; set status off \; link-window -k -s main:$s -t 0 $append
 elif tmux has-session -t $s ; then
-	exec ${cmd} attach-session ${d:+-d} -t $s
+	exec $cmd attach-session ${d:+-d} -t $s $append
 elif [[ -f ~/.tmux.$s ]] ; then
-	exec ${cmd} new-session -s $s -n "$1" \; source ~/.tmux.$s
+	exec $cmd new-session -s $s -n "$1" \; source ~/.tmux.$s $append
 else
-	exec ${cmd} new-session -s $s -n "$1" "$@" \; set-option -t $s default-path $PWD
+	exec $cmd new-session -s $s -n "$1" "$@" \; set-option -t $s default-path $PWD $append
 fi
