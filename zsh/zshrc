@@ -107,6 +107,7 @@ alias sr='screen -r main || screen -r'
 alias sz='su zoot'
 alias mplay='mplayer'
 alias mplaya='mplayer -profile music'
+alias xc='xclip -selection clipboard'
 alias xtmux='tmux -f ~/.xtmux.conf -x'
 
 alias -g ...=../..
