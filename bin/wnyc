@@ -1,13 +1,13 @@
 #!/bin/sh
-type=aac
+ext=
 case $1 in
-	(-m) type=mp3 ; shift ;;
-	(-a) type=aac ; shift ;;
+	(-m) ext= ; shift ;;
+	(-a) ext=.aac ; shift ;;
 esac
-which=wnyc-fm939
+which=fm939.wnyc.org/wnycfm
 case $1 in
-	(f*) which=wnyc-fm939 ; shift ;;
-	(a*) which=wnyc-am820 ; shift ;;
-	(q*) which=wqxr ; shift ;;
+	(f*) which=fm939.wnyc.org/wyncfm ; shift ;;
+	(a*) which=am820.wnyc.org/wnycam ; shift ;;
+	(q*) which=stream.wqxr.org/wqxr ; shift ;;
 esac
-exec mplayer -profile music "$@" -playlist http://www.wnyc.org/stream/$which/$type.pls
+exec mplayer -profile music "$@" http://$which$ext
