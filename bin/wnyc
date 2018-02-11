@@ -1,5 +1,5 @@
 #!/bin/sh
-ext=
+ext=.aac
 case $1 in
 	(-m) ext= ; shift ;;
 	(-a) ext=.aac ; shift ;;
