@@ -31,7 +31,7 @@
 [diff]
 	colorMoved = true
 [column]
-	status = true
+	status = auto dense
 [merge]
 	tool = vimdiff
 [log]
