@@ -11,10 +11,10 @@
 	enabled = false
 [alias]
 	st = status
-	ci = commit -v
+	ci = commit
 	ch = cherry -v
-	cia = commit -va
-	amend = commit -v --amend --reset-author
+	cia = commit -a
+	amend = commit --amend --reset-author
 	co = checkout -m
 	logs = log --stat
 	logp = log -p
@@ -24,9 +24,21 @@
 	cat = show --format=raw
 	ap = cherry-pick -n
 	up = remote update --prune
+[commit]
+	verbose = true
 [color]
 	ui = auto
+[diff]
+	colorMoved = true
+[column]
+	status = true
 [merge]
 	tool = vimdiff
 [log]
 	date = local
+[advice]
+	pushUpdateRejected = false
+	statusHints = false
+	commitBeforeMerge = false
+	resolveConflict = false
+	detachedHead = false
