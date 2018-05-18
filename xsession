@@ -1,6 +1,6 @@
 #!/bin/sh
 cd $HOME
-export PATH=$HOME/bin:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin
+export PATH=$HOME/bin:$HOME/.local/bin:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/bin
 unset SHLVL
 
 xrdb .Xdefaults
