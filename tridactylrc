@@ -1,0 +1,23 @@
+bind a fillcmdline tabopen
+bind A current_url tabopen
+bind t scrollline 10
+bind n scrollline -10
+bind h scrollpx -50
+bind s scrollpx 50
+bind l findnext
+bind e back
+bind u forward
+bind k undo
+bind H tabprev
+bind S tabnext
+bind C tabclose
+bind <A-h> tabmove -1
+bind <A-s> tabmove +1
+bind y clipboard yank
+
+set hintchars hutenosadigpcrfymkwjvqzbx
+set hintdelay 1000
+# set hintnames numeric
+set putfrom selection
+set yankto both
+set searchengine dd

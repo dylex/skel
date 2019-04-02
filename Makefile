@@ -50,6 +50,7 @@ home_install+=vimperatorrc
 home_install+=gitconfig gitignore
 home_install+=drxvtrc
 home_install+=gtkrc-2.0
+home_install+=tridactylrc
 
 home_install+=less
 $(HOME)/.less: lesskey
