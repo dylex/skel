@@ -12,13 +12,13 @@ while getopts 'jdxSf:' o ; do case $o in
 	(f) append="$append ; set-option -c xtmux-font -dylex-terminal-medium-r-*-*-$OPTARG-*-*-*-*-*-*-*" ;;
 esac ; done
 shift $[OPTIND-1]
-s=${1:-main} ; [[ $# -gt 0 ]] && shift
+s=${1:-main} ; shift
 if [[ -n $j ]] ; then
 	exec $cmd new-session -s $s -n "$s" \; set status off \; link-window -k -s main:$s -t 0 $append
 elif tmux has-session -t $s ; then
 	exec $cmd attach-session ${d:+-d} -t $s $append
 elif [[ -f ~/.tmux.$s ]] ; then
-	exec $cmd new-session -s $s -n "$1" \; source ~/.tmux.$s $append
+	exec $cmd new-session -s $s -n "${1:-$s}" \; source ~/.tmux.$s $append
 else
-	exec $cmd new-session -s $s -n "$1" "$@" \; set-option -t $s default-path $PWD $append
+	exec $cmd new-session -s $s -n "${1:-$s}" "$@" \; set-option -t $s default-path $PWD $append
 fi
