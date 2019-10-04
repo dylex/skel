@@ -70,4 +70,6 @@ alias mplay='mplayer'
 alias mplaya='mplayer -profile music'
 alias xtmux='tmux -f ~/.xtmux.conf -x'
 
+shopt -s direxpand
+
 [[ ! -f ~/.bashrc.local ]] || . ~/.bashrc.local
