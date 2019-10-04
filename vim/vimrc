@@ -208,6 +208,7 @@ endfun
 
 fun PythonSetup ()
 	setl sw=4
+	setl et
 endfun
 
 fun HtmlSetup ()
