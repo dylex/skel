@@ -176,9 +176,8 @@ endfun
 
 fun MailSetup ()
 	call TextSetup()
-	if match(getline(2), '^To: bugs') == 0 && match(getline(5), '^Subject: .*\[Bug') == 0
-		5s/^Subject: .*\(\[Bug \d*\]\).*/Subject: \1/
-	endif
+	iabbrev fi flatironinstitute
+	iabbrev sf simonsfoundation
 endfun
 
 fun TexSetup ()
