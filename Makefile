@@ -59,6 +59,10 @@ $(HOME)/.less: lesskey
 
 home_install+=xpdfrc
 
+$(HOME)/.config/mpv/mpv.conf: mpv.conf
+	$(place)
+install+=$(HOME)/.config/mpv/mpv.conf
+
 $(HOME)/bin/%: bin/%
 	mode=555 ; $(place)
 install+=$(addprefix $(HOME)/,$(wildcard bin/*))
