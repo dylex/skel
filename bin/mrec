@@ -41,7 +41,7 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 : ${of:=$1}
-url=$(purl "$@")
+url=$(murl "$@")
 echo "Recording $url from ${st:-now} for ${et:-forever} to $of..."
 
 sleep ${st:-0}
