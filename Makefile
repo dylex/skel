@@ -19,9 +19,10 @@ $(ZSHFDIR)/%: zsh/func/%
 	zsh -c 'zcompile -U $^'
 zshrcs=zshenv zshrc zlogin
 zshfunc=$(notdir $(wildcard zsh/func/*))
+zshnocf=mpl
 zshinstall+=$(addprefix $(ZSHDIR)/.,$(zshrcs)) $(addprefix $(ZSHFDIR)/,$(zshfunc))
 ifneq ($(ZSHDIR),)
-install+=$(zshinstall) $(addsuffix .zwc,$(zshinstall))
+install+=$(zshinstall) $(addsuffix .zwc,$(filter-out $(addprefix %/,$(zshnocf)),$(zshinstall)))
 endif
 home_install+=bashrc bash_profile
 

@@ -1,0 +1,1 @@
+mplaya $(purl -p "$@")

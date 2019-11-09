@@ -1,0 +1,62 @@
+#!/bin/bash
+
+while getopts 'pP:' o ; do case $o in
+	(p) playlist= ;;
+	(P) playlist="$OPTARG" ;;
+esac ; done
+shift $[OPTIND-1]
+
+if [[ $# -eq 0 ]] ; then
+	echo "Usage: $0 [-p | -P PREFIX] URL [PARAMS...]" >&2
+	echo "Expand URL. If -p or -P are specified, the result may be a playlist (prefixed with PREFIX)." >&2
+	exit 1
+fi
+
+playlist () {
+	if [[ -v playlist ]] ; then
+		echo $playlist $1
+	else
+		curl -s $1 | sed -n 's/^File[0-9]\+=\([^;\n\r]*\)[^\n\r]*\r\?$/\1/p'
+	fi
+}
+
+case "$1" in
+	(*://*) echo $1 ;;
+	(kcrw)	shift
+		stream=1046
+		name=live
+		case $1 in
+			(l*) stream=1046 ; name=live ; shift ;;
+			(m*) stream=1045 ; name=music ; shift ;;
+			(n*) stream=1047 ; name=news ; shift ;;
+		esac
+		# alt: http://yp.shoutcast.com/sbin/tunein-station.pls?id=526749
+		playlist http://media.kcrw.com/live/kcrw$name.pls ;;
+	(kcsn)	playlist http://130.166.82.184:8000/listen.pls ;;
+	(wnyc)	shift
+		ext=.aac
+		case $1 in
+			(-m) ext= ; shift ;;
+			(-a) ext=.aac ; shift ;;
+		esac
+		which=fm939.wnyc.org/wnycfm
+		case $1 in
+			(f*) which=fm939.wnyc.org/wyncfm ; shift ;;
+			(a*) which=am820.wnyc.org/wnycam ; shift ;;
+			(q*) which=stream.wqxr.org/wqxr ; shift ;;
+		esac
+		echo http://$which$ext ;;
+	(wwno)	shift
+		which=wwno
+		case $1 in
+			(1) which=wwno ; shift ;;
+			(2) which=wwno2 ; shift ;;
+			(3) which=wwno3 ; shift ;;
+		esac
+		echo http://pubint.ic.llnwd.net/stream/pubint_${which}_128 ;;
+	(mprn)	echo https://nis.stream.publicradio.org/nis.mp3 ;;
+	(lfh)	shift
+		set -- $(date +'%Y %m %d' -d ${1:-Saturday})
+		echo http://download.stream.publicradio.org/livefromhere/$1/$2/$3/lfh_$1$2$3.mp3 ;;
+	(*)	exit 1
+esac

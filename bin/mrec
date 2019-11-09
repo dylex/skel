@@ -1,0 +1,52 @@
+#!/bin/bash -e
+
+till () {
+	if [[ $# -gt 1 || $1 = *:* || $1 = "* *" ]] ; then
+		t=`date +%s -d "$*"` || return 1
+		((t-=`date +%s`))
+		[[ $t -ge 0 ]] || return 1
+		echo $t
+	else
+		echo "$*"
+	fi
+}
+
+case "$*" in
+	(leshow)
+		set -- -o leshow.mp3 -s 'Sun 13:00' -e 1h kcrw n ;;
+	(lfh)
+		set -- -o lfh.mp3 -s 'Sat 18:00' -e 2h mprn ;;
+	(lrc)
+		st='Fri 16:00'
+		if ! till $st ; then
+			st='Fri 22:00'
+		fi
+		set -- -o lrc.mp3 -s "$st" -e 1h kcrw ;;
+esac
+
+cd ~/tmp
+wo=
+while getopts 'o:s:e:q' o ; do case $o in
+	(o) of="$OPTARG" ;;
+	(s) st=$(till $OPTARG) ;;
+	(e) et=$(till $OPTARG) ;;
+	(q) wo="$opts -q" ;;
+esac ; done
+shift $[OPTIND-1]
+
+if [[ $# -eq 0 ]] ; then
+	echo "Usage: $0 [-s START] [-e END] [-o OUTPUT] URL..." >&2
+	echo "Record URL to OUTPUT." >&2
+	exit 1
+fi
+
+: ${of:=$1}
+url=$(purl "$@")
+echo "Recording $url from ${st:-now} for ${et:-forever} to $of..."
+
+sleep ${st:-0}
+echo `date` start
+wget $wo -O "$of" "$url" &
+sleep ${et:-infinity}
+echo `date` end
+kill $!
