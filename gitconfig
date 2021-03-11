@@ -5,6 +5,8 @@
 [core]
 	pager = less -FX
 	excludesfile = ~/.gitignore
+[pull]
+	rebase = false
 [push]
 	default = current
 [rerere]
