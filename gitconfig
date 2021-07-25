@@ -5,6 +5,8 @@
 [core]
 	pager = less -FX
 	excludesfile = ~/.gitignore
+[init]
+	defaultBranch = main
 [pull]
 	rebase = false
 	ff = only
@@ -18,7 +20,7 @@
 	ch = cherry -v
 	cia = commit -a
 	amend = commit --amend --reset-author
-	co = checkout -m
+	co = checkout
 	logs = log --stat
 	logp = log -p
 	diffs = diff --stat
