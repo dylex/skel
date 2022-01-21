@@ -21,7 +21,7 @@ playlist () {
 }
 
 case "$1" in
-	(*://*) echo $1 ;;
+	(*/*)	echo $1 ;;
 	(kcrw)	shift
 		stream=1046
 		name=live

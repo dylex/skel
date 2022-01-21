@@ -14,8 +14,8 @@ till () {
 case "$*" in
 	(leshow)
 		set -- -o leshow.mp3 -s 'Sun 13:00' -e 1h kcrw n ;;
-	(lfh)
-		set -- -o lfh.mp3 -s 'Sat 18:00' -e 2h mprn ;;
+	#(lfh)
+	#	set -- -o lfh.mp3 -s 'Sat 18:00' -e 2h mprn ;;
 	(lrc)
 		st='Fri 16:00'
 		if ! till $st ; then
