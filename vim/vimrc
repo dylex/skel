@@ -248,10 +248,10 @@ autocmd FileType javascript,coffee,typescript call JSSetup()
 autocmd FileType sql,vim,sh,make call TabsSetup()
 autocmd BufReadPost * exe "normal `\""
 
-if $TERM =~ '^\(screen\.\)\?\(screen\|x?tmux\|[dm]\?rxvt\|xterm-xfree86\|connectbot\)\(-256color\)\?$'
+if $TERM =~ '^\(screen\.\)\?\(screen\|x?tmux\|[dm]\?rxvt\|xterm-xfree86\|connectbot\|xtermjs\)\(-256color\)\?$'
 	set t_Co=256
 endif
-if $TERM =~ '^screen\|tmux$'
+if $TERM =~ '^screen\|tmux\|xtermjs$'
 	set t_SI=[5\ q
 	set t_EI=[\ q
 endif

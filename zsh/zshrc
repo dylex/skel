@@ -53,7 +53,7 @@ unset MAILCHECK
 
 #eval `dircolors -b ~/.dircolors` 
 case $TERM in
-	(*rxvt*|xterm-*|screen*|*tmux*) # 256 color/xtermy
+	(*rxvt*|xterm*|screen*|*tmux*) # 256 color/xtermy
 		xterm_title=""
 		if [[ ${+SSH_CLIENT} -eq 1 ]] ; then
 			xterm_title=`print -Pn "%m:"`
@@ -193,7 +193,7 @@ bindkey -M viins '^Z' push-line
 bindkey -M vicmd '^Z' push-input
 bindkey -v
 
-if [[ $TERM = connectbot ]] ; then
+if [[ $TERM = connectbot|xtermjs ]] ; then
 	alias tmd='tm -d'
 fi
 
