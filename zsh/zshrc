@@ -193,7 +193,7 @@ bindkey -M viins '^Z' push-line
 bindkey -M vicmd '^Z' push-input
 bindkey -v
 
-if [[ $TERM = connectbot|xtermjs ]] ; then
+if [[ $TERM = connectbot ]] ; then
 	alias tmd='tm -d'
 fi
 
