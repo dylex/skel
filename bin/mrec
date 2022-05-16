@@ -17,7 +17,7 @@ case "$*" in
 	#(lfh)
 	#	set -- -o lfh.mp3 -s 'Sat 18:00' -e 2h mprn ;;
 	(lrc)
-		st='Fri 16:00'
+		st='Fri 15:00'
 		if ! till $st ; then
 			st='Fri 22:00'
 		fi
