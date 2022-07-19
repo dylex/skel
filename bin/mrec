@@ -12,8 +12,8 @@ till () {
 }
 
 case "$*" in
-	(leshow)
-		set -- -o leshow.mp3 -s 'Sun 13:00' -e 1h kcrw n ;;
+	#(leshow)
+	#	set -- -o leshow.mp3 -s 'Sun 13:00' -e 1h kcrw n ;;
 	#(lfh)
 	#	set -- -o lfh.mp3 -s 'Sat 18:00' -e 2h mprn ;;
 	(lrc)
@@ -29,7 +29,7 @@ wo=
 while getopts 'o:s:e:q' o ; do case $o in
 	(o) of="$OPTARG" ;;
 	(s) st=$(till $OPTARG) ;;
-	(e) et=$(till $OPTARG) ;;
+	(e) et=$(till $OPTARG) ;; # XXX wrong for abs times with st
 	(q) wo="$opts -q" ;;
 esac ; done
 shift $[OPTIND-1]

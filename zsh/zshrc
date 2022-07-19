@@ -144,7 +144,7 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' word true
 zstyle ':completion:*' mail-directory ~/mail
-zstyle ':completion:*' domains dylex.net cns.nyu.edu psych.nyu.edu nyu.edu
+zstyle ':completion:*' domains dylex.net flatironinstitute.org simonsfoundation.org sdsc.edu
 zstyle ':completion:*' hosts `awk '/^Host ([a-z0-9_-]*)$/ { print $2 }' ~/.ssh/config`
 zstyle ':completion:*' urls ~/.elinks/gotohist
 #zstyle ':completion:*:processes' command ps -Hu dylan o pid,s,start_time,tty8,command
