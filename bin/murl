@@ -31,6 +31,7 @@ case "$1" in
 			(n*) stream=1047 ; name=news ; shift ;;
 		esac
 		# alt: http://yp.shoutcast.com/sbin/tunein-station.pls?id=526749
+		# https://kcrw.streamguys1.com/kcrw_192k_mp3_on_air_internet_radio
 		playlist http://media.kcrw.com/live/kcrw$name.pls ;;
 	(kcsn)	playlist http://130.166.82.184:8000/listen.pls ;;
 	(wnyc)	shift

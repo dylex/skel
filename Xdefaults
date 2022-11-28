@@ -77,3 +77,5 @@ xmessage.Form.Text*background:	lightblue
 xmessage.Form.Text*foreground:	black
 
 xpdf.viKeys:			true
+
+xdaliclock.memory:		high
