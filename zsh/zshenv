@@ -5,7 +5,6 @@ fi
 umask 022
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
-[[ -d /usr/X11R6/bin ]] && PATH=$PATH:/usr/X11R6/bin
 [[ -d /usr/local/bin ]] && PATH=$PATH:/usr/local/bin:/usr/local/sbin
 [[ -d /usr/local/pgsql/bin ]] && PATH=$PATH:/usr/local/pgsql/bin
 [[ -d $HOME/.local/bin ]] && PATH=$HOME/.local/bin:$PATH
@@ -13,7 +12,7 @@ PATH=$HOME/bin:$PATH
 
 [[ -d ~/.zsh/func ]] && FPATH=~/.zsh/func:$FPATH
 
-export MANPATH=/usr/share/man:/usr/X11R6/man
+export MANPATH=/usr/share/man
 [[ -d /usr/local/man ]] && MANPATH=$MANPATH:/usr/local/man
 export PAGER=`which less`
 export VISUAL=`which vim`
