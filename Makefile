@@ -53,7 +53,7 @@ home_install+=drxvtrc
 home_install+=gtkrc-2.0
 home_install+=tridactylrc
 
-home_install+=less
+home_install+=lesskey less
 $(HOME)/.less: lesskey
 	lesskey -o $@ $<
 
