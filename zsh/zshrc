@@ -36,11 +36,10 @@ DIRSTACKSIZE=8
 HISTSIZE=1024
 KEYTIMEOUT=10
 case $HOST in
-	(datura.dylex.net) hostcolor=35 ;;
+	(datura.dylex.net|talula.dylex.net) hostcolor=35 ;;
 	(icicle.dylex.net) hostcolor=36 ;;
-	(devbrary) hostcolor=34 ;;
 	(scclin008) hostcolor=31 ;;
-	(upside) hostcolor=33 ;;
+	(upside|carbon) hostcolor=33 ;;
 esac
 #      (in hostcolor) hostname              <blue>+shlvl          <grey>:      <green>path   <yellow>[jobs]        <cyan>psvar        <red if error>  >
 PROMPT=${hostcolor:+%{[${hostcolor}m%}}'%m%2(L.%{[1;34m%}+%L.)%{[0;90m%}:%{[0;32m%}%~%1(j. %{[33m%}[%j].)%1(v. %{[36m%}%v.)%{[%(?..31)m%}%(!,#,>)%{[m%}'
