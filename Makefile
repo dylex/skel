@@ -63,6 +63,11 @@ $(HOME)/.config/mpv/mpv.conf: mpv.conf
 	$(place)
 install+=$(HOME)/.config/mpv/mpv.conf
 
+fehfiles=$(wildcard feh/*)
+$(HOME)/.config/feh/%: feh/%
+	$(place)
+install+=$(addprefix $(HOME)/.config/,$(fehfiles))
+
 $(HOME)/bin/%: bin/%
 	mode=555 ; $(place)
 install+=$(addprefix $(HOME)/,$(wildcard bin/*))
