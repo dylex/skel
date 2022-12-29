@@ -14,7 +14,7 @@ done
 WATCH=all
 WATCHFMT="%D %T %S%n%s %l %a %M"
 
-if [[ $TERM != connectbot ]] ; then
+if [[ $TERM != connectbot && $TERM != xtermjs ]] ; then
 	setopt ignoreeof
 fi
 mesg y
