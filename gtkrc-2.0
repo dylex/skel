@@ -31,7 +31,7 @@ style "default" {
 	base[INSENSITIVE] = "#000000"
 	text[INSENSITIVE] = "#333333"
 }
-class "*" style "default"
-gtk-icon-theme = "gnome"
-gtk-fallback-icon-theme = "gnome"
+class "GtkWidget" style "default"
+gtk-theme-name = "gnome"
+gtk-icon-theme-name = "gnome"
 gtk-scrolled-window-placement = top-right
