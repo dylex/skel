@@ -3,6 +3,8 @@ cd $HOME
 export PATH=$HOME/bin:$HOME/.local/bin:/bin:/usr/bin:/usr/local/bin
 unset SHLVL
 
+mkdir -m 0700 /tmp/$USER
+
 xrdb .Xdefaults
 xmodmap -pke > .Xmodmap.default
 [ -f .Xmodmap ] && xmodmap .Xmodmap
