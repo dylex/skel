@@ -48,7 +48,7 @@ set   textwidth=0
 set   timeoutlen=2000
 set   ttimeoutlen=100
 if has('persistent_undo')
-set   undodir=$HOME/tmp/.vimundo,$HOME/.vimundo
+set   undodir=$HOME/.vimundo,$HOME/tmp/.vimundo
 set   undofile
 au BufWritePre /tmp/* setl noundofile
 au BufWritePre /var/tmp/* setl noundofile
