@@ -25,6 +25,7 @@ case "$*" in
 esac
 
 cd ~/tmp
+cd tmp || true
 wo=
 while getopts 'o:s:e:q' o ; do case $o in
 	(o) of="$OPTARG" ;;
