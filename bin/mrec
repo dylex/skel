@@ -22,6 +22,8 @@ case "$*" in
 			st='Fri 22:00'
 		fi
 		set -- -o lrc.mp3 -s "$st" -e 1h kcrw ;;
+	(we)
+		set -- -o kcrw.mp3 -s 10:00 -e 2h kcrw ;;
 esac
 
 cd ~/tmp
