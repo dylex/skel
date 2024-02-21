@@ -29,7 +29,9 @@ home_install+=bashrc bash_profile
 home_install+=xsession xkeymap Xdefaults
 $(HOME)/.xinitrc: $(HOME)/.xsession
 	ln -f $< $@
-home_install+=xinitrc
+$(HOME)/.Xresources: $(HOME)/.Xdefaults
+	ln -f $< $@
+home_install+=xinitrc Xresources
 
 vimdirs=colors plugins
 vimfiles=$(wildcard vim/colors/* vim/plugin/*)
